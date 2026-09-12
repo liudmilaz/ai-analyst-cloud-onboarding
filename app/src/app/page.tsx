@@ -11,7 +11,7 @@ import { CURRICULUM_PHASES } from "../data/curriculum";
 export default function HomePage() {
   const [currentTrack, setCurrentTrack] = useState<LearningTrack>("dataform");
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [completedPhases, setCompletedPhases] = useState<number[]>([1]);
+  const [completedPhases, setCompletedPhases] = useState<number[]>([]);
 
   return (
     <div className="flex min-h-screen flex-col bg-slate-950">

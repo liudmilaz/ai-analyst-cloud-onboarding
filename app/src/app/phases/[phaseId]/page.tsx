@@ -17,13 +17,13 @@ export default function PhaseDetailPage() {
 
   const [currentTrack, setCurrentTrack] = useState<LearningTrack>("dataform");
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [completedPhases, setCompletedPhases] = useState<number[]>([1]);
+  const [completedPhases, setCompletedPhases] = useState<number[]>([]);
 
   const isCompleted = completedPhases.includes(phase.id);
 
   const handleCheckpointSuccess = () => {
     if (!completedPhases.includes(phase.id)) {
-      setCompletedPhases([...completedPhases, phase.id]);
+      setCompletedPhases((prev) => [...prev, phase.id]);
     }
   };
 

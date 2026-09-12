@@ -50,18 +50,35 @@ export const CURRICULUM_PHASES: Phase[] = [
       {
         id: "c1",
         question: "When converting local subscription revenue to EUR, why must the join to raw_markets route through raw_merchants.country_code rather than directly on currency?",
+        suggestedQuery: `-- Test join on currency vs merchant country in BigQuery Studio:
+SELECT
+  COUNT(*) AS joined_rows,
+  COUNT(DISTINCT s.subscription_id) AS original_subscriptions,
+  ROUND(SUM(s.mrr_local / 100 * m.eur_fx), 2) AS calculated_revenue_eur
+FROM \`aiwomen26ham-4452.invented_software_raw.raw_subscriptions\` s
+JOIN \`aiwomen26ham-4452.invented_software_raw.raw_markets\` m
+  ON s.currency = m.currency;`,
         options: [
           "BigQuery does not permit joins on string columns like currency",
-          "Multiple countries in raw_markets share the EUR currency (DE, FR, IT, ES), causing a Cartesian join fan-out if joined on currency alone",
+          "Multiple countries in raw_markets share the EUR currency (DE, FR, IT, ES), causing a Cartesian join fan-out across all 4 countries",
           "The exchange rates fluctuate daily in raw_subscriptions",
           "There is duplicate data in the raw_merchants table"
         ],
         correctIndex: 1,
-        explanation: "Because DE, FR, IT, and ES all use EUR, joining directly on currency duplicates each EUR subscription across 4 rows. The correct foreign key path is subscriptions -> merchants -> markets."
+        explanation: "Because DE, FR, IT, and ES all use EUR, joining directly on currency duplicates each EUR subscription across 4 rows (from 117 to 300 rows). The correct foreign key path is subscriptions -> merchants -> markets."
       },
       {
         id: "c2",
         question: "In raw_operating_costs, why must rows with cost_category = 'cash_balance_eom' be excluded when computing monthly operating burn?",
+        suggestedQuery: `-- Inspect distribution of cost categories in BigQuery Studio:
+SELECT
+  cost_category,
+  COUNT(*) AS months_present,
+  ROUND(SUM(amount_eur) / 100, 2) AS total_sum_eur,
+  ROUND(AVG(amount_eur) / 100, 2) AS monthly_avg_eur
+FROM \`aiwomen26ham-4452.invented_software_raw.raw_operating_costs\`
+GROUP BY cost_category
+ORDER BY total_sum_eur DESC;`,
         options: [
           "The records are corrupted and contain negative numbers",
           "Cash balance at end-of-month is a point-in-time asset stock on the balance sheet, not a monthly expense flow on the P&L",
@@ -69,7 +86,28 @@ export const CURRICULUM_PHASES: Phase[] = [
           "BigQuery cannot sum rows with string categories"
         ],
         correctIndex: 1,
-        explanation: "Cash balance is a balance sheet snapshot (stock), not an expense outflow (flow). Including it distorts monthly operating costs by over 16x."
+        explanation: "Cash balance is an asset snapshot (stock), not an expense outflow (flow). Including it distorts monthly operating costs by over 16x (€54,814 vs true opex of €3,419)."
+      },
+      {
+        id: "c3",
+        question: "When auditing customer retention, why should the 65 non-subscribing merchants be excluded from the logo churn denominator?",
+        suggestedQuery: `-- Compare signups vs paying customers in BigQuery Studio:
+SELECT
+  COUNT(DISTINCT m.merchant_id) AS total_signups,
+  COUNT(DISTINCT s.merchant_id) AS paying_customers,
+  COUNT(DISTINCT CASE WHEN s.merchant_id IS NULL THEN m.merchant_id END) AS never_paid_signups,
+  COUNT(DISTINCT CASE WHEN m.status = 'churned' AND s.merchant_id IS NOT NULL THEN m.merchant_id END) AS churned_paying
+FROM \`aiwomen26ham-4452.invented_software_raw.raw_merchants\` m
+LEFT JOIN \`aiwomen26ham-4452.invented_software_raw.raw_subscriptions\` s
+  ON m.merchant_id = s.merchant_id;`,
+        options: [
+          "To artificially make the churn rate look lower",
+          "Because a customer who never subscribed or paid cannot churn from a paid SaaS product; including them conflates marketing acquisition drop-off with product retention",
+          "Because BigQuery cannot divide by numbers greater than 100",
+          "Because non-paying merchants registered before 2024"
+        ],
+        correctIndex: 1,
+        explanation: "True customer retention measures the health of paying customers. Dividing churned merchants (9) by all 160 signups yields 5.6%, whereas true product churn among paying customers is 9 / 95 = 9.5%."
       }
     ]
   },
@@ -102,13 +140,17 @@ export const CURRICULUM_PHASES: Phase[] = [
     ],
     checkpoint: [
       {
-        id: "c3",
-        question: "What is the primary operational advantage of Google Cloud Dataform over self-hosted dbt Core in Docker?",
+        id: "c4",
+        question: "What is the primary operational advantage of Google Cloud Dataform over self-hosted dbt Core in Docker containers?",
+        suggestedQuery: `-- Check BigQuery dataset location and IAM configuration:
+SELECT schema_name, location
+FROM \`aiwomen26ham-4452.INFORMATION_SCHEMA.SCHEMATA\`
+WHERE schema_name LIKE 'invented_software_%';`,
         options: [
-          "Dataform requires writing Python code instead of SQL",
-          "Dataform is fully serverless, integrated into BigQuery IAM, and compiles SQLX into native BigQuery execution graphs without maintaining container infrastructure",
+          "Dataform requires writing complex Python code instead of SQL",
+          "Dataform is fully serverless, integrated into BigQuery IAM, and compiles SQLX into native BigQuery execution graphs without maintaining container infrastructure or local python environments",
           "Dataform only works with MySQL",
-          "Dataform does not support lineage graphs"
+          "Dataform does not support lineage dependency graphs"
         ],
         correctIndex: 1,
         explanation: "Dataform compiles SQLX to native BigQuery execution graphs with zero infrastructure maintenance, built-in version control, and native GCP IAM."
@@ -145,8 +187,12 @@ export const CURRICULUM_PHASES: Phase[] = [
     ],
     checkpoint: [
       {
-        id: "c4",
-        question: "How should currency fields (e.g. mrr_local, amount_eur) be initially stored in raw BigQuery tables?",
+        id: "c5",
+        question: "How should currency fields (e.g. mrr_local, amount_eur) be initially stored in raw BigQuery lakehouse tables?",
+        suggestedQuery: `-- Inspect column types in raw lakehouse schema:
+SELECT table_name, column_name, data_type
+FROM \`aiwomen26ham-4452.invented_software_raw.INFORMATION_SCHEMA.COLUMNS\`
+WHERE column_name IN ('mrr_local', 'amount_eur', 'spend_amount');`,
         options: [
           "Converted to FLOAT64 immediately with automatic rounding",
           "Stored as INT64 in minor units (cents) to preserve arithmetic precision without IEEE float rounding artifacts",
@@ -206,8 +252,13 @@ export const CURRICULUM_PHASES: Phase[] = [
     ],
     checkpoint: [
       {
-        id: "c5",
+        id: "c6",
         question: "When writing a Dataform assertion SQLX model (type: 'assertion'), what query result triggers a test failure?",
+        suggestedQuery: `-- Check assertion logic: returns rows only when a violation occurs
+SELECT
+  cost_id, year_month, cost_category, amount_eur
+FROM \`aiwomen26ham-4452.invented_software_raw.raw_operating_costs\`
+WHERE cost_category = 'cash_balance_eom';`,
         options: [
           "The query returns a single row with the value 'FALSE'",
           "The query returns 1 or more rows (any rows returned represent data violating the constraint)",
@@ -249,8 +300,15 @@ export const CURRICULUM_PHASES: Phase[] = [
     ],
     checkpoint: [
       {
-        id: "c6",
+        id: "c7",
         question: "When presenting cash runway to executive leadership, what is the formula for implied runway in months?",
+        suggestedQuery: `-- Calculate latest cash balance and average monthly net burn in BigQuery:
+WITH latest_cash AS (
+  SELECT ROUND(amount_eur / 100, 2) AS cash_balance
+  FROM \`aiwomen26ham-4452.invented_software_raw.raw_operating_costs\`
+  WHERE cost_category = 'cash_balance_eom' AND year_month = '2025-12-01'
+)
+SELECT cash_balance FROM latest_cash;`,
         options: [
           "Total Revenue divided by CAC",
           "Latest Cash Balance divided by Monthly Net Burn (Clean Opex + CAC - Monthly Revenue)",
@@ -258,7 +316,7 @@ export const CURRICULUM_PHASES: Phase[] = [
           "Total Signups divided by Churned Merchants"
         ],
         correctIndex: 1,
-        explanation: "Cash runway measures how many months a business can survive at current cash consumption: Latest Cash Balance / Monthly Net Burn."
+        explanation: "Cash runway measures how many months a business can survive at current cash consumption: Latest Cash Balance / Monthly Net Burn (€57,235 / €3,253 = ~17.6 months)."
       }
     ]
   },
@@ -291,8 +349,13 @@ export const CURRICULUM_PHASES: Phase[] = [
     ],
     checkpoint: [
       {
-        id: "c7",
+        id: "c8",
         question: "When defending your logo churn calculation to the executive team, why do you exclude the 65 non-subscribing merchants from the denominator?",
+        suggestedQuery: `-- Compare paying vs non-paying merchants in BigQuery Studio:
+SELECT
+  COUNT(DISTINCT merchant_id) AS total_accounts,
+  COUNT(DISTINCT CASE WHEN status = 'churned' THEN merchant_id END) AS total_churned
+FROM \`aiwomen26ham-4452.invented_software_raw.raw_merchants\`;`,
         options: [
           "To make the churn number look artificially lower",
           "Because a customer who never subscribed or paid cannot churn from a paid SaaS product; including them conflates lead conversion failure with customer retention",

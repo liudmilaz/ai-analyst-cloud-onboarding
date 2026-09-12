@@ -3,6 +3,7 @@ export type LearningTrack = "dataform" | "dbt";
 export interface CheckpointQuestion {
   id: string;
   question: string;
+  suggestedQuery?: string;
   options: string[];
   correctIndex: number;
   explanation: string;
