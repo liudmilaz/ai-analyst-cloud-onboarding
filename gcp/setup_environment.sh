@@ -40,4 +40,15 @@ gcloud artifacts repositories create cloud-run-apps \
   --location="${REGION}" \
   --description="Docker repository for onboarding web app" || true
 
+# 5. Create Dataform Repository
+echo "Creating Dataform Repository..."
+gcloud dataform repositories create invented-software-transformations \
+  --project="${PROJECT_ID}" \
+  --location="${REGION}" || echo "Dataform repo already initialized."
+
+echo ""
+echo "=========================================================="
 echo "GCP environment initialized successfully!"
+echo "BigQuery Studio: https://console.cloud.google.com/bigquery?project=${PROJECT_ID}"
+echo "Dataform: https://console.cloud.google.com/bigquery/dataform?project=${PROJECT_ID}"
+echo "=========================================================="

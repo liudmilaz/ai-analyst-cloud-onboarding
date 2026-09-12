@@ -70,9 +70,9 @@ export const PhaseSidebar: React.FC<PhaseSidebarProps> = ({ completedPhases }) =
                 </p>
                 <div className="mt-1.5 flex items-center gap-2 text-[10px] text-slate-400">
                   <span>⏱ {phase.estimatedHours}</span>
-                  {phase.trapsHighlighted.length > 0 && (
-                    <span className="text-amber-400 font-medium">
-                      ⚠️ {phase.trapsHighlighted.length} Trap{phase.trapsHighlighted.length > 1 ? "s" : ""}
+                  {phase.investigativeQuestions.length > 0 && (
+                    <span className="text-indigo-400 font-medium">
+                      🔍 {phase.investigativeQuestions.length} Questions
                     </span>
                   )}
                 </div>

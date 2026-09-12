@@ -60,6 +60,14 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTrack, onTrackChange, onO
               SQL & Traps Playground
             </Link>
             <Link
+              href="/dataform"
+              className={`px-3 py-1.5 rounded-md transition ${
+                pathname === "/dataform" ? "bg-slate-800 text-white" : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              Dataform Project (Corrected)
+            </Link>
+            <Link
               href="/compare"
               className={`px-3 py-1.5 rounded-md transition ${
                 pathname === "/compare" ? "bg-slate-800 text-white" : "text-slate-400 hover:text-slate-200"
@@ -70,7 +78,31 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTrack, onTrackChange, onO
           </nav>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
+          {/* Direct Google Cloud Links */}
+          <div className="hidden lg:flex items-center gap-1.5 border-r border-slate-800 pr-3">
+            <a
+              href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 rounded bg-slate-900 border border-slate-800 hover:border-indigo-600/60 px-2 py-1 text-[11px] font-medium text-slate-300 hover:text-white transition"
+              title="Open Google BigQuery Studio in Cloud Console"
+            >
+              <span>BigQuery Studio</span>
+              <span className="text-[10px] text-slate-500">↗</span>
+            </a>
+            <a
+              href="https://console.cloud.google.com/bigquery/dataform?project=aiwomen26ham-4452"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 rounded bg-slate-900 border border-slate-800 hover:border-indigo-600/60 px-2 py-1 text-[11px] font-medium text-slate-300 hover:text-white transition"
+              title="Open Google Cloud Dataform in Cloud Console"
+            >
+              <span>Dataform</span>
+              <span className="text-[10px] text-slate-500">↗</span>
+            </a>
+          </div>
+
           <TrackSelector currentTrack={currentTrack} onTrackChange={onTrackChange} />
 
           <button

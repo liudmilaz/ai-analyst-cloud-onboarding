@@ -12,10 +12,11 @@ export interface PhaseTask {
   id: string;
   title: string;
   instruction: string;
+  socraticQuestion: string;
+  investigativeHint?: string;
+  bigQueryTables?: string[];
   dataformSnippet?: string;
   dbtSnippet?: string;
-  keyTrapAlert?: string;
-  verificationTip?: string;
 }
 
 export interface Phase {
@@ -26,7 +27,7 @@ export interface Phase {
   estimatedHours: string;
   objectives: string[];
   deliverable: string;
-  trapsHighlighted: string[];
+  investigativeQuestions: string[];
   tasks: PhaseTask[];
   checkpoint: CheckpointQuestion[];
 }

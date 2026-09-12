@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import { Navbar } from "../../../components/Navbar";
 import { PhaseSidebar } from "../../../components/PhaseSidebar";
@@ -12,7 +12,6 @@ import { LearningTrack } from "../../../lib/types";
 
 export default function PhaseDetailPage() {
   const params = useParams();
-  const router = useRouter();
   const phaseId = Number(params?.phaseId) || 1;
   const phase = CURRICULUM_PHASES.find((p) => p.id === phaseId) || CURRICULUM_PHASES[0];
 
@@ -51,8 +50,8 @@ export default function PhaseDetailPage() {
             <p className="text-xs text-slate-300 mt-1 leading-relaxed">{phase.subtitle}</p>
           </div>
 
-          {/* Deliverable Banner */}
-          <div className="flex items-center justify-between rounded-xl border border-indigo-900/50 bg-indigo-950/30 p-4">
+          {/* Deliverable & BigQuery Deep-Link Banner */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-xl border border-indigo-900/50 bg-indigo-950/30 p-4">
             <div>
               <span className="text-[10px] uppercase font-bold tracking-wider text-indigo-400">
                 Phase Deliverable
@@ -60,34 +59,96 @@ export default function PhaseDetailPage() {
               <p className="text-xs font-semibold text-white mt-0.5">{phase.deliverable}</p>
             </div>
             <div className="flex items-center gap-2">
+              <a
+                href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-indigo-500 shadow transition"
+              >
+                <span>BigQuery Studio</span>
+                <span className="text-[10px]">↗</span>
+              </a>
               <Link
                 href="/playground"
                 className="rounded-lg bg-slate-800 border border-slate-700 px-3 py-1.5 text-xs text-slate-200 hover:bg-slate-700 transition"
               >
-                Run SQL In BigQuery
+                Query Validator
+              </Link>
+              <Link
+                href="/dataform"
+                className="rounded-lg bg-emerald-950/80 border border-emerald-700/60 px-3 py-1.5 text-xs text-emerald-300 hover:bg-emerald-900/60 transition"
+              >
+                Dataform Models
               </Link>
               <button
                 onClick={() => setIsChatOpen(true)}
-                className="rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-indigo-500 transition"
+                className="rounded-lg bg-slate-800 border border-slate-700 px-3 py-1.5 text-xs font-semibold text-indigo-300 hover:bg-slate-750 transition"
               >
                 Ask Mentor
               </button>
             </div>
           </div>
 
-          {/* Traps Alert */}
-          {phase.trapsHighlighted.length > 0 && (
-            <div className="rounded-xl border border-amber-900/50 bg-amber-950/20 p-4 space-y-2">
-              <h2 className="text-xs font-bold text-amber-300 flex items-center gap-1.5">
-                <span>⚠️ Traps to Watch For in This Phase</span>
-              </h2>
-              <ul className="list-disc pl-5 space-y-1 text-xs text-slate-300">
-                {phase.trapsHighlighted.map((t, idx) => (
-                  <li key={idx}>{t}</li>
+          {/* Socratic Analytical Questions (No Spoilers!) */}
+          {phase.investigativeQuestions && phase.investigativeQuestions.length > 0 && (
+            <div className="rounded-xl border border-indigo-800/40 bg-slate-900/90 p-5 space-y-3">
+              <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+                <h2 className="text-xs font-bold text-indigo-300 flex items-center gap-2">
+                  <span>🔍 Analytical Hypotheses & Questions to Answer</span>
+                </h2>
+                <span className="text-[11px] text-slate-400">Investigate in BigQuery</span>
+              </div>
+              <p className="text-xs text-slate-400">
+                Data pipelines are only as good as the business decisions they enable. Query the BigQuery lakehouse directly to investigate these analytical questions:
+              </p>
+              <ul className="space-y-2 text-xs text-slate-200">
+                {phase.investigativeQuestions.map((q, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5 rounded-lg bg-slate-950/60 p-2.5 border border-slate-800/80">
+                    <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-indigo-950 text-[10px] font-bold text-indigo-400 border border-indigo-800/50">
+                      ?
+                    </span>
+                    <span className="leading-relaxed">{q}</span>
+                  </li>
                 ))}
               </ul>
             </div>
           )}
+
+          {/* Live BigQuery Tables for This Phase */}
+          <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-4 space-y-3">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                Google BigQuery Raw Lakehouse Tables
+              </h2>
+              <span className="text-[11px] text-indigo-400 font-mono">
+                aiwomen26ham-4452.invented_software_raw
+              </span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-mono">
+              {[
+                { name: "raw_merchants", desc: "160 accounts (signups & active status)" },
+                { name: "raw_subscriptions", desc: "117 subscription agreements" },
+                { name: "raw_markets", desc: "8 regional markets & EUR FX rates" },
+                { name: "raw_products", desc: "5 core SaaS product SKUs & margins" },
+                { name: "raw_operating_costs", desc: "144 expense line items (2024-2025)" },
+                { name: "raw_acquisition_costs", desc: "768 acquisition channel spend rows" },
+              ].map((tbl) => (
+                <a
+                  key={tbl.name}
+                  href={`https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 hover:border-indigo-600/70 hover:bg-slate-900 transition group flex flex-col justify-between"
+                >
+                  <div className="flex items-center justify-between text-indigo-300 font-semibold group-hover:text-white">
+                    <span>{tbl.name}</span>
+                    <span className="text-[10px] text-slate-500 group-hover:text-indigo-400">↗</span>
+                  </div>
+                  <span className="text-[10px] text-slate-400 font-sans mt-1">{tbl.desc}</span>
+                </a>
+              ))}
+            </div>
+          </div>
 
           {/* Objectives */}
           <div className="space-y-3">
@@ -105,9 +166,9 @@ export default function PhaseDetailPage() {
             </div>
           </div>
 
-          {/* Tasks & Code Snippets */}
+          {/* Tasks & Step-by-Step Questions */}
           <div className="space-y-4">
-            <h2 className="text-sm font-semibold text-white">Practical Step-by-Step Tasks</h2>
+            <h2 className="text-sm font-semibold text-white">Interactive Hands-on Tasks</h2>
             <div className="space-y-4">
               {phase.tasks.map((task, idx) => (
                 <div key={task.id} className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 space-y-3">
@@ -115,20 +176,39 @@ export default function PhaseDetailPage() {
                     <h3 className="text-xs font-bold text-slate-200">
                       Task {idx + 1}: {task.title}
                     </h3>
+                    {task.bigQueryTables && task.bigQueryTables.length > 0 && (
+                      <div className="flex items-center gap-1">
+                        {task.bigQueryTables.map((t) => (
+                          <span
+                            key={t}
+                            className="rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-mono text-indigo-300 border border-slate-700"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   <p className="text-xs text-slate-300 leading-relaxed">{task.instruction}</p>
 
-                  {task.keyTrapAlert && (
-                    <div className="rounded-lg bg-amber-950/40 p-2.5 text-[11px] text-amber-200 border border-amber-800/40">
-                      <strong>Watch Out:</strong> {task.keyTrapAlert}
+                  {/* Socratic Question without giving answer */}
+                  <div className="rounded-lg bg-indigo-950/40 p-3 text-xs text-indigo-200 border border-indigo-800/40 space-y-1">
+                    <div className="font-semibold text-indigo-300 flex items-center gap-1.5">
+                      <span>💡 Question to Investigate:</span>
                     </div>
-                  )}
+                    <p className="text-[11px] leading-relaxed text-slate-300">{task.socraticQuestion}</p>
+                  </div>
 
-                  {task.verificationTip && (
-                    <div className="rounded-lg bg-emerald-950/40 p-2.5 text-[11px] text-emerald-200 border border-emerald-800/40">
-                      <strong>Verification Ground Truth:</strong> {task.verificationTip}
-                    </div>
+                  {task.investigativeHint && (
+                    <details className="rounded-lg bg-slate-950/70 p-2.5 text-[11px] text-slate-400 border border-slate-800/80 cursor-pointer">
+                      <summary className="font-medium text-slate-300 hover:text-indigo-300 transition">
+                        Show Investigation Guidance
+                      </summary>
+                      <p className="mt-2 text-slate-300 pl-2 border-l border-indigo-700/60 leading-relaxed">
+                        {task.investigativeHint}
+                      </p>
+                    </details>
                   )}
 
                   {(task.dataformSnippet || task.dbtSnippet) && (
