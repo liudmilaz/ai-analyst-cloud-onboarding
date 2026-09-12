@@ -1,0 +1,39 @@
+config {
+  type: "table",
+  schema: "invented_software_intermediate",
+  description: "Merchant dimension enriched with subscription tenure, total spend, and paying status"
+}
+
+WITH sub_summary AS (
+  SELECT
+    merchant_id,
+    COUNT(DISTINCT subscription_id) AS total_subscriptions_count,
+    MIN(start_date) AS first_subscription_date,
+    MAX(COALESCE(end_date, DATE "2099-12-31")) AS latest_subscription_end,
+    SUM(mrr_eur) AS latest_mrr_eur
+  FROM
+    ${ref("stg_subscriptions")}
+  GROUP BY
+    merchant_id
+)
+
+SELECT
+  m.merchant_id,
+  m.merchant_name,
+  m.business_type,
+  m.country_code,
+  m.city,
+  m.signup_date,
+  m.signup_plan_type,
+  m.status,
+  m.churn_date,
+  -- Critical paying customer distinction:
+  s.merchant_id IS NOT NULL AS is_paying_customer,
+  COALESCE(s.total_subscriptions_count, 0) AS total_subscriptions_count,
+  s.first_subscription_date,
+  s.latest_mrr_eur
+FROM
+  ${ref("stg_merchants")} m
+LEFT JOIN
+  sub_summary s
+  ON m.merchant_id = s.merchant_id

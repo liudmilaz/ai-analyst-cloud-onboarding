@@ -1,0 +1,8 @@
+{
+  "name": "invented-software-dataform",
+  "version": "1.0.0",
+  "description": "Production Dataform transformations for Invented Software SaaS analytics on BigQuery",
+  "dependencies": {
+    "@dataform/core": "^3.0.0"
+  }
+}

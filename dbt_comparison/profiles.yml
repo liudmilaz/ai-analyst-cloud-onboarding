@@ -1,0 +1,11 @@
+invented_software_bq:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: aiwomen26ham-4452
+      dataset: invented_software_staging
+      threads: 4
+      timeout_seconds: 300
+      location: EU

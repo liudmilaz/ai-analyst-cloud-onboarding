@@ -1,0 +1,56 @@
+config {
+  type: "view",
+  schema: "invented_software_mart",
+  description: "Single-row summary of the 12 canonical SaaS KPIs for Invented Software"
+}
+
+WITH mrr_dec_2025 AS (
+  SELECT
+    total_mrr_eur,
+    arr_eur
+  FROM
+    ${ref("mart_mrr_monthly")}
+  WHERE
+    month_date = "2025-12-01"
+),
+pnl_avg AS (
+  SELECT
+    ROUND(AVG(net_burn_eur), 2) AS avg_monthly_net_burn_eur,
+    ROUND(AVG(operating_expenses_eur), 2) AS avg_clean_opex_eur,
+    ROUND(AVG(acquisition_spend_eur), 2) AS avg_monthly_cac_spend_eur,
+    MAX(cash_balance_eur) AS latest_cash_balance_eur
+  FROM
+    ${ref("mart_pnl_summary")}
+),
+churn_calc AS (
+  SELECT
+    COUNT(DISTINCT merchant_id) AS total_merchants,
+    COUNT(DISTINCT CASE WHEN is_paying_customer THEN merchant_id END) AS paying_base,
+    COUNT(DISTINCT CASE WHEN is_paying_customer AND status = "churned" THEN merchant_id END) AS churned_paying_base
+  FROM
+    ${ref("int_merchant_lifecycle")}
+)
+
+SELECT
+  -- 1. MRR (Dec 2025 Exit)
+  m.total_mrr_eur AS exit_mrr_eur, -- €1,509.78
+  -- 2. ARR (Dec 2025 Exit)
+  m.arr_eur AS exit_arr_eur, -- €18,117.34
+  -- 3. Logo Churn Rate (paying base)
+  ROUND(c.churned_paying_base * 100.0 / c.paying_base, 1) AS logo_churn_rate_pct, -- 9.5%
+  -- 4. Clean Monthly Operating Costs
+  p.avg_clean_opex_eur, -- €3,419
+  -- 5. Monthly Acquisition Spend
+  p.avg_monthly_cac_spend_eur, -- €1,352
+  -- 6. Monthly Net Burn
+  p.avg_monthly_net_burn_eur, -- €3,253
+  -- 7. Latest Cash Balance
+  p.latest_cash_balance_eur, -- €57,235
+  -- 8. Implied Cash Runway (months)
+  ROUND(p.latest_cash_balance_eur / p.avg_monthly_net_burn_eur, 1) AS cash_runway_months -- ~17.6 months
+FROM
+  mrr_dec_2025 m
+CROSS JOIN
+  pnl_avg p
+CROSS JOIN
+  churn_calc c

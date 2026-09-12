@@ -1,0 +1,20 @@
+version: 2
+sources:
+  - name: raw
+    database: aiwomen26ham-4452
+    schema: invented_software_raw
+    tables:
+      - name: raw_merchants
+      - name: raw_subscriptions
+      - name: raw_products
+      - name: raw_markets
+      - name: raw_acquisition_costs
+      - name: raw_operating_costs
+
+models:
+  - name: stg_merchants
+    description: "Cleaned merchants"
+  - name: stg_subscriptions
+    description: "Cleaned subscriptions with minor units and FX"
+  - name: stg_operating_costs
+    description: "Operating costs with cash balance filtered"

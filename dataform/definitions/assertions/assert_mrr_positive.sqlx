@@ -1,0 +1,13 @@
+config {
+  type: "assertion",
+  schema: "invented_software_assertions",
+  description: "Data quality test: MRR must always be non-negative"
+}
+
+SELECT
+  subscription_id,
+  mrr_eur
+FROM
+  ${ref("stg_subscriptions")}
+WHERE
+  mrr_eur < 0

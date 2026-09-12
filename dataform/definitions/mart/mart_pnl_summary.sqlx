@@ -1,0 +1,72 @@
+config {
+  type: "table",
+  schema: "invented_software_mart",
+  description: "Monthly P&L tracking revenue, verified operating costs, acquisition spend, net burn, and cash balance"
+}
+
+WITH monthly_rev AS (
+  SELECT
+    month_date,
+    total_mrr_eur
+  FROM
+    ${ref("mart_mrr_monthly")}
+),
+monthly_opex AS (
+  SELECT
+    year_month AS month_date,
+    SUM(amount_eur) AS opex_eur
+  FROM
+    ${ref("stg_operating_costs")}
+  WHERE
+    is_cost_flow = TRUE
+  GROUP BY
+    year_month
+),
+monthly_cac AS (
+  SELECT
+    year_month AS month_date,
+    SUM(spend_amount_eur) AS cac_spend_eur
+  FROM
+    ${ref("stg_acquisition_costs")}
+  GROUP BY
+    year_month
+),
+monthly_cash AS (
+  SELECT
+    year_month AS month_date,
+    amount_eur AS cash_balance_eur
+  FROM
+    ${ref("stg_operating_costs")}
+  WHERE
+    cost_category = "cash_balance_eom"
+)
+
+SELECT
+  r.month_date,
+  COALESCE(r.total_mrr_eur, 0) AS revenue_mrr_eur,
+  COALESCE(o.opex_eur, 0) AS operating_expenses_eur,
+  COALESCE(c.cac_spend_eur, 0) AS acquisition_spend_eur,
+  -- Total Cash Out = Opex + Acquisition Spend
+  ROUND(COALESCE(o.opex_eur, 0) + COALESCE(c.cac_spend_eur, 0), 2) AS total_cash_outflow_eur,
+  -- Net Burn = Revenue - Opex - Acquisition Spend
+  ROUND(COALESCE(r.total_mrr_eur, 0) - COALESCE(o.opex_eur, 0) - COALESCE(c.cac_spend_eur, 0), 2) AS net_cash_flow_eur,
+  ROUND(COALESCE(o.opex_eur, 0) + COALESCE(c.cac_spend_eur, 0) - COALESCE(r.total_mrr_eur, 0), 2) AS net_burn_eur,
+  k.cash_balance_eur,
+  -- Implied Runway (months) = Cash / Net Burn
+  CASE
+    WHEN (COALESCE(o.opex_eur, 0) + COALESCE(c.cac_spend_eur, 0) - COALESCE(r.total_mrr_eur, 0)) > 0
+    THEN ROUND(k.cash_balance_eur / (COALESCE(o.opex_eur, 0) + COALESCE(c.cac_spend_eur, 0) - COALESCE(r.total_mrr_eur, 0)), 1)
+    ELSE NULL
+  END AS implied_runway_months
+FROM
+  monthly_rev r
+LEFT JOIN
+  monthly_opex o ON r.month_date = o.month_date
+LEFT JOIN
+  monthly_cac c ON r.month_date = c.month_date
+LEFT JOIN
+  monthly_cash k ON r.month_date = k.month_date
+WHERE
+  r.month_date >= "2024-01-01"
+ORDER BY
+  r.month_date

@@ -1,0 +1,22 @@
+config {
+  type: "view",
+  schema: "invented_software_staging",
+  description: "Acquisition spend by market and channel, converted to EUR"
+}
+
+SELECT
+  a.cost_id,
+  a.year_month,
+  UPPER(TRIM(a.country_code)) AS country_code,
+  TRIM(a.channel) AS channel,
+  a.spend_amount AS spend_amount_local_cents,
+  ROUND(a.spend_amount / 100.0, 2) AS spend_amount_local,
+  a.currency,
+  mkt.eur_fx,
+  -- Converted spend to EUR
+  ROUND((a.spend_amount / 100.0) * mkt.eur_fx, 2) AS spend_amount_eur
+FROM
+  ${ref("raw_acquisition_costs")} a
+JOIN
+  ${ref("stg_markets")} mkt
+  ON UPPER(TRIM(a.country_code)) = mkt.country_code

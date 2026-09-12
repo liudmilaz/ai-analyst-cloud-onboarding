@@ -1,0 +1,15 @@
+config {
+  type: "assertion",
+  schema: "invented_software_assertions",
+  description: "Data quality test: Verifies no cash_balance_eom is marked as is_cost_flow"
+}
+
+SELECT
+  cost_id,
+  cost_category,
+  amount_eur
+FROM
+  ${ref("stg_operating_costs")}
+WHERE
+  cost_category = "cash_balance_eom"
+  AND is_cost_flow = TRUE

@@ -1,0 +1,18 @@
+config {
+  type: "view",
+  schema: "invented_software_staging",
+  description: "Cleaned products with minor units converted to EUR"
+}
+
+SELECT
+  TRIM(sku) AS sku,
+  TRIM(name) AS product_name,
+  TRIM(type) AS catalogue_type,
+  -- Minor unit conversion: cents to EUR
+  ROUND(price_eur / 100.0, 2) AS price_eur,
+  ROUND(cogs_eur / 100.0, 2) AS cogs_eur,
+  CAST(gross_margin_pct AS FLOAT64) AS gross_margin_pct,
+  TRIM(description) AS description,
+  launched_at
+FROM
+  ${ref("raw_products")}

@@ -1,0 +1,37 @@
+steps:
+  # Step 1: Build Docker Container
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - europe-west1-docker.pkg.dev//cloud-run-apps/ai-analyst-onboarding:
+      - -t
+      - europe-west1-docker.pkg.dev//cloud-run-apps/ai-analyst-onboarding:latest
+      - app/
+
+  # Step 2: Push Docker Container
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - europe-west1-docker.pkg.dev//cloud-run-apps/ai-analyst-onboarding:
+
+  # Step 3: Deploy to Cloud Run
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - ai-analyst-onboarding
+      - --image
+      - europe-west1-docker.pkg.dev//cloud-run-apps/ai-analyst-onboarding:
+      - --region
+      - europe-west1
+      - --platform
+      - managed
+      - --allow-unauthenticated
+      - --set-env-vars
+      - GCP_PROJECT_ID=aiwomen26ham-4452
+
+images:
+  - europe-west1-docker.pkg.dev//cloud-run-apps/ai-analyst-onboarding:
+  - europe-west1-docker.pkg.dev//cloud-run-apps/ai-analyst-onboarding:latest

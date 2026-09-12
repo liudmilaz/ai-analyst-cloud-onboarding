@@ -1,0 +1,16 @@
+config {
+  type: "assertion",
+  schema: "invented_software_assertions",
+  description: "Data quality test: Every subscription must join to a valid merchant"
+}
+
+SELECT
+  s.subscription_id,
+  s.merchant_id
+FROM
+  ${ref("stg_subscriptions")} s
+LEFT JOIN
+  ${ref("stg_merchants")} m
+  ON s.merchant_id = m.merchant_id
+WHERE
+  m.merchant_id IS NULL

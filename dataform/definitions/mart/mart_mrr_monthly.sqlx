@@ -1,0 +1,21 @@
+config {
+  type: "table",
+  schema: "invented_software_mart",
+  description: "Monthly recurring revenue mart with net new, churn, and active customer counts"
+}
+
+SELECT
+  month_date,
+  COUNT(DISTINCT merchant_id) AS active_subscribers_count,
+  COUNT(DISTINCT subscription_id) AS active_subscriptions_count,
+  ROUND(SUM(mrr_eur), 2) AS total_mrr_eur,
+  ROUND(SUM(mrr_eur) * 12, 2) AS arr_eur,
+  ROUND(SUM(cogs_eur), 2) AS estimated_cogs_eur,
+  ROUND(SUM(mrr_eur - cogs_eur), 2) AS gross_profit_eur,
+  ROUND(AVG(gross_margin_pct) * 100, 1) AS avg_gross_margin_pct
+FROM
+  ${ref("int_monthly_revenue")}
+GROUP BY
+  month_date
+ORDER BY
+  month_date
