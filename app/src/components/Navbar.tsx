@@ -59,13 +59,23 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTrack, onTrackChange, onO
             >
               SQL & Traps Playground
             </Link>
+            <a
+              href="https://console.cloud.google.com/bigquery/dataform/locations/europe-west1/repositories/invented-software-transformations/workspaces/production?project=aiwomen26ham-4452"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-md transition text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1 bg-emerald-950/40 border border-emerald-800/50 hover:bg-emerald-900/50"
+              title="Open ready deployed Dataform project in Google Cloud"
+            >
+              <span>Dataform Project (Corrected)</span>
+              <span className="text-xs">↗</span>
+            </a>
             <Link
               href="/dataform"
               className={`px-3 py-1.5 rounded-md transition ${
                 pathname === "/dataform" ? "bg-slate-800 text-white" : "text-slate-400 hover:text-slate-200"
               }`}
             >
-              Dataform Project (Corrected)
+              Code Explorer
             </Link>
             <Link
               href="/compare"
@@ -92,13 +102,13 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTrack, onTrackChange, onO
               <span className="text-[10px] text-slate-500">↗</span>
             </a>
             <a
-              href="https://console.cloud.google.com/bigquery/dataform?project=aiwomen26ham-4452"
+              href="https://console.cloud.google.com/bigquery/dataform/locations/europe-west1/repositories/invented-software-transformations/workspaces/production?project=aiwomen26ham-4452"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded bg-slate-900 border border-slate-800 hover:border-indigo-600/60 px-2 py-1 text-[11px] font-medium text-slate-300 hover:text-white transition"
+              className="flex items-center gap-1 rounded bg-slate-900 border border-slate-800 hover:border-emerald-600/60 px-2 py-1 text-[11px] font-medium text-emerald-400 hover:text-emerald-300 transition"
               title="Open Google Cloud Dataform in Cloud Console"
             >
-              <span>Dataform</span>
+              <span>Dataform Workspace</span>
               <span className="text-[10px] text-slate-500">↗</span>
             </a>
           </div>

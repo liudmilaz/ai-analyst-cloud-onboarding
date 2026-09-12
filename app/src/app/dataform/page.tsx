@@ -331,19 +331,28 @@ export default function DataformPage() {
 
             <div className="flex flex-wrap items-center gap-2">
               <a
-                href="https://console.cloud.google.com/bigquery/dataform?project=aiwomen26ham-4452"
+                href="https://console.cloud.google.com/bigquery/dataform/locations/europe-west1/repositories/invented-software-transformations/workspaces/production?project=aiwomen26ham-4452"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-bold text-white shadow-md hover:bg-emerald-500 transition"
+                className="flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-xs font-bold text-white shadow-lg hover:bg-emerald-500 transition ring-2 ring-emerald-400/30"
               >
-                <span>Open in Google Cloud Dataform</span>
+                <span>🚀 Open Ready Deployed Project in Dataform</span>
+                <span className="text-sm">↗</span>
+              </a>
+              <a
+                href="https://console.cloud.google.com/bigquery/dataform/locations/europe-west1/repositories/invented-software-transformations?project=aiwomen26ham-4452"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 rounded-xl bg-slate-800 border border-slate-700 px-3.5 py-2.5 text-xs font-semibold text-slate-200 hover:bg-slate-700 transition"
+              >
+                <span>Repository Overview</span>
                 <span>↗</span>
               </a>
               <a
                 href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 rounded-lg bg-indigo-600 px-3.5 py-2 text-xs font-semibold text-white hover:bg-indigo-500 transition"
+                className="flex items-center gap-1.5 rounded-xl bg-indigo-600/80 px-3.5 py-2.5 text-xs font-semibold text-white hover:bg-indigo-500 transition"
               >
                 <span>BigQuery Studio</span>
                 <span>↗</span>
@@ -352,12 +361,31 @@ export default function DataformPage() {
                 href="https://github.com/liudmilaz/ai-analyst-cloud-onboarding/tree/main/dataform"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:bg-slate-750 transition"
+                className="flex items-center gap-1.5 rounded-xl bg-slate-900 border border-slate-800 px-3 py-2.5 text-xs font-semibold text-slate-300 hover:text-white transition"
               >
                 <span>GitHub Repo</span>
                 <span>↗</span>
               </a>
             </div>
+          </div>
+        </div>
+
+        {/* Live Workspace Info Banner */}
+        <div className="rounded-xl border border-indigo-900/50 bg-indigo-950/20 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+          <div className="space-y-0.5">
+            <span className="text-indigo-400 font-bold flex items-center gap-1.5">
+              <span>⚡ Live GCP Target:</span>
+              <span className="font-mono text-slate-200">invented-software-transformations / workspaces / production</span>
+            </span>
+            <p className="text-slate-400">
+              Region: <strong className="text-slate-300">europe-west1</strong> • Target Datasets: <strong className="text-slate-300">invented_software_staging, invented_software_mart</strong>
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[11px] text-slate-400 hidden md:inline">Sync code from Cloud Shell:</span>
+            <code className="rounded bg-slate-900 px-2 py-1 text-[11px] font-mono text-indigo-300 border border-slate-800">
+              ./deploy_dataform_to_gcp.sh
+            </code>
           </div>
         </div>
 
@@ -438,12 +466,12 @@ export default function DataformPage() {
                 <div className="flex items-center justify-between bg-slate-900 px-3 py-1.5 border-b border-slate-800 text-[11px] text-slate-400 font-mono">
                   <span>SQLX / JavaScript Block</span>
                   <a
-                    href="https://console.cloud.google.com/bigquery/dataform?project=aiwomen26ham-4452"
+                    href="https://console.cloud.google.com/bigquery/dataform/locations/europe-west1/repositories/invented-software-transformations/workspaces/production?project=aiwomen26ham-4452"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-indigo-400 hover:text-indigo-300"
+                    className="text-indigo-400 hover:text-indigo-300 font-semibold"
                   >
-                    Open in Cloud Console ↗
+                    Open Workspace in Cloud Console ↗
                   </a>
                 </div>
                 <pre className="p-4 font-mono text-xs text-indigo-200 overflow-x-auto leading-relaxed">
