@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 set -e
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
 PROJECT_ID="aiwomen26ham-4452"
 DATASET="invented_software_raw"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DATA_DIR="${SCRIPT_DIR}/../data"
+DATA_DIR="${PROJECT_ROOT}/data"
 
 echo "=========================================================="
 echo "Loading 6 CSV files into BigQuery: ${PROJECT_ID}.${DATASET}"
+echo "Data Directory: ${DATA_DIR}"
 echo "=========================================================="
 
 TABLES=(
@@ -24,9 +27,10 @@ for table in "${TABLES[@]}"; do
   if [ -f "${csv_file}" ]; then
     echo "Loading ${table} from ${csv_file}..."
     bq load \
+      --project_id="${PROJECT_ID}" \
       --source_format=CSV \
+      --autodetect \
       --skip_leading_rows=1 \
-      --autodetect=true \
       --replace \
       "${PROJECT_ID}:${DATASET}.${table}" \
       "${csv_file}"
@@ -35,18 +39,15 @@ for table in "${TABLES[@]}"; do
   fi
 done
 
+echo ""
 echo "Validating table row counts in ${PROJECT_ID}.${DATASET}:"
-bq query --use_legacy_sql=false "
-SELECT
-  raw_merchants as table_name, count(*) as count FROM \\`${PROJECT_ID}.${DATASET}.raw_merchants\\`
-UNION ALL
-SELECT raw_subscriptions, count(*) FROM \\`${PROJECT_ID}.${DATASET}.raw_subscriptions\\`
-UNION ALL
-SELECT raw_products, count(*) FROM \\`${PROJECT_ID}.${DATASET}.raw_products\\`
-UNION ALL
-SELECT raw_markets, count(*) FROM \\`${PROJECT_ID}.${DATASET}.raw_markets\\`
-UNION ALL
-SELECT raw_acquisition_costs, count(*) FROM \\`${PROJECT_ID}.${DATASET}.raw_acquisition_costs\\`
-UNION ALL
-SELECT raw_operating_costs, count(*) FROM \\`${PROJECT_ID}.${DATASET}.raw_operating_costs\\`;
-"
+bq query --project_id="${PROJECT_ID}" --use_legacy_sql=false \
+"SELECT 'raw_merchants' AS table_name, count(*) AS count FROM \`${PROJECT_ID}.${DATASET}.raw_merchants\` UNION ALL
+ SELECT 'raw_subscriptions', count(*) FROM \`${PROJECT_ID}.${DATASET}.raw_subscriptions\` UNION ALL
+ SELECT 'raw_products', count(*) FROM \`${PROJECT_ID}.${DATASET}.raw_products\` UNION ALL
+ SELECT 'raw_markets', count(*) FROM \`${PROJECT_ID}.${DATASET}.raw_markets\` UNION ALL
+ SELECT 'raw_acquisition_costs', count(*) FROM \`${PROJECT_ID}.${DATASET}.raw_acquisition_costs\` UNION ALL
+ SELECT 'raw_operating_costs', count(*) FROM \`${PROJECT_ID}.${DATASET}.raw_operating_costs\`;"
+
+echo ""
+echo "All 6 tables loaded and validated successfully!"
