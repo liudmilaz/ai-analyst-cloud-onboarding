@@ -120,6 +120,20 @@ repo_name = os.environ.get('REPO_NAME')
 workspace_name = os.environ.get('WORKSPACE_NAME')
 
 url_base = f'https://dataform.googleapis.com/v1/projects/{project_id}/locations/{location}/repositories/{repo_name}/workspaces/{workspace_name}:writeFile'
+remove_url = f'https://dataform.googleapis.com/v1/projects/{project_id}/locations/{location}/repositories/{repo_name}/workspaces/{workspace_name}:removeFile'
+
+# Remove legacy dataform.json if present in the workspace
+try:
+    req_rm = urllib.request.Request(
+        remove_url,
+        data=json.dumps({'path': 'dataform.json'}).encode('utf-8'),
+        headers={'Authorization': f'Bearer {token}', 'Content-Type': 'application/json'},
+        method='POST'
+    )
+    with urllib.request.urlopen(req_rm):
+        print('   ✓ Removed legacy dataform.json from workspace')
+except Exception:
+    pass
 
 for root, dirs, files in os.walk('.'):
     # Skip git and node_modules
