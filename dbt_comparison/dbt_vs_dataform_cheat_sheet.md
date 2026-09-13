@@ -1,6 +1,6 @@
 # dbt Core vs. Google Cloud Dataform: Side-by-Side Cheat Sheet
 
-This guide provides a 1-to-1 mapping for data analysts transitioning between **dbt** (the de facto open-source standard) and **Google Cloud Dataform** (BigQuery-native serverless transformation engine).
+This guide provides a 1-to-1 mapping for data specialists transitioning between **dbt** (the de facto open-source standard) and **Google Cloud Dataform** (BigQuery-native serverless transformation engine).
 
 ---
 

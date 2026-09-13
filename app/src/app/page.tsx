@@ -177,7 +177,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-emerald-500/60 hover:bg-slate-850 transition shadow-sm"
-              title="Open empty Dataform workspace for analyst training"
+              title="Open empty Dataform workspace for data specialist training"
             >
               <div className="flex items-center gap-3">
                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400 font-bold text-xs flex-shrink-0">

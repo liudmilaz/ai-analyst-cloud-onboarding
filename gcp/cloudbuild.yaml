@@ -4,16 +4,16 @@ steps:
     args:
       - build
       - -t
-      - europe-west1-docker.pkg.dev//cloud-run-apps/ai-analyst-onboarding:
+      - europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-apps/ai-data-onboarding:$COMMIT_SHA
       - -t
-      - europe-west1-docker.pkg.dev//cloud-run-apps/ai-analyst-onboarding:latest
+      - europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-apps/ai-data-onboarding:latest
       - app/
 
   # Step 2: Push Docker Container
   - name: gcr.io/cloud-builders/docker
     args:
       - push
-      - europe-west1-docker.pkg.dev//cloud-run-apps/ai-analyst-onboarding:
+      - europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-apps/ai-data-onboarding:$COMMIT_SHA
 
   # Step 3: Deploy to Cloud Run
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
@@ -21,9 +21,9 @@ steps:
     args:
       - run
       - deploy
-      - ai-analyst-onboarding
+      - ai-data-onboarding
       - --image
-      - europe-west1-docker.pkg.dev//cloud-run-apps/ai-analyst-onboarding:
+      - europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-apps/ai-data-onboarding:$COMMIT_SHA
       - --region
       - europe-west1
       - --platform
@@ -33,5 +33,5 @@ steps:
       - GCP_PROJECT_ID=aiwomen26ham-4452
 
 images:
-  - europe-west1-docker.pkg.dev//cloud-run-apps/ai-analyst-onboarding:
-  - europe-west1-docker.pkg.dev//cloud-run-apps/ai-analyst-onboarding:latest
+  - europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-apps/ai-data-onboarding:$COMMIT_SHA
+  - europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-apps/ai-data-onboarding:latest

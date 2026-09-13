@@ -6,7 +6,7 @@ REGION="europe-west1"
 LOCATION="EU"
 
 echo "=========================================================="
-echo "Initializing GCP Environment for AI Analyst Onboarding"
+echo "Initializing GCP Environment for AI Data Onboarding (LINIA)"
 echo "Project ID: ${PROJECT_ID}"
 echo "Region: ${REGION} | Location: ${LOCATION}"
 echo "=========================================================="

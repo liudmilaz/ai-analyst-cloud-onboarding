@@ -167,7 +167,7 @@ WHERE schema_name LIKE 'invented_software_%';`,
     investigativeQuestions: [
       "Why are monetary columns (mrr_local, amount_eur, cogs_eur) defined as INT64 in raw lakehouse tables rather than FLOAT64?",
       "How does partitioning historical tables by year_month or date optimize query cost and performance in BigQuery?",
-      "How do column descriptions in BigQuery schema DDL improve self-service data discovery for downstream analysts?"
+      "How do column descriptions in BigQuery schema DDL improve self-service data discovery for downstream data specialists?"
     ],
     objectives: [
       "Verify dataset `aiwomen26ham-4452.invented_software_raw` in EU region",
@@ -293,7 +293,7 @@ WHERE cost_category = 'cash_balance_eom';`,
         id: "p5-t1",
         title: "Design the Looker Studio Dashboard Architecture",
         instruction: "Connect Looker Studio to `aiwomen26ham-4452.invented_software_mart.mart_mrr_monthly` and `mart_pnl_summary`. Create executive scorecards and trend visualizations.",
-        socraticQuestion: "If an executive asks for 'Cash Runway', what two metrics must you compare? If an analyst inadvertently used unfiltered operating costs, how would the runway calculation mislead the board?",
+        socraticQuestion: "If an executive asks for 'Cash Runway', what two metrics must you compare? If a data specialist inadvertently used unfiltered operating costs, how would the runway calculation mislead the board?",
         investigativeHint: "Runway = Latest Cash Balance / Monthly Net Burn. Compare the result using clean opex vs unfiltered opex.",
         bigQueryTables: []
       }

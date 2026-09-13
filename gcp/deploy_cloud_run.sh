@@ -6,7 +6,7 @@ PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 PROJECT_ID="aiwomen26ham-4452"
 REGION="europe-west1"
-SERVICE_NAME="ai-analyst-onboarding"
+SERVICE_NAME="ai-data-onboarding"
 IMAGE="${REGION}-docker.pkg.dev/${PROJECT_ID}/cloud-run-apps/${SERVICE_NAME}:latest"
 
 echo "=========================================================="

@@ -169,7 +169,7 @@ curl -s -X POST \
   -d '{
     "author": {
       "name": "Lead Analytics Engineer",
-      "emailAddress": "analyst@inventedsoftware.com"
+      "emailAddress": "engineer@inventedsoftware.com"
     },
     "commitMessage": "Deploy corrected production dataform models (traps resolved, BigQuery lakehouse connected)"
   }' \

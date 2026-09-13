@@ -1,5 +1,5 @@
 {
-  "name": "ai-analyst-trainee-transformations",
+  "name": "ai-data-trainee-transformations",
   "dependencies": {
     "@dataform/core": "3.0.0"
   }

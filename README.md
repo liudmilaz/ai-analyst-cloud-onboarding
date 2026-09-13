@@ -1,22 +1,23 @@
-# AI Analyst Onboarding & Upskilling Platform
-### Google Cloud (AI Studio) & Dataform Edition
+# LINIA: Human-Led, AI-Powered Cloud Analytics Onboarding Platform
+### Google Cloud (BigQuery, Dataform, Antigravity, Looker Studio & Gemini AI)
 
 > **Target GCP Project:** `aiwomen26ham-4452`  
-> **Based on:** [ai_analyst_onboarding](https://github.com/liudmilaz/ai_analyst_onboarding)  
+> **Repository:** [ai-data-onboarding](https://github.com/liudmilaz/ai-data-onboarding)  
+> **Core Principle:** Human data specialists lead the analysis, critical thinking, and architectural decisions, while AI serves as a high-velocity accelerator and Socratic coach.  
 > **Original Stack:** PostgreSQL + dbt Core + Docker Compose + Metabase  
-> **Google Cloud Stack:** BigQuery + Dataform + Cloud Run + Looker Studio + Gemini AI  
+> **Google Cloud Stack:** BigQuery + Dataform + Cloud Run + Looker Studio + Gemini AI + Antigravity  
 
 ---
 
 ## 1. Executive Summary
 
-This platform is a hands-on onboarding and upskilling training ground for data analysts working with modern cloud transformation tools (**Dataform** and **dbt**).
+**LINIA** is an interactive, human-led and AI-powered onboarding and upskilling platform for data specialists. It is built around a modern principle: human specialists lead the exploratory analysis, critical thinking, and architectural decisions, while AI acts as a high-velocity accelerator and Socratic coach.
 
-The trainee begins with six raw CSV files and a business specification for **NovaScale Analytics** (a fast-growing B2B SaaS company selling recurring-fee business software to small merchants across 8 international markets). The analyst builds a complete analytics platform end-to-end on Google Cloud:
+The learner begins with six raw CSV files and a business specification for **NovaScale Analytics** (a fast-growing B2B SaaS company selling recurring-fee business software to small merchants across 8 international markets). The data specialist builds a complete analytics platform end-to-end on Google Cloud:
 
-$$\text{Raw CSVs} \longrightarrow \text{BigQuery Lakehouse} \longrightarrow \text{Dataform Transformations} \longrightarrow \text{Looker Studio Dashboard}$$
+$$\text{Raw CSVs} \longrightarrow \text{BigQuery Lakehouse} \longrightarrow \text{Dataform Transformations (in Antigravity)} \longrightarrow \text{Looker Studio Dashboard}$$
 
-Throughout the journey, an **AI Mentor** powered by **Google Gemini** provides Socratic, spoiler-controlled guidance, challenging the analyst to defend their conclusions rather than simply copying code.
+Throughout the journey, an embedded **AI Mentor** powered by **Google Gemini** provides Socratic, spoiler-controlled guidance, challenging the specialist to test hypotheses and defend conclusions rather than simply copying code.
 
 ---
 
@@ -28,7 +29,7 @@ Throughout the journey, an **AI Mentor** powered by **Google Gemini** provides S
 | **dbt Core (Docker Container)** | **Google Cloud Dataform** (SQLX) | BigQuery-native, serverless SQL compilation with built-in lineage and automated assertions. |
 | **Docker Compose** | **Google Cloud Run** | Zero-infra serverless container hosting with auto-scaling to zero and HTTPS endpoints. |
 | **Metabase** | **Looker Studio** | Native BigQuery connector; interactive executive BI scorecards and real-time refreshes. |
-| **Claude Code / AGENTS.md** | **Gemini 1.5 / 2.0 (Google AI Studio)** | Embedded Socratic AI mentor with strict spoiler-control guidelines and checkpoint evaluation. |
+| **Claude Code / AGENTS.md** | **Gemini 1.5 / 2.0 & Antigravity** | Embedded Socratic AI mentor with strict spoiler-control guidelines and agentic pair programming. |
 | **Manual Scripts** | **Google Cloud Build CI/CD** | Automated image builds, Dataform compilation checks, and continuous deployment. |
 
 ---
@@ -51,7 +52,7 @@ To support effective hands-on learning, this repository cleanly separates **star
 
 ## 4. The 3 Deliberate Data Traps & Verified Truth
 
-The core philosophy of this curriculum is that **the pipeline is the means, not the goal**. Real analysts must catch subtle data discrepancies that silent tools miss:
+The core philosophy of this curriculum is that **the pipeline is the means, not the goal**. Real data specialists must catch subtle data discrepancies that silent tools miss:
 
 ### Trap 1: Minor Units (Cents)
 - **The Issue**: All monetary amounts in raw CSVs (`mrr_local`, `amount_eur`, `price_eur`, `cogs_eur`, `spend_amount`) are stored in minor units (cents).
