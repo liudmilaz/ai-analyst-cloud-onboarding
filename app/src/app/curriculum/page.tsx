@@ -91,13 +91,23 @@ export default function CurriculumPage() {
                       </div>
                     </div>
 
-                    <Link
-                      href={`/phases/${p.id}`}
-                      className="rounded-lg bg-indigo-600 hover:bg-indigo-500 px-3.5 py-2 text-xs font-semibold text-white transition self-start sm:self-center flex items-center gap-1.5 flex-shrink-0"
-                    >
-                      <span>Start Phase {p.id}</span>
-                      <span>→</span>
-                    </Link>
+                    <div className="flex items-center gap-2 self-start sm:self-center flex-shrink-0">
+                      {p.id === 5 && (
+                        <Link
+                          href="/dashboard"
+                          className="rounded-lg bg-amber-500 hover:bg-amber-400 px-3 py-2 text-xs font-bold text-slate-950 transition flex items-center gap-1.5 shadow"
+                        >
+                          <span>📊 Executive Dashboard</span>
+                        </Link>
+                      )}
+                      <Link
+                        href={`/phases/${p.id}`}
+                        className="rounded-lg bg-indigo-600 hover:bg-indigo-500 px-3.5 py-2 text-xs font-semibold text-white transition flex items-center gap-1.5"
+                      >
+                        <span>Start Phase {p.id}</span>
+                        <span>→</span>
+                      </Link>
+                    </div>
                   </div>
 
                   <div className="pt-2 border-t border-slate-800/70 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">

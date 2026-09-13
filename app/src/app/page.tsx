@@ -29,13 +29,6 @@ export default function HomePage() {
           <div className="relative overflow-hidden rounded-2xl border border-indigo-900/40 bg-gradient-to-br from-indigo-950/70 via-slate-900 to-slate-950 p-8 shadow-xl space-y-6">
             <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
               <div className="space-y-3.5 max-w-3xl">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/40 bg-indigo-950/90 px-3 py-1 text-xs font-semibold text-indigo-300">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    🧑‍💻 Human-Led & ⚡ AI-Powered Training
-                  </span>
-                </div>
-
                 <h1 className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
                   Human-Led, AI-Powered Cloud Analytics Onboarding
                 </h1>

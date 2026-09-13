@@ -39,14 +39,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
               Curriculum Roadmap
             </Link>
             <Link
-              href="/dashboard"
-              className={`px-3 py-1.5 rounded-md transition ${
-                pathname === "/dashboard" ? "bg-slate-800 text-white" : "text-slate-400 hover:text-slate-200"
-              }`}
-            >
-              Executive BI Dashboard
-            </Link>
-            <Link
               href="/playground"
               className={`px-3 py-1.5 rounded-md transition ${
                 pathname === "/playground" ? "bg-slate-800 text-white" : "text-slate-400 hover:text-slate-200"

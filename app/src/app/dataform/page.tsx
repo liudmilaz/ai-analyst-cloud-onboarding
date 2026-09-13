@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { Navbar } from "../../components/Navbar";
 import { MentorChatModal } from "../../components/MentorChatModal";
 import { LearningTrack } from "../../lib/types";
@@ -314,64 +315,64 @@ export default function DataformPage() {
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <span className="rounded bg-indigo-900/60 px-2 py-0.5 text-xs font-semibold text-indigo-300 border border-indigo-700/50">
-                  Dataform Reference Solutions
+                  Reference Solutions
                 </span>
-                <span className="text-xs text-slate-400">GCP Project: aiwomen26ham-4452</span>
+                <span className="text-xs text-slate-400">GCP: aiwomen26ham-4452</span>
               </div>
               <h1 className="text-2xl font-bold text-white leading-tight">
-                Dataform Reference Solutions (NovaScale Analytics)
+                Reference Solutions: Deployed Dataform & Analytics Stack
               </h1>
               <p className="text-xs text-slate-300 max-w-2xl leading-relaxed">
-                This is the verified reference repository. For hands-on training, start in the empty workspace; use this reference to compare your staging models, date spines, marts, and data assertions.
+                Inspect the verified reference implementation. Compare your staging views, date spines, marts, and data assertions against the production deployment.
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
-              <a
-                href="https://console.cloud.google.com/bigquery/dataform?project=aiwomen26ham-4452"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 rounded-xl bg-slate-800 border border-slate-700 px-4 py-2.5 text-xs font-semibold text-slate-200 hover:bg-slate-700 transition"
-              >
-                <span>Empty Dataform Workspace</span>
-                <span>↗</span>
-              </a>
-              <a
-                href="https://console.cloud.google.com/bigquery/dataform/locations/europe-west1/repositories/invented-software-transformations/workspaces/production?project=aiwomen26ham-4452"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-xs font-bold text-white shadow-lg hover:bg-emerald-500 transition ring-2 ring-emerald-400/30"
-              >
-                <span>🚀 Open Ready Deployed Project in Dataform</span>
-                <span className="text-sm">↗</span>
-              </a>
-              <a
-                href="https://console.cloud.google.com/bigquery/dataform/locations/europe-west1/repositories/invented-software-transformations?project=aiwomen26ham-4452"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 rounded-xl bg-slate-800 border border-slate-700 px-3.5 py-2.5 text-xs font-semibold text-slate-200 hover:bg-slate-700 transition"
-              >
-                <span>Repository Overview</span>
-                <span>↗</span>
-              </a>
-              <a
-                href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 rounded-xl bg-indigo-600/80 px-3.5 py-2.5 text-xs font-semibold text-white hover:bg-indigo-500 transition"
-              >
-                <span>BigQuery Studio</span>
-                <span>↗</span>
-              </a>
+            <div className="flex flex-wrap items-center gap-2.5">
+              {/* Button 1: GitHub Repo */}
               <a
                 href="https://github.com/liudmilaz/ai-data-onboarding/tree/main/dataform"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 rounded-xl bg-slate-900 border border-slate-800 px-3 py-2.5 text-xs font-semibold text-slate-300 hover:text-white transition"
+                className="flex items-center gap-1.5 rounded-xl bg-slate-900 border border-slate-700 px-4 py-2.5 text-xs font-semibold text-slate-200 hover:text-white hover:bg-slate-800 transition shadow"
+                title="View production Dataform source code on GitHub"
               >
-                <span>GitHub Repo</span>
-                <span>↗</span>
+                <span>GitHub repo</span>
+                <span className="text-[10px] text-slate-400">↗</span>
               </a>
+
+              {/* Button 2: Dataform project: deployed */}
+              <a
+                href="https://console.cloud.google.com/bigquery/dataform/locations/europe-west1/repositories/invented-software-transformations?project=aiwomen26ham-4452"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-xs font-bold text-white shadow-lg hover:bg-emerald-500 transition ring-2 ring-emerald-400/30"
+                title="Open deployed Dataform repository in Google Cloud"
+              >
+                <span>Dataform project: deployed</span>
+                <span className="text-xs">↗</span>
+              </a>
+
+              {/* Button 3: BigQuery tables deployed */}
+              <a
+                href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452&ws=!1m4!1m3!3saiwomen26ham-4452!2sinvented_software_mart"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-semibold text-white hover:bg-indigo-500 transition shadow"
+                title="Open deployed BigQuery mart tables in Google Cloud Console"
+              >
+                <span>BigQuery tables deployed</span>
+                <span className="text-xs">↗</span>
+              </a>
+
+              {/* Button 4: Dashboard */}
+              <Link
+                href="/dashboard"
+                className="flex items-center gap-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 px-4 py-2.5 text-xs font-bold text-slate-950 shadow-md transition"
+                title="Open verified Executive BI Dashboard"
+              >
+                <span>Dashboard</span>
+                <span>→</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -381,7 +382,7 @@ export default function DataformPage() {
           <div className="space-y-0.5">
             <span className="text-indigo-400 font-bold flex items-center gap-1.5">
               <span>⚡ Live GCP Target:</span>
-              <span className="font-mono text-slate-200">invented-software-transformations / workspaces / production</span>
+              <span className="font-mono text-slate-200">invented-software-transformations</span>
             </span>
             <p className="text-slate-400">
               Region: <strong className="text-slate-300">europe-west1</strong> • Target Datasets: <strong className="text-slate-300">invented_software_staging, invented_software_mart</strong>

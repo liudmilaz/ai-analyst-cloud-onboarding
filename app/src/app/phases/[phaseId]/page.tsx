@@ -58,7 +58,16 @@ export default function PhaseDetailPage() {
               </span>
               <p className="text-xs font-semibold text-white mt-0.5">{phase.deliverable}</p>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
+              {phase.id === 5 && (
+                <Link
+                  href="/dashboard"
+                  className="flex items-center gap-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 px-3.5 py-1.5 text-xs font-bold text-slate-950 shadow transition"
+                >
+                  <span>📊 Executive BI Dashboard</span>
+                  <span>→</span>
+                </Link>
+              )}
               <a
                 href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452"
                 target="_blank"
@@ -88,6 +97,36 @@ export default function PhaseDetailPage() {
               </button>
             </div>
           </div>
+
+          {/* Phase 5 Interactive Deliverable Callout */}
+          {phase.id === 5 && (
+            <div className="rounded-xl border border-amber-500/40 bg-gradient-to-r from-amber-950/40 via-slate-900 to-slate-900/90 p-5 space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="rounded bg-amber-900/80 border border-amber-600/50 px-2 py-0.5 text-[10px] font-bold text-amber-300 uppercase tracking-wider">
+                      Phase 5 Interactive Deliverable
+                    </span>
+                    <span className="text-xs text-slate-400">12 Canonical Executive Metrics</span>
+                  </div>
+                  <h3 className="text-base font-bold text-white">
+                    Executive BI Dashboard & Verified Scorecards
+                  </h3>
+                  <p className="text-xs text-slate-300 max-w-xl leading-relaxed">
+                    View the live interactive executive dashboard featuring MRR waterfalls, cohort retention curves, unit economics, and cash runway projections.
+                  </p>
+                </div>
+
+                <Link
+                  href="/dashboard"
+                  className="rounded-xl bg-amber-500 hover:bg-amber-400 px-5 py-2.5 text-xs font-bold text-slate-950 shadow-lg shadow-amber-500/20 transition flex items-center gap-2 self-start sm:self-center flex-shrink-0"
+                >
+                  <span>📊 Open Executive BI Dashboard</span>
+                  <span>→</span>
+                </Link>
+              </div>
+            </div>
+          )}
 
           {/* Socratic Analytical Questions (No Spoilers!) */}
           {phase.investigativeQuestions && phase.investigativeQuestions.length > 0 && (
