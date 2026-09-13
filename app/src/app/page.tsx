@@ -52,9 +52,20 @@ export default function Home() {
 
               {/* Action Buttons */}
               <div className="flex flex-col gap-2.5 flex-shrink-0 min-w-[220px] sm:w-64 lg:w-72">
+                <a
+                  href="https://antigravity.google/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-xl bg-gradient-to-r from-blue-600 via-sky-600 to-cyan-500 px-5 py-3 text-center text-xs font-bold text-white shadow-lg shadow-sky-900/40 hover:from-blue-500 hover:to-cyan-400 transition flex items-center justify-center gap-2 ring-2 ring-sky-400/30"
+                  title="Launch Google Antigravity"
+                >
+                  <span>⚡ Launch Antigravity</span>
+                  <span className="text-xs">↗</span>
+                </a>
+
                 <Link
                   href="/tech-stack"
-                  className="rounded-xl bg-gradient-to-r from-blue-600 via-sky-600 to-cyan-500 px-5 py-3 text-center text-xs font-bold text-white shadow-lg shadow-sky-900/40 hover:from-blue-500 hover:to-cyan-400 transition flex items-center justify-center gap-2 ring-2 ring-sky-400/30"
+                  className="rounded-xl bg-slate-900/90 border border-sky-500/40 px-5 py-3 text-center text-xs font-semibold text-sky-200 hover:bg-slate-800 hover:text-white transition flex items-center justify-center gap-2 shadow-sm"
                   title="Explore the 4 core tools and technologies"
                 >
                   <span>🛠️ Explore Tech Stack</span>
@@ -71,15 +82,6 @@ export default function Home() {
                 </Link>
 
                 <div className="pt-2 border-t border-sky-900/40 flex flex-col gap-2">
-                  <a
-                    href="https://antigravity.google"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between rounded-xl bg-slate-900/80 border border-slate-800 hover:border-sky-500/70 px-4 py-2.5 text-xs font-medium text-sky-300 hover:text-white hover:bg-slate-850 transition"
-                  >
-                    <span>⚡ Launch Antigravity</span>
-                    <span className="text-sky-400 text-xs">↗</span>
-                  </a>
                   <button
                     onClick={() => setIsChatOpen(true)}
                     className="flex items-center justify-between rounded-xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/70 px-4 py-2.5 text-xs font-medium text-cyan-300 hover:text-white hover:bg-slate-850 transition"

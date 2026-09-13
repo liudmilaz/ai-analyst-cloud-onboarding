@@ -29,6 +29,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
           </Link>
 
           <nav className="hidden md:flex items-center gap-1.5 text-sm font-medium">
+            <a
+              href="https://antigravity.google/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-lg transition text-sky-300 hover:text-white hover:bg-sky-950/70 border border-sky-500/30"
+              title="Launch Google Antigravity"
+            >
+              ⚡ Launch Antigravity ↗
+            </a>
             <Link
               href="/tech-stack"
               className={`px-3 py-1.5 rounded-lg transition ${
