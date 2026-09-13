@@ -4,12 +4,13 @@
 > **Target GCP Project:** `aiwomen26ham-4452`  
 > **Repository:** [ai-data-onboarding](https://github.com/liudmilaz/ai-data-onboarding)  
 > **Core Principle:** Human data specialists lead the analysis, critical thinking, and architectural decisions, while AI serves as a high-velocity accelerator and Socratic coach.  
-> **Original Stack:** PostgreSQL + dbt Core + Docker Compose + Metabase  
 > **Google Cloud Stack:** BigQuery + Dataform + Cloud Run + Looker Studio + Gemini AI + Antigravity  
 
 ---
 
 ## 1. Executive Summary
+
+This curriculum is tool-agnostic by design: the same CSV → warehouse → transformation → BI journey can be built entirely with **open-source, self-hostable tools** — **PostgreSQL** (warehouse), **dbt Core** (transformation), **Docker Compose** (orchestration), **Metabase** (BI), and any coding agent of choice (e.g. Claude Code) as the embedded mentor. This repository documents the **Google Cloud implementation** of that same curriculum.
 
 **LINIA** is an interactive, human-led and AI-powered onboarding and upskilling platform for data specialists. It is built around a modern principle: human specialists lead the exploratory analysis, critical thinking, and architectural decisions, while AI acts as a high-velocity accelerator and Socratic coach.
 
@@ -19,18 +20,20 @@ $$\text{Raw CSVs} \longrightarrow \text{BigQuery Lakehouse} \longrightarrow \tex
 
 Throughout the journey, an embedded **AI Mentor** powered by **Google Gemini** provides Socratic, spoiler-controlled guidance, challenging the specialist to test hypotheses and defend conclusions rather than simply copying code.
 
+Because this implementation keeps everything native to Google Cloud, transformations are built in **Dataform** (BigQuery-native, serverless SQLX). Industry-wide, **dbt** remains the standard transformation tool across warehouses, and it is the tool this project would reach for in any other context — a non-BigQuery or multi-warehouse setup, or a team already standardized on dbt Core. A side-by-side comparison of both approaches lives in `dbt_comparison/`.
+
 ---
 
-## 2. Technical Stack Translation
+## 2. Google Cloud Stack
 
-| Original Architecture | Google Cloud / AI Studio Stack | Rationale & Enterprise Advantage |
-| :--- | :--- | :--- |
-| **PostgreSQL (Local / Docker)** | **Google BigQuery** (`invented_software_*`) | Petabyte-scale serverless lakehouse; zero index tuning; native column-level security. |
-| **dbt Core (Docker Container)** | **Google Cloud Dataform** (SQLX) | BigQuery-native, serverless SQL compilation with built-in lineage and automated assertions. |
-| **Docker Compose** | **Google Cloud Run** | Zero-infra serverless container hosting with auto-scaling to zero and HTTPS endpoints. |
-| **Metabase** | **Looker Studio** | Native BigQuery connector; interactive executive BI scorecards and real-time refreshes. |
-| **Claude Code / AGENTS.md** | **Gemini 1.5 / 2.0 & Antigravity** | Embedded Socratic AI mentor with strict spoiler-control guidelines and agentic pair programming. |
-| **Manual Scripts** | **Google Cloud Build CI/CD** | Automated image builds, Dataform compilation checks, and continuous deployment. |
+| Component | Role & Rationale |
+| :--- | :--- |
+| **Google BigQuery** (`invented_software_*`) | Petabyte-scale serverless lakehouse; zero index tuning; native column-level security. |
+| **Google Cloud Dataform** (SQLX) | BigQuery-native, serverless SQL compilation with built-in lineage and automated assertions. |
+| **Google Cloud Run** | Zero-infra serverless container hosting with auto-scaling to zero and HTTPS endpoints. |
+| **Looker Studio** | Native BigQuery connector; interactive executive BI scorecards and real-time refreshes. |
+| **Gemini 1.5 / 2.0 & Antigravity** | Embedded Socratic AI mentor with strict spoiler-control guidelines and agentic pair programming. |
+| **Google Cloud Build CI/CD** | Automated image builds, Dataform compilation checks, and continuous deployment. |
 
 ---
 
