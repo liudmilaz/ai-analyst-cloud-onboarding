@@ -16,18 +16,15 @@ interface DataformFile {
 
 const DATAFORM_FILES: DataformFile[] = [
   {
-    path: "dataform.json",
-    name: "dataform.json",
+    path: "workflow_settings.yaml",
+    name: "workflow_settings.yaml",
     layer: "config",
-    description: "Core project configuration for Google Cloud Dataform targeting BigQuery in aiwomen26ham-4452.",
-    correctionApplied: "Configured for BigQuery lakehouse datasets in region EU with zero server management.",
-    code: `{
-  "defaultProject": "aiwomen26ham-4452",
-  "defaultLocation": "EU",
-  "defaultDataset": "invented_software_staging",
-  "defaultAssertionDataset": "invented_software_assertions",
-  "dataformCoreVersion": "^3.0.0"
-}`
+    description: "Core project configuration for Google Cloud Dataform Core 3.0+ targeting BigQuery in aiwomen26ham-4452.",
+    correctionApplied: "Configured for BigQuery lakehouse datasets in region EU with defaultAssertionDataset defined.",
+    code: `defaultProject: "aiwomen26ham-4452"
+defaultLocation: "EU"
+defaultDataset: "invented_software_staging"
+defaultAssertionDataset: "invented_software_assertions"`
   },
   {
     path: "definitions/declarations/sources.js",
@@ -310,26 +307,35 @@ export default function DataformPage() {
         onOpenChat={() => setIsChatOpen(true)}
       />
 
-      <main className="flex-1 p-8 max-w-6xl mx-auto w-full space-y-6">
-        {/* Banner with Google Cloud Dataform Deep Links */}
-        <div className="rounded-2xl border border-emerald-900/40 bg-gradient-to-r from-emerald-950/40 via-slate-900 to-indigo-950/30 p-6 shadow-xl">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            <div className="space-y-1.5">
+      <main className="flex-1 p-6 lg:p-8 pt-10 max-w-7xl mx-auto w-full space-y-6">
+        {/* Top Header Card */}
+        <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 shadow-xl">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <span className="rounded bg-emerald-900/60 px-2 py-0.5 text-xs font-bold text-emerald-300 border border-emerald-700/60">
-                  Dataform Production Repository
+                <span className="rounded bg-indigo-900/60 px-2 py-0.5 text-xs font-semibold text-indigo-300 border border-indigo-700/50">
+                  Dataform Reference Solutions
                 </span>
                 <span className="text-xs text-slate-400">GCP Project: aiwomen26ham-4452</span>
               </div>
-              <h1 className="text-2xl font-bold text-white">
-                Corrected Dataform Transformation Project
+              <h1 className="text-2xl font-bold text-white leading-tight">
+                Dataform Reference Solutions (NovaScale Analytics)
               </h1>
               <p className="text-xs text-slate-300 max-w-2xl leading-relaxed">
-                This is the complete, production-grade Google Cloud Dataform repository. It includes all staging models, intermediate date spines, marts, and assertions with the data traps already resolved.
+                This is the verified reference repository. For hands-on training, start in the empty workspace; use this reference to compare your staging models, date spines, marts, and data assertions.
               </p>
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
+              <a
+                href="https://console.cloud.google.com/bigquery/dataform?project=aiwomen26ham-4452"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 rounded-xl bg-slate-800 border border-slate-700 px-4 py-2.5 text-xs font-semibold text-slate-200 hover:bg-slate-700 transition"
+              >
+                <span>Empty Dataform Workspace</span>
+                <span>↗</span>
+              </a>
               <a
                 href="https://console.cloud.google.com/bigquery/dataform/locations/europe-west1/repositories/invented-software-transformations/workspaces/production?project=aiwomen26ham-4452"
                 target="_blank"

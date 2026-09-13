@@ -1,0 +1,27 @@
+config {
+  type: "view",
+  schema: "invented_software_staging",
+  description: "Cleaned merchant records. Distinguishes initial signup plan from actual current status.",
+  columns: {
+    merchant_id: "Primary key for merchant",
+    signup_plan_type: "Plan selected at signup (note: does NOT indicate current subscription)",
+    status: "active or churned",
+    churn_date: "Date of churn if applicable"
+  }
+}
+
+SELECT
+  TRIM(merchant_id) AS merchant_id,
+  TRIM(merchant_name) AS merchant_name,
+  TRIM(business_type) AS business_type,
+  UPPER(TRIM(country_code)) AS country_code,
+  TRIM(city) AS city,
+  signup_date,
+  -- Clarify column naming: plan_type at signup was historical, not current!
+  TRIM(plan_type) AS signup_plan_type,
+  TRIM(status) AS status,
+  churn_date
+FROM
+  ${ref("raw_merchants")}
+WHERE
+  merchant_id IS NOT NULL

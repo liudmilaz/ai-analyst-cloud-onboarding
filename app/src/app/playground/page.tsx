@@ -18,7 +18,7 @@ export default function PlaygroundPage() {
         onOpenChat={() => setIsChatOpen(true)}
       />
 
-      <main className="flex-1 p-8 max-w-5xl mx-auto w-full">
+      <main className="flex-1 p-8 pt-10 max-w-5xl mx-auto w-full">
         <SqlRunner />
       </main>
 

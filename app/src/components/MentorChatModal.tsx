@@ -24,7 +24,7 @@ export const MentorChatModal: React.FC<MentorChatModalProps> = ({
   const [messages, setMessages] = useState<Message[]>([
     {
       sender: "mentor",
-      text: "Hello! I am your AI Mentor for Invented Software. I follow strict Socratic guidance (no spoilers!). What are you investigating in the dataset or transformation models?"
+      text: "Hello! I am your AI Mentor for NovaScale Analytics. I follow strict Socratic guidance (no spoilers!). What are you investigating in the dataset or transformation models?"
     }
   ]);
   const [input, setInput] = useState("");
@@ -87,7 +87,7 @@ export const MentorChatModal: React.FC<MentorChatModalProps> = ({
               AI
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-white">Invented Software AI Mentor</h3>
+              <h3 className="text-sm font-semibold text-white">NovaScale AI Mentor</h3>
               <p className="text-xs text-slate-400">
                 Socratic Guide • {currentTrack === "dataform" ? "Dataform Track" : "dbt Track"} • {activePhaseTitle}
               </p>

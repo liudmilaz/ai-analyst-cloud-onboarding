@@ -13,7 +13,7 @@ export const PhaseSidebar: React.FC<PhaseSidebarProps> = ({ completedPhases }) =
   const pathname = usePathname();
 
   return (
-    <aside className="w-80 flex-shrink-0 border-r border-slate-800 bg-slate-950 p-4">
+    <aside className="w-80 flex-shrink-0 border-r border-slate-800 bg-slate-950 p-4 pt-8">
       <div className="mb-4 px-2">
         <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
           6-Phase Onboarding Journey

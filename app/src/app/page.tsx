@@ -24,7 +24,7 @@ export default function HomePage() {
       <div className="flex flex-1">
         <PhaseSidebar completedPhases={completedPhases} />
 
-        <main className="flex-1 p-8 max-w-5xl mx-auto space-y-8">
+        <main className="flex-1 p-8 pt-10 max-w-5xl mx-auto space-y-8">
           {/* Hero Banner */}
           <div className="relative overflow-hidden rounded-2xl border border-indigo-900/40 bg-gradient-to-br from-indigo-950/60 via-slate-900 to-slate-950 p-8 shadow-xl">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
@@ -33,11 +33,11 @@ export default function HomePage() {
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
                   GCP Project: aiwomen26ham-4452
                 </div>
-                <h1 className="text-3xl font-extrabold text-white tracking-tight">
-                  Welcome to Invented Software Analytics
+                <h1 className="text-3xl font-extrabold text-white tracking-tight leading-tight">
+                  Welcome to NovaScale Analytics
                 </h1>
                 <p className="text-sm text-slate-300 max-w-2xl leading-relaxed">
-                  You are the incoming Lead Data Analyst. You start with six raw tables in BigQuery for a fictional B2B SaaS company and build a complete enterprise analytics platform: <strong>raw data → BigQuery → Dataform models → Looker Studio dashboard</strong>.
+                  You are the incoming Lead Data Analyst. You start with six raw tables in BigQuery for a fast-growing B2B SaaS company and build a complete enterprise analytics platform: <strong>raw data → BigQuery → Dataform models → Looker Studio dashboard</strong>.
                 </p>
               </div>
 
@@ -58,52 +58,70 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Cloud Stack Architecture Cards */}
+          {/* Cloud Stack Architecture Cards (Clickable Empty / Prepared Tools, No Explanations) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-5">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/20 text-blue-400 font-bold">
+            <a
+              href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452&ws=!1m5!1m4!4m3!1saiwomen26ham-4452!2sinvented_software_raw!2sraw_subscriptions"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-5 hover:border-blue-500/60 hover:bg-slate-850 transition shadow-sm"
+              title="Open prepared raw lakehouse dataset in Google BigQuery"
+            >
+              <div className="flex items-center gap-3.5">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">
                   BQ
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white">Google BigQuery</h3>
-                  <span className="text-[11px] text-slate-400">Lakehouse Data Layer</span>
+                  <h3 className="text-sm font-semibold text-white group-hover:text-blue-300 transition flex items-center gap-1.5">
+                    Google BigQuery
+                    <span className="text-xs text-blue-400">↗</span>
+                  </h3>
+                  <span className="text-xs text-slate-400">Prepared Raw Data Layer</span>
                 </div>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Replaces local PostgreSQL. Ingests all 6 raw CSVs in <code>invented_software_raw</code> with zero server management and native partitioning.
-              </p>
-            </div>
+            </a>
 
-            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-5">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400 font-bold">
+            <a
+              href="https://console.cloud.google.com/bigquery/dataform?project=aiwomen26ham-4452"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-5 hover:border-emerald-500/60 hover:bg-slate-850 transition shadow-sm"
+              title="Open empty Dataform workspace for analyst training"
+            >
+              <div className="flex items-center gap-3.5">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400 font-bold text-sm flex-shrink-0">
                   DF
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white">Google Dataform</h3>
-                  <span className="text-[11px] text-slate-400">In-Database Transformations</span>
+                  <h3 className="text-sm font-semibold text-white group-hover:text-emerald-300 transition flex items-center gap-1.5">
+                    Google Dataform
+                    <span className="text-xs text-emerald-400">↗</span>
+                  </h3>
+                  <span className="text-xs text-slate-400">Empty Transformation Workspace</span>
                 </div>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Replaces containerized dbt Core. SQLX models with automated data quality assertions, native lineage graphs, and serverless execution.
-              </p>
-            </div>
+            </a>
 
-            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-5">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500/20 text-amber-400 font-bold">
+            <a
+              href="https://lookerstudio.google.com/reporting/create"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-5 hover:border-amber-500/60 hover:bg-slate-850 transition shadow-sm"
+              title="Open empty Looker Studio report to build dashboards"
+            >
+              <div className="flex items-center gap-3.5">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">
                   LS
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white">Looker Studio</h3>
-                  <span className="text-[11px] text-slate-400">Executive BI Platform</span>
+                  <h3 className="text-sm font-semibold text-white group-hover:text-amber-300 transition flex items-center gap-1.5">
+                    Looker Studio
+                    <span className="text-xs text-amber-400">↗</span>
+                  </h3>
+                  <span className="text-xs text-slate-400">Empty Executive BI Platform</span>
                 </div>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Replaces Metabase. Directly connects to <code>invented_software_mart</code> to render live MRR waterfalls, cohort retention, and cash runways.
-              </p>
-            </div>
+            </a>
           </div>
 
           {/* Phase Roadmap Overview */}

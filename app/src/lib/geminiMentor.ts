@@ -1,4 +1,4 @@
-const SYSTEM_INSTRUCTION = `You are the Lead Data Mentor for Invented Software, a B2B SaaS company onboarding and upskilling data analysts.
+const SYSTEM_INSTRUCTION = `You are the Lead Data Mentor for NovaScale Analytics, a fast-growing B2B SaaS company onboarding and upskilling data analysts.
 Your trainee is building an end-to-end analytics platform on Google Cloud (BigQuery, Dataform, Looker Studio, Cloud Run) targeting project aiwomen26ham-4452.
 The analyst can toggle between Dataform (applied engine) and dbt (comparison track).
 
@@ -86,5 +86,5 @@ export async function askGeminiMentor(userMessage: string, phaseContext: string,
     return `In ${currentTrack === "dbt" ? "dbt" : "Dataform"}, your model references use ${currentTrack === "dbt" ? "{{ ref('table') }}" : "${ref('table')}"}. The beauty of Dataform in BigQuery is that it compiles and executes natively without client-side container orchestration, while preserving all the software engineering practices you love from dbt! Check out the Model Comparison tab for a line-by-line view.`;
   }
 
-  return "Welcome to Invented Software! I am your AI Mentor. Let's make sure our analytical platform produces rock-solid, defensible conclusions. Which phase are you currently tackling, or what query are you investigating?";
+  return "Welcome to NovaScale Analytics! I am your AI Mentor. Let's make sure our analytical platform produces rock-solid, defensible conclusions. Which phase are you currently tackling, or what query are you investigating?";
 }

@@ -1,5 +1,5 @@
 export const VERIFIED_METRICS = {
-  company: "Invented Software",
+  company: "NovaScale Analytics",
   project: "aiwomen26ham-4452",
   dataset: "invented_software_mart",
   counts: {

@@ -1,0 +1,4 @@
+defaultProject: "aiwomen26ham-4452"
+defaultLocation: "EU"
+defaultDataset: "invented_software_staging"
+defaultAssertionDataset: "invented_software_assertions"

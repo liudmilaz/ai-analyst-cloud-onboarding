@@ -1,0 +1,17 @@
+{
+  "company": "NovaScale Analytics",
+  "project": "aiwomen26ham-4452",
+  "dataset": "invented_software_mart",
+  "verified_kpis": {
+    "exit_arr_eur": 18117.34,
+    "dec_2025_mrr_eur": 1509.78,
+    "paying_merchants": 95,
+    "total_merchants": 160,
+    "churned_merchants": 9,
+    "logo_churn_rate_pct": 9.47,
+    "average_monthly_clean_opex_eur": 3419.0,
+    "average_monthly_cac_eur": 1352.0,
+    "net_monthly_burn_eur": 3253.0,
+    "cash_runway_months": 17.6
+  }
+}

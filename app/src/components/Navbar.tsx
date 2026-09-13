@@ -16,21 +16,23 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTrack, onTrackChange, onO
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-slate-950/90 backdrop-blur">
-      <div className="flex h-16 items-center justify-between px-6">
+    <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-slate-950/95 backdrop-blur shadow-md">
+      <div className="flex min-h-[68px] py-2.5 items-center justify-between px-6">
         <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 font-bold text-white shadow-lg shadow-indigo-500/30">
+          <Link href="/" className="flex items-center gap-3 py-1">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 font-bold text-white shadow-lg shadow-indigo-500/30 flex-shrink-0">
               Δ
             </div>
-            <div>
+            <div className="flex flex-col justify-center">
               <div className="flex items-center gap-2">
-                <span className="font-bold text-slate-100">AI Analyst Onboarding</span>
+                <span className="font-bold text-slate-100 text-sm md:text-base tracking-tight leading-snug">
+                  AI Analyst Onboarding
+                </span>
                 <span className="rounded bg-indigo-900/60 px-1.5 py-0.5 text-[10px] font-semibold text-indigo-300 border border-indigo-700/50">
                   GCP Cloud Edition
                 </span>
               </div>
-              <p className="text-xs text-slate-400">Invented Software • aiwomen26ham-4452</p>
+              <p className="text-xs text-slate-400 mt-0.5">NovaScale Analytics • aiwomen26ham-4452</p>
             </div>
           </Link>
 
@@ -59,23 +61,13 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTrack, onTrackChange, onO
             >
               SQL & Traps Playground
             </Link>
-            <a
-              href="https://console.cloud.google.com/bigquery/dataform/locations/europe-west1/repositories/invented-software-transformations/workspaces/production?project=aiwomen26ham-4452"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-md transition text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1 bg-emerald-950/40 border border-emerald-800/50 hover:bg-emerald-900/50"
-              title="Open ready deployed Dataform project in Google Cloud"
-            >
-              <span>Dataform Project (Corrected)</span>
-              <span className="text-xs">↗</span>
-            </a>
             <Link
               href="/dataform"
               className={`px-3 py-1.5 rounded-md transition ${
-                pathname === "/dataform" ? "bg-slate-800 text-white" : "text-slate-400 hover:text-slate-200"
+                pathname === "/dataform" ? "bg-slate-800 text-emerald-300" : "text-slate-400 hover:text-emerald-300"
               }`}
             >
-              Code Explorer
+              Reference Solutions
             </Link>
             <Link
               href="/compare"
@@ -89,27 +81,37 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTrack, onTrackChange, onO
         </div>
 
         <div className="flex items-center gap-2.5">
-          {/* Direct Google Cloud Links */}
+          {/* Direct Google Cloud Links to Empty / Prepared Tools */}
           <div className="hidden lg:flex items-center gap-1.5 border-r border-slate-800 pr-3">
             <a
-              href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452"
+              href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452&ws=!1m5!1m4!4m3!1saiwomen26ham-4452!2sinvented_software_raw!2sraw_subscriptions"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded bg-slate-900 border border-slate-800 hover:border-indigo-600/60 px-2 py-1 text-[11px] font-medium text-slate-300 hover:text-white transition"
-              title="Open Google BigQuery Studio in Cloud Console"
+              className="flex items-center gap-1 rounded bg-slate-900 border border-slate-800 hover:border-blue-500/60 px-2 py-1 text-[11px] font-medium text-blue-300 hover:text-white transition"
+              title="Open prepared raw lakehouse dataset in BigQuery"
             >
-              <span>BigQuery Studio</span>
-              <span className="text-[10px] text-slate-500">↗</span>
+              <span>BigQuery (Raw Layer)</span>
+              <span className="text-[10px] text-blue-400">↗</span>
             </a>
             <a
-              href="https://console.cloud.google.com/bigquery/dataform/locations/europe-west1/repositories/invented-software-transformations/workspaces/production?project=aiwomen26ham-4452"
+              href="https://console.cloud.google.com/bigquery/dataform?project=aiwomen26ham-4452"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1 rounded bg-slate-900 border border-slate-800 hover:border-emerald-600/60 px-2 py-1 text-[11px] font-medium text-emerald-400 hover:text-emerald-300 transition"
-              title="Open Google Cloud Dataform in Cloud Console"
+              title="Open empty Dataform workspace for training"
             >
-              <span>Dataform Workspace</span>
-              <span className="text-[10px] text-slate-500">↗</span>
+              <span>Dataform (Empty)</span>
+              <span className="text-[10px] text-emerald-500">↗</span>
+            </a>
+            <a
+              href="https://lookerstudio.google.com/reporting/create"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 rounded bg-slate-900 border border-slate-800 hover:border-amber-600/60 px-2 py-1 text-[11px] font-medium text-amber-300 hover:text-amber-200 transition"
+              title="Open empty Looker Studio report"
+            >
+              <span>Looker Studio (Blank)</span>
+              <span className="text-[10px] text-amber-500">↗</span>
             </a>
           </div>
 

@@ -38,7 +38,7 @@ export default function PhaseDetailPage() {
       <div className="flex flex-1">
         <PhaseSidebar completedPhases={completedPhases} />
 
-        <main className="flex-1 p-8 max-w-4xl mx-auto space-y-8">
+        <main className="flex-1 p-8 pt-10 max-w-4xl mx-auto space-y-8">
           {/* Header */}
           <div className="border-b border-slate-800 pb-5">
             <div className="flex items-center gap-2 text-xs text-indigo-400 font-semibold mb-1">
@@ -46,7 +46,7 @@ export default function PhaseDetailPage() {
               <span>•</span>
               <span>Estimated: {phase.estimatedHours}</span>
             </div>
-            <h1 className="text-2xl font-bold text-white">{phase.title}</h1>
+            <h1 className="text-2xl font-bold text-white leading-tight">{phase.title}</h1>
             <p className="text-xs text-slate-300 mt-1 leading-relaxed">{phase.subtitle}</p>
           </div>
 

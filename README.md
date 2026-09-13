@@ -12,7 +12,7 @@
 
 This platform is a hands-on onboarding and upskilling training ground for data analysts working with modern cloud transformation tools (**Dataform** and **dbt**).
 
-The trainee begins with six raw CSV files and a business specification for **Invented Software**, a fictional B2B SaaS company selling recurring-fee business software to small merchants across 8 international markets. The analyst builds a complete analytics platform end-to-end on Google Cloud:
+The trainee begins with six raw CSV files and a business specification for **NovaScale Analytics** (a fast-growing B2B SaaS company selling recurring-fee business software to small merchants across 8 international markets). The analyst builds a complete analytics platform end-to-end on Google Cloud:
 
 $$\text{Raw CSVs} \longrightarrow \text{BigQuery Lakehouse} \longrightarrow \text{Dataform Transformations} \longrightarrow \text{Looker Studio Dashboard}$$
 
@@ -33,19 +33,19 @@ Throughout the journey, an **AI Mentor** powered by **Google Gemini** provides S
 
 ---
 
-## 3. The Analyst Track Choice: Dataform vs. dbt
+## 3. Dedicated Trainee Materials vs. Production Solutions
 
-The brief specifies: *"Let the analyst choose between dbt and Dataform, but apply Dataform."*
+To support effective hands-on learning, this repository cleanly separates **starter training materials** from **completed reference solutions**:
 
-This platform provides:
-1. **Applied Engine (Dataform)**: The production transformations, table materializations, assertions, and pipelines running against BigQuery use Google Cloud Dataform (`.sqlx`).
-2. **Side-by-Side Comparison (dbt Track)**: Every model has an exact dbt Core counterpart in `dbt_comparison/` and in the interactive web UI. Analysts can toggle between Dataform and dbt views to see:
-   - `config { type: "view" }` vs `{{ config(materialized="view") }}`
-   - `${ref("model")}` vs `{{ ref("model") }}`
-   - Dataform SQLX assertions vs dbt `schema.yml` tests and singular SQL tests
-   - JavaScript blocks vs Jinja macros
-
-See the full [dbt to Dataform Cheat Sheet](dbt_comparison/dbt_vs_dataform_cheat_sheet.md).
+1. **Training Materials (`training_materials/`)**:
+   - `training_materials/dataform_starter/`: Clean Dataform configuration with raw BigQuery declarations and empty model templates (`.sqlx.starter`) with TODO guidance.
+   - `training_materials/sql_exercises/`: Investigation queries and Socratic prompts for each curriculum phase.
+   - `training_materials/looker_studio/`: Guide to building executive scorecards and cohort retention charts from scratch.
+2. **Ready Results & Solutions (`solutions/`)**:
+   - `solutions/dataform_completed/`: Complete, production-grade Dataform pipeline (16 models, marts, and data quality assertions).
+   - `solutions/sql_reference/`: Verified SQL queries avoiding the 3 deliberate traps.
+   - `solutions/looker_studio/`: Dashboard specifications and formula definitions.
+   - `solutions/executive_metrics.json`: Verified ground-truth KPIs (€18,117 Exit ARR, 9.47% churn).
 
 ---
 
@@ -90,38 +90,29 @@ The core philosophy of this curriculum is that **the pipeline is the means, not 
 ## 6. Project Structure
 
 ```
-ai_analyst_cloud_onboarding/
+ai-analyst-cloud-onboarding/
+├── training_materials/             # 🟢 EMPTY STARTER MATERIALS FOR TRAINEES
+│   ├── dataform_starter/           # Blank workspace, workflow_settings.yaml, and .sqlx.starter templates
+│   ├── sql_exercises/              # Phase 1-6 investigative SQL challenges
+│   └── looker_studio/              # Blank report creation guide & field definitions
+├── solutions/                      # 🏁 COMPLETED REFERENCE SOLUTIONS (SEPARATE FOLDER)
+│   ├── dataform_completed/         # 16 production Dataform models & automated assertions
+│   ├── sql_reference/              # Validated ground-truth SQL solutions
+│   ├── looker_studio/              # Dashboard specifications and calculated fields
+│   └── executive_metrics.json      # Ground-truth metric benchmarks
 ├── bigquery/                       # BigQuery DDL, loaders, and verification SQL
 │   ├── ddl_raw_tables.sql          # Target schema DDL for aiwomen26ham-4452
 │   ├── load_raw_data.py            # Python ingestion script
 │   └── test_queries.sql            # Ground-truth validation SQL
-├── dataform/                       # Complete Applied Dataform project
-│   ├── dataform.json               # Config: EU location, project aiwomen26ham-4452
-│   ├── package.json                # @dataform/core dependencies
-│   └── definitions/
-│       ├── declarations/sources.js # External raw table sources
-│       ├── staging/                # 6 cleaned staging views (cents/FX/opex traps handled)
-│       ├── intermediate/           # Month-explosion date spine & merchant lifecycle
-│       ├── mart/                   # MRR monthly, unit economics, P&L, executive KPIs
-│       └── assertions/             # Automated quality tests (zero row return rule)
-├── dbt_comparison/                 # Side-by-side dbt Core project
-│   ├── dbt_project.yml             # dbt configuration with BigQuery target
-│   ├── profiles.yml                # OAuth connection profile
-│   ├── dbt_vs_dataform_cheat_sheet.md # 1-to-1 syntax and concept mapping
-│   └── models/                     # Equivalent dbt staging, intermediate, and marts
+├── dataform/                       # Deployed Dataform project for GCP Cloud Console
+├── dbt_comparison/                 # Side-by-side dbt Core comparison project
 ├── gcp/                            # Automated deployment scripts
-│   ├── setup_environment.sh        # Enables APIs, creates datasets, setups registries
+│   ├── setup_environment.sh        # Enables APIs, creates datasets
 │   ├── load_bigquery_tables.sh     # bq load runner for all 6 tables
-│   ├── deploy_cloud_run.sh         # Cloud Run deployment script
-│   └── cloudbuild.yaml             # CI/CD pipeline definition
+│   ├── deploy_dataform_to_gcp.sh   # Dataform repository & workspace deployer
+│   └── deploy_cloud_run.sh         # Cloud Run web app deployment script
 ├── app/                            # Interactive Onboarding Web App (Next.js 14)
-│   ├── src/app/                    # App Router pages (Phases, Dashboard, Playground, Compare)
-│   ├── src/components/             # UI components (Navbar, Sidebar, Mentor, Dashboard)
-│   ├── src/data/                   # Curricula, verified metrics, models comparison
-│   ├── src/lib/                    # Gemini Socratic mentor integration
-│   ├── Dockerfile                  # Container definition for Cloud Run
-│   └── package.json
-└── data/                           # The 6 canonical CSV data files
+└── data/                           # The 6 canonical raw CSV files
 ```
 
 ---

@@ -1,0 +1,14 @@
+config {
+  type: "view",
+  schema: "invented_software_staging",
+  description: "Clean operating costs excluding balance sheet items"
+}
+
+/*
+ * TRAINEE EXERCISE:
+ * 1. Minor units: amount_in_cents / 100.0.
+ * 2. Stock among Flows Trap: raw_operating_costs contains cost_category = 'cash_balance_eom'.
+ *    A bank balance is NOT an operating expense! Exclude it or flag it as is_operating_expense = FALSE.
+ */
+
+-- TODO: Write your SELECT statement here using ${ref("raw_operating_costs")}

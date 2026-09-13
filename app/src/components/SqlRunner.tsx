@@ -97,7 +97,7 @@ ORDER BY total_category_eur DESC;`,
       ],
       socraticFeedback: "Inspect the results: notice that one category (cash_balance_eom) accounts for nearly 94% of the entire table sum. In accounting, what is the fundamental difference between an end-of-month bank balance and monthly operational expenses?",
       guidingQuestions: [
-        "If you sum all rows in raw_operating_costs without filtering, what monthly burn rate does that imply for Invented Software?",
+        "If you sum all rows in raw_operating_costs without filtering, what monthly burn rate does that imply for NovaScale?",
         "If monthly revenue is roughly ~€1,500, could a business survive with €54,000 in monthly expenses?",
         "How should your Dataform staging model classify these records to ensure accurate P&L reporting?"
       ]

@@ -1,0 +1,14 @@
+config {
+  type: "table",
+  schema: "invented_software_mart",
+  description: "Monthly recurring revenue, ARR, and subscriber metrics"
+}
+
+/*
+ * TRAINEE EXERCISE:
+ * 1. Join your monthly revenue spine to aggregate total MRR and ARR.
+ * 2. Make sure cancelled subscriptions are NOT projected past their end_date.
+ * 3. Verified Benchmark: Dec 2025 MRR must equal €1,509.78 (Exit ARR €18,117.34).
+ */
+
+-- TODO: Build your monthly MRR mart table here

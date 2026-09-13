@@ -17,7 +17,7 @@ export const ExecutiveDashboard: React.FC = () => {
             </span>
           </div>
           <p className="text-xs text-slate-400 mt-1">
-            Invented Software • BigQuery Mart: <code className="text-indigo-300">aiwomen26ham-4452.invented_software_mart</code>
+            NovaScale Analytics • BigQuery Mart: <code className="text-indigo-300">aiwomen26ham-4452.invented_software_mart</code>
           </p>
         </div>
 

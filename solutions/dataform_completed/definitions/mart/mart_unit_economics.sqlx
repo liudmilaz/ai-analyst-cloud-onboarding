@@ -1,0 +1,44 @@
+config {
+  type: "table",
+  schema: "invented_software_mart",
+  description: "Unit economics mart: CAC, LTV, LTV:CAC ratio, and payback period by cohort and market"
+}
+
+WITH total_cac AS (
+  SELECT
+    country_code,
+    SUM(spend_amount_eur) AS total_market_cac_spend
+  FROM
+    ${ref("stg_acquisition_costs")}
+  GROUP BY
+    country_code
+),
+market_customers AS (
+  SELECT
+    country_code,
+    COUNT(DISTINCT merchant_id) AS total_signups,
+    COUNT(DISTINCT CASE WHEN is_paying_customer THEN merchant_id END) AS paying_customers,
+    COUNT(DISTINCT CASE WHEN is_paying_customer AND status = "churned" THEN merchant_id END) AS churned_paying,
+    SUM(COALESCE(latest_mrr_eur, 0)) AS market_mrr_eur
+  FROM
+    ${ref("int_merchant_lifecycle")}
+  GROUP BY
+    country_code
+)
+
+SELECT
+  m.country_code,
+  m.total_signups,
+  m.paying_customers,
+  m.churned_paying,
+  -- Logo churn on paying base:
+  ROUND(m.churned_paying * 100.0 / NULLIF(m.paying_customers, 0), 1) AS logo_churn_pct,
+  COALESCE(c.total_market_cac_spend, 0) AS total_cac_spend_eur,
+  -- CAC per signup vs CAC per paying customer:
+  ROUND(COALESCE(c.total_market_cac_spend, 0) / NULLIF(m.total_signups, 0), 2) AS cac_per_signup_eur,
+  ROUND(COALESCE(c.total_market_cac_spend, 0) / NULLIF(m.paying_customers, 0), 2) AS cac_per_paying_customer_eur
+FROM
+  market_customers m
+LEFT JOIN
+  total_cac c
+  ON m.country_code = c.country_code

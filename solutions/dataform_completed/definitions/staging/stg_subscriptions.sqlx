@@ -1,0 +1,33 @@
+config {
+  type: "view",
+  schema: "invented_software_staging",
+  description: "Cleaned subscriptions with minor unit conversion and EUR FX applied via merchant country join path"
+}
+
+-- TRAP 1 & 2 AVOIDED:
+-- 1. Minor units (cents) divided by 100 once here
+-- 2. FX rate joined via merchant_id -> country_code, NEVER on currency alone!
+SELECT
+  s.subscription_id,
+  s.merchant_id,
+  s.plan_sku,
+  s.start_date,
+  -- NULL end_date means active subscription
+  s.end_date,
+  s.mrr_local AS mrr_local_cents,
+  ROUND(s.mrr_local / 100.0, 2) AS mrr_local,
+  s.currency,
+  m.country_code,
+  mkt.eur_fx,
+  -- Converted MRR in EUR
+  ROUND((s.mrr_local / 100.0) * mkt.eur_fx, 2) AS mrr_eur,
+  s.cancellation_reason,
+  s.previous_plan_sku
+FROM
+  ${ref("raw_subscriptions")} s
+JOIN
+  ${ref("stg_merchants")} m
+  ON s.merchant_id = m.merchant_id
+JOIN
+  ${ref("stg_markets")} mkt
+  ON m.country_code = mkt.country_code

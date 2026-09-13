@@ -1,0 +1,15 @@
+config {
+  type: "view",
+  schema: "invented_software_staging",
+  description: "Staging subscriptions with clean EUR amounts and correct merchant join path"
+}
+
+/*
+ * TRAINEE EXERCISE:
+ * 1. Clean minor units: price_in_cents must be divided by 100.0 to get EUR amount.
+ * 2. Avoid FX Fan-out Trap: Do NOT join raw_subscriptions directly to raw_markets on currency!
+ *    Multiple EU countries share EUR, causing 117 rows to explode into 300 rows.
+ *    Correct join path: raw_subscriptions -> raw_merchants (on merchant_id) -> raw_markets (on market_id).
+ */
+
+-- TODO: Write your SELECT statement here using ${ref("raw_subscriptions")}, ${ref("raw_merchants")}, and ${ref("raw_markets")}

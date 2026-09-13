@@ -1,0 +1,16 @@
+config {
+  type: "view",
+  schema: "invented_software_staging",
+  description: "Market dimension with country FX rates to EUR"
+}
+
+SELECT
+  UPPER(TRIM(country_code)) AS country_code,
+  TRIM(country_name) AS country_name,
+  TRIM(region) AS region,
+  TRIM(currency) AS currency,
+  CAST(eur_fx AS FLOAT64) AS eur_fx,
+  launch_year,
+  CAST(vat_rate AS FLOAT64) AS vat_rate
+FROM
+  ${ref("raw_markets")}

@@ -1,0 +1,36 @@
+config {
+  type: "table",
+  schema: "invented_software_intermediate",
+  description: "Monthly subscription explosion. Expands 117 subscription periods into month-by-month revenue series."
+}
+
+WITH months_spine AS (
+  SELECT month_date
+  FROM UNNEST(GENERATE_DATE_ARRAY("2022-06-01", "2025-12-01", INTERVAL 1 MONTH)) AS month_date
+)
+
+SELECT
+  m.month_date,
+  s.subscription_id,
+  s.merchant_id,
+  s.country_code,
+  s.plan_sku,
+  s.mrr_local,
+  s.mrr_eur,
+  p.product_name,
+  p.cogs_eur,
+  p.gross_margin_pct,
+  -- Flag if this is the start month
+  DATE_TRUNC(s.start_date, MONTH) = m.month_date AS is_new_in_month,
+  -- Flag if this is the end month
+  s.end_date IS NOT NULL AND DATE_TRUNC(s.end_date, MONTH) = m.month_date AS is_churn_in_month
+FROM
+  months_spine m
+JOIN
+  ${ref("stg_subscriptions")} s
+  ON m.month_date >= DATE_TRUNC(s.start_date, MONTH)
+  -- Active throughout period, or if end_date exists up to end_date month
+  AND (s.end_date IS NULL OR m.month_date <= DATE_TRUNC(s.end_date, MONTH))
+LEFT JOIN
+  ${ref("stg_products")} p
+  ON s.plan_sku = p.sku

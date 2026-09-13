@@ -18,7 +18,7 @@ export default function DashboardPage() {
         onOpenChat={() => setIsChatOpen(true)}
       />
 
-      <main className="flex-1 p-8 max-w-6xl mx-auto w-full">
+      <main className="flex-1 p-8 pt-10 max-w-6xl mx-auto w-full">
         <ExecutiveDashboard />
       </main>
 
