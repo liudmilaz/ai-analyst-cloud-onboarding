@@ -31,7 +31,7 @@ export default function CurriculumPage() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <span className="rounded bg-sky-950/80 px-2.5 py-0.5 text-[11px] font-bold text-sky-300 border border-sky-700/50">
-                    6-Phase Curriculum Roadmap
+                    Course Journey
                   </span>
                   <span className="text-xs text-slate-400">Human-Led & AI-Powered</span>
                 </div>
@@ -39,7 +39,7 @@ export default function CurriculumPage() {
                   Analytical Training Roadmap & Phases
                 </h1>
                 <p className="text-xs text-slate-300 max-w-2xl leading-relaxed">
-                  Advance through real enterprise engineering milestones: investigate raw BigQuery tables, craft Dataform models in Google Antigravity, defeat deliberate data traps, and build executive Looker Studio scorecards.
+                  Advance through real enterprise data milestones: investigate raw BigQuery tables, craft Dataform models in Google Antigravity, defeat deliberate data traps, and build executive Looker Studio scorecards.
                 </p>
               </div>
 
@@ -74,7 +74,7 @@ export default function CurriculumPage() {
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div className="flex items-start gap-3.5">
                       <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-sky-950 font-bold text-xs text-sky-400 border border-sky-800/40">
-                        0{p.id}
+                        {p.id === 0 ? "00" : `0${p.id}`}
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
@@ -102,7 +102,7 @@ export default function CurriculumPage() {
                         href={`/phases/${p.id}`}
                         className="rounded-lg bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-500 hover:to-sky-500 px-3.5 py-2 text-xs font-semibold text-white transition flex items-center gap-1.5 shadow-sm"
                       >
-                        <span>Start Phase {p.id}</span>
+                        <span>{p.id === 0 ? "Start Here" : `Start Phase ${p.id}`}</span>
                         <span>→</span>
                       </Link>
                     </div>
@@ -114,8 +114,8 @@ export default function CurriculumPage() {
                       <span className="text-slate-300">{p.deliverable}</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-slate-500">Core Tools:</span>
-                      <span className="text-sky-300">BigQuery • Dataform • Antigravity</span>
+                      <span className="text-slate-500">{p.id === 0 ? "Learning Focus:" : "Core Tools:"}</span>
+                      <span className="text-sky-300">{p.id === 0 ? "Analytics foundations • Defensible decisions" : "BigQuery • Dataform • Antigravity"}</span>
                     </div>
                   </div>
                 </div>

@@ -2,6 +2,47 @@ import { Phase } from "../lib/types";
 
 export const CURRICULUM_PHASES: Phase[] = [
   {
+    id: 0,
+    slug: "course-goals",
+    title: "Phase 0: Course Goals & Key Learning Milestones",
+    subtitle: "Begin with the outcomes you will own across the course, from raw-data auditing to executive-ready business intelligence.",
+    estimatedHours: "20-30 minutes",
+    deliverable: "Personal course plan & AI working agreement",
+    investigativeQuestions: [],
+    objectives: [
+      "Identify the end-to-end cloud analytics capabilities you will build during the course",
+      "Set expectations for using AI as a thought partner while retaining ownership of business decisions",
+      "Connect each learning milestone to a concrete production analytics outcome"
+    ],
+    tasks: [
+      {
+        id: "p0-t1",
+        title: "Real-World Lakehouse Auditing",
+        instruction: "Inspect raw, semi-structured tables in BigQuery. Uncover data inconsistencies, duplicate account records, and undocumented foreign keys before writing transformation code.",
+        socraticQuestion: "What would you need to understand about a source table before you could confidently use it in an executive metric?"
+      },
+      {
+        id: "p0-t2",
+        title: "Neutralizing Silent Enterprise Traps",
+        instruction: "Identify and fix silent errors that pass standard CI checks: minor currency units, currency conversion join fan-outs, and stock-versus-flow budget calculations.",
+        socraticQuestion: "How would you test whether a plausible-looking KPI is actually trustworthy?"
+      },
+      {
+        id: "p0-t3",
+        title: "Production Transformation Pipelines",
+        instruction: "Build multi-tier data pipelines in Google Dataform using SQLX. Construct staging views, date spine fan-outs for daily active metrics, dimensional marts, and automated assertions.",
+        socraticQuestion: "Where should business logic live so that it stays testable and reusable across downstream reporting?"
+      },
+      {
+        id: "p0-t4",
+        title: "Executive Business Intelligence Delivery",
+        instruction: "Publish verified Looker Studio scorecards tracking Net MRR Growth, Customer Churn Rate, and LTV. Deliver clean, reconcilable metrics ready for C-suite decision making.",
+        socraticQuestion: "What evidence would you need to defend a dashboard metric in an executive review?"
+      }
+    ],
+    checkpoint: []
+  },
+  {
     id: 1,
     slug: "data-discovery",
     title: "Phase 1: Data Discovery & Trap Identification",

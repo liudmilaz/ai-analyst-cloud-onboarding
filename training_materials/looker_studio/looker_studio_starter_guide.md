@@ -1,6 +1,6 @@
 # Looker Studio Trainee Starter Guide
 
-Welcome to the Looker Studio reporting module for **NovaScale Analytics**.
+Welcome to the Looker Studio reporting module for **Invented Software Inc.**.
 
 ## Direct Blank Report Link
 To begin building your executive report from a blank canvas:

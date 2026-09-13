@@ -42,7 +42,7 @@ export default function PhaseDetailPage() {
           {/* Header */}
           <div className="border-b border-slate-800 pb-5">
             <div className="flex items-center gap-2 text-xs text-sky-400 font-semibold mb-1">
-              <span>Phase {phase.id} of 6</span>
+              <span>{phase.id === 0 ? "Course introduction" : `Phase ${phase.id} of 6`}</span>
               <span>•</span>
               <span>Estimated: {phase.estimatedHours}</span>
             </div>
@@ -54,12 +54,22 @@ export default function PhaseDetailPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-xl border border-sky-500/20 bg-sky-950/20 p-4">
             <div>
               <span className="text-[10px] uppercase font-bold tracking-wider text-sky-400">
-                Phase Deliverable
+                {phase.id === 0 ? "Course Journey Outcome" : "Phase Deliverable"}
               </span>
               <p className="text-xs font-semibold text-white mt-0.5">{phase.deliverable}</p>
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              {phase.id === 5 && (
+              {phase.id === 0 ? (
+                <Link
+                  href="/tech-stack"
+                  className="flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-blue-600 to-sky-600 px-3 py-1.5 text-xs font-semibold text-white hover:from-blue-500 hover:to-sky-500 shadow transition"
+                >
+                  <span>Explore Tech Stack</span>
+                  <span>→</span>
+                </Link>
+              ) : (
+                <>
+                  {phase.id === 5 && (
                 <Link
                   href="/dashboard"
                   className="flex items-center gap-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 px-3.5 py-1.5 text-xs font-bold text-slate-950 shadow transition"
@@ -67,8 +77,8 @@ export default function PhaseDetailPage() {
                   <span>📊 Executive BI Dashboard</span>
                   <span>→</span>
                 </Link>
-              )}
-              <a
+                  )}
+                  <a
                 href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -76,25 +86,27 @@ export default function PhaseDetailPage() {
               >
                 <span>BigQuery Studio</span>
                 <span className="text-[10px]">↗</span>
-              </a>
-              <Link
+                  </a>
+                  <Link
                 href="/playground"
                 className="rounded-lg bg-slate-800 border border-slate-700 px-3 py-1.5 text-xs text-slate-200 hover:bg-slate-700 transition"
               >
                 Query Validator
-              </Link>
-              <Link
+                  </Link>
+                  <Link
                 href="/dataform"
                 className="rounded-lg bg-emerald-950/80 border border-emerald-700/60 px-3 py-1.5 text-xs text-emerald-300 hover:bg-emerald-900/60 transition"
               >
                 Dataform Models
-              </Link>
-              <button
+                  </Link>
+                  <button
                 onClick={() => setIsChatOpen(true)}
                 className="rounded-lg bg-slate-800 border border-slate-700 px-3 py-1.5 text-xs font-semibold text-sky-300 hover:bg-slate-750 transition"
               >
                 Ask Mentor
-              </button>
+                  </button>
+                </>
+              )}
             </div>
           </div>
 
@@ -154,6 +166,7 @@ export default function PhaseDetailPage() {
           )}
 
           {/* Live BigQuery Tables for This Phase */}
+          {phase.id !== 0 && (
           <div className="rounded-xl border border-slate-800 bg-[#0B1528]/50 p-4 space-y-3">
             <div className="flex items-center justify-between">
               <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400">
@@ -188,6 +201,7 @@ export default function PhaseDetailPage() {
               ))}
             </div>
           </div>
+          )}
 
           {/* Objectives */}
           <div className="space-y-3">
@@ -207,13 +221,13 @@ export default function PhaseDetailPage() {
 
           {/* Tasks & Step-by-Step Questions */}
           <div className="space-y-4">
-            <h2 className="text-sm font-semibold text-white">Interactive Hands-on Tasks</h2>
+            <h2 className="text-sm font-semibold text-white">{phase.id === 0 ? "Key Learning Milestones" : "Interactive Hands-on Tasks"}</h2>
             <div className="space-y-4">
               {phase.tasks.map((task, idx) => (
                 <div key={task.id} className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 space-y-3">
                   <div className="flex items-center justify-between">
                     <h3 className="text-xs font-bold text-slate-200">
-                      Task {idx + 1}: {task.title}
+                      {phase.id === 0 ? "Learning Milestone" : `Task ${idx + 1}`}: {task.title}
                     </h3>
                     {task.bigQueryTables && task.bigQueryTables.length > 0 && (
                       <div className="flex items-center gap-1">
@@ -266,20 +280,20 @@ export default function PhaseDetailPage() {
           </div>
 
           {/* Phase Checkpoint Quiz */}
-          <CheckpointCard
+          {phase.checkpoint.length > 0 && <CheckpointCard
             questions={phase.checkpoint}
             onComplete={handleCheckpointSuccess}
             isCompleted={isCompleted}
-          />
+          />}
 
           {/* Next Phase Navigation */}
           <div className="flex items-center justify-between border-t border-slate-800 pt-5">
-            {phase.id > 1 ? (
+            {phase.id > 0 ? (
               <Link
                 href={`/phases/${phase.id - 1}`}
                 className="rounded-lg border border-slate-700 bg-slate-800 px-4 py-2 text-xs font-medium text-slate-300 hover:bg-slate-700"
               >
-                ← Previous Phase
+                {phase.id === 1 ? "← Course Goals" : "← Previous Phase"}
               </Link>
             ) : <div />}
 
@@ -288,7 +302,7 @@ export default function PhaseDetailPage() {
                 href={`/phases/${phase.id + 1}`}
                 className="rounded-lg bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-500 hover:to-sky-500 px-4 py-2 text-xs font-bold text-white transition shadow-sm"
               >
-                Next Phase →
+                {phase.id === 0 ? "Begin Phase 1 →" : "Next Phase →"}
               </Link>
             ) : (
               <Link

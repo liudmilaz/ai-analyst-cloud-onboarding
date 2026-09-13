@@ -1,7 +1,7 @@
 # Looker Studio Executive Dashboard Blueprint
 
 ## Overview
-This specification details the executive BI configuration for NovaScale Analytics connecting directly to `aiwomen26ham-4452.invented_software_mart`.
+This specification details the executive BI configuration for Invented Software Inc. connecting directly to `aiwomen26ham-4452.invented_software_mart`.
 
 ## Verified Executive Metrics
 - **Exit ARR (Dec 2025)**: €18,117.34 (Dec 2025 MRR of €1,509.78 × 12)

@@ -25,7 +25,7 @@ export default function Home() {
         <PhaseSidebar completedPhases={completedPhases} />
 
         <main className="flex-1 p-8 pt-10 max-w-5xl mx-auto space-y-8">
-          {/* Hero Banner - Human-Led & AI-Powered Introduction */}
+          {/* Welcome Banner */}
           <div className="relative overflow-hidden rounded-2xl border border-sky-500/20 bg-gradient-to-br from-[#0B1528] via-[#09101E] to-[#070B14] p-8 shadow-2xl shadow-sky-950/40 space-y-6">
             <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
               <div className="space-y-3.5 max-w-3xl">
@@ -33,223 +33,177 @@ export default function Home() {
                 <div className="flex items-center gap-2.5">
                   <LiniaLogo variant="mark" size="xs" />
                   <span className="text-[11px] font-bold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-400">
-                    LINIA Platform • Human-Led & AI-Powered
+                    LINIA Academy • Human-Led & AI-Powered
                   </span>
                 </div>
 
                 <h1 className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
-                  Human-Led, AI-Powered Cloud Analytics Onboarding
+                  Welcome to Cloud Analytics Engineering Onboarding
                 </h1>
 
                 <p className="text-sm text-slate-300 leading-relaxed">
-                  Welcome to LINIA - an interactive onboarding program built around a modern principle: human data specialists lead the analysis, critical thinking, and architectural decisions, while AI serves as a high-velocity accelerator and Socratic coach.
+                  Welcome to the LINIA onboarding program—an intensive, enterprise-grade journey empowering data specialists to master autonomous cloud analytics. You are stepping into the shoes of the lead data specialist for <strong className="text-white">Invented Software Inc.</strong>, a high-growth B2B SaaS enterprise.
                 </p>
 
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  You learn by doing—running exploratory SQL in BigQuery, authoring transformations from scratch in Google Dataform and Antigravity, diagnosing deliberate data traps, and engineering executive Looker Studio scorecards. The embedded Gemini AI Mentor operates in strict Socratic mode, challenging your hypotheses without giving away answers.
+                  This course bridges the gap between theoretical SQL and battle-tested production modeling. You will inspect raw lakehouse datasets, build robust transformation pipelines, neutralize deliberate data traps, and deliver executive-ready business intelligence dashboards.
                 </p>
               </div>
 
-              <div className="flex flex-col gap-2.5 flex-shrink-0 min-w-[210px] sm:w-64 lg:w-72">
-                <a
-                  href="https://antigravity.google"
-                  target="_blank"
-                  rel="noopener noreferrer"
+              {/* Action Buttons */}
+              <div className="flex flex-col gap-2.5 flex-shrink-0 min-w-[220px] sm:w-64 lg:w-72">
+                <Link
+                  href="/tech-stack"
                   className="rounded-xl bg-gradient-to-r from-blue-600 via-sky-600 to-cyan-500 px-5 py-3 text-center text-xs font-bold text-white shadow-lg shadow-sky-900/40 hover:from-blue-500 hover:to-cyan-400 transition flex items-center justify-center gap-2 ring-2 ring-sky-400/30"
-                  title="Open Google Antigravity to implement the project"
+                  title="Explore the 4 core tools and technologies"
                 >
-                  <span>⚡ Implement with Antigravity</span>
-                  <span className="text-xs">↗</span>
-                </a>
-                <button
-                  onClick={() => setIsChatOpen(true)}
-                  className="rounded-xl bg-sky-950/70 border border-sky-500/40 px-5 py-3 text-center text-xs font-semibold text-sky-200 hover:bg-sky-900/80 hover:text-white transition flex items-center justify-center gap-2 shadow-sm"
-                  title="Open Gemini AI Socratic Coach in right corner"
-                >
-                  <span>🤖 Ask Socratic AI Coach</span>
-                </button>
+                  <span>🛠️ Explore Tech Stack</span>
+                  <span className="text-xs">→</span>
+                </Link>
 
-                {/* Core Google Data Tools */}
-                <div className="flex flex-col gap-2 pt-1 border-t border-sky-900/40">
+                <Link
+                  href="/curriculum"
+                  className="rounded-xl bg-slate-900/90 border border-sky-500/40 px-5 py-3 text-center text-xs font-semibold text-sky-200 hover:bg-slate-800 hover:text-white transition flex items-center justify-center gap-2 shadow-sm"
+                  title="View the Course Journey"
+                >
+                  <span>🗺️ Curriculum Roadmap</span>
+                  <span className="text-xs">→</span>
+                </Link>
+
+                <div className="pt-2 border-t border-sky-900/40 flex flex-col gap-2">
                   <a
-                    href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452&ws=!1m5!1m4!4m3!1saiwomen26ham-4452!2sinvented_software_raw!2sraw_subscriptions"
+                    href="https://antigravity.google"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between rounded-xl bg-slate-900/90 border border-slate-800 hover:border-sky-500/70 px-4 py-2.5 text-xs font-medium text-sky-300 hover:text-white hover:bg-slate-850 transition shadow-sm"
-                    title="Open prepared raw lakehouse dataset in BigQuery"
+                    className="flex items-center justify-between rounded-xl bg-slate-900/80 border border-slate-800 hover:border-sky-500/70 px-4 py-2.5 text-xs font-medium text-sky-300 hover:text-white hover:bg-slate-850 transition"
                   >
-                    <span>BigQuery</span>
+                    <span>⚡ Launch Antigravity</span>
                     <span className="text-sky-400 text-xs">↗</span>
                   </a>
-                  <a
-                    href="https://console.cloud.google.com/bigquery/dataform?project=aiwomen26ham-4452"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between rounded-xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/70 px-4 py-2.5 text-xs font-medium text-emerald-400 hover:text-white hover:bg-slate-850 transition shadow-sm"
-                    title="Open Dataform workspace for transformations"
+                  <button
+                    onClick={() => setIsChatOpen(true)}
+                    className="flex items-center justify-between rounded-xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/70 px-4 py-2.5 text-xs font-medium text-cyan-300 hover:text-white hover:bg-slate-850 transition"
                   >
-                    <span>Dataform</span>
-                    <span className="text-emerald-500 text-xs">↗</span>
-                  </a>
-                  <a
-                    href="https://lookerstudio.google.com/reporting/create"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between rounded-xl bg-slate-900/90 border border-slate-800 hover:border-amber-500/70 px-4 py-2.5 text-xs font-medium text-amber-300 hover:text-white hover:bg-slate-850 transition shadow-sm"
-                    title="Open Looker Studio"
-                  >
-                    <span>Looker Studio</span>
-                    <span className="text-amber-500 text-xs">↗</span>
-                  </a>
+                    <span>🤖 Open AI Helper Chat</span>
+                    <span className="text-cyan-400 text-xs">↗</span>
+                  </button>
                 </div>
               </div>
             </div>
 
-            {/* 4 Pillars of the Human-Led & AI-Powered Model */}
-            <div className="pt-4 border-t border-sky-900/40 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
-              <div className="rounded-xl bg-slate-900/80 border border-slate-800 p-3.5 space-y-1">
-                <div className="flex items-center gap-2 text-sky-400 font-bold text-xs">
-                  <span>🧑‍💻</span>
-                  <span>Human-Led Discovery</span>
-                </div>
-                <p className="text-[11px] text-slate-400 leading-relaxed">
-                  You formulate hypotheses, inspect schemas, and make business judgment calls. You own the analysis.
-                </p>
+            {/* Quick Highlights Strip */}
+            <div className="pt-4 border-t border-sky-900/40 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+              <div className="rounded-xl bg-slate-900/60 border border-slate-800/80 p-3">
+                <div className="text-lg font-extrabold text-sky-400">6</div>
+                <div className="text-[11px] text-slate-400 font-medium">Hands-On Phases</div>
               </div>
-
-              <div className="rounded-xl bg-slate-900/80 border border-slate-800 p-3.5 space-y-1">
-                <div className="flex items-center gap-2 text-blue-400 font-bold text-xs">
-                  <span>🤖</span>
-                  <span>Socratic Gemini Mentor</span>
-                </div>
-                <p className="text-[11px] text-slate-400 leading-relaxed">
-                  The right-corner AI coach poses guiding questions and challenges your logic—no spoilers, strictly guidance.
-                </p>
+              <div className="rounded-xl bg-slate-900/60 border border-slate-800/80 p-3">
+                <div className="text-lg font-extrabold text-blue-400">4</div>
+                <div className="text-[11px] text-slate-400 font-medium">Cloud Core Tools</div>
               </div>
-
-              <div className="rounded-xl bg-slate-900/80 border border-slate-800 p-3.5 space-y-1">
-                <div className="flex items-center gap-2 text-amber-400 font-bold text-xs">
-                  <span>🎯</span>
-                  <span>Real Enterprise Traps</span>
-                </div>
-                <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Diagnose minor units (cents), currency fan-outs, and stock vs flow expenses before reporting.
-                </p>
+              <div className="rounded-xl bg-slate-900/60 border border-slate-800/80 p-3">
+                <div className="text-lg font-extrabold text-amber-400">3</div>
+                <div className="text-[11px] text-slate-400 font-medium">Silent Data Traps</div>
               </div>
-
-              <div className="rounded-xl bg-slate-900/80 border border-slate-800 p-3.5 space-y-1">
-                <div className="flex items-center gap-2 text-sky-400 font-bold text-xs">
-                  <span>⚡</span>
-                  <span>Antigravity & Dataform</span>
-                </div>
-                <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Build production pipelines using Google Antigravity AI pair programming alongside empty Dataform workspaces.
-                </p>
+              <div className="rounded-xl bg-slate-900/60 border border-slate-800/80 p-3">
+                <div className="text-lg font-extrabold text-emerald-400">100%</div>
+                <div className="text-[11px] text-slate-400 font-medium">Human Defensible</div>
               </div>
             </div>
           </div>
 
-          {/* Cloud Stack & Antigravity Architecture Cards (Clickable Tools) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <a
-              href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452&ws=!1m5!1m4!4m3!1saiwomen26ham-4452!2sinvented_software_raw!2sraw_subscriptions"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-blue-500/60 hover:bg-slate-850 transition shadow-sm"
-              title="Open prepared raw lakehouse dataset in Google BigQuery"
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-500/20 text-blue-400 font-bold text-xs flex-shrink-0">
-                  BQ
-                </div>
-                <div>
-                  <h3 className="text-xs font-semibold text-white group-hover:text-blue-300 transition flex items-center gap-1">
-                    BigQuery
-                    <span className="text-[10px] text-blue-400">↗</span>
-                  </h3>
-                  <span className="text-[11px] text-slate-400">Prepared Raw Data</span>
-                </div>
+          {/* Section: Course Goals & Pedagogical Philosophy */}
+          <div className="rounded-2xl border border-sky-500/20 bg-gradient-to-r from-[#0B1528]/90 via-[#09101E] to-[#0B1528]/90 p-6 sm:p-8 space-y-6">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="rounded bg-sky-950/80 px-2.5 py-0.5 text-[11px] font-bold text-sky-300 border border-sky-700/50">
+                  Course Philosophy & Principles
+                </span>
+                <span className="text-xs text-slate-400">Core Educational Goals</span>
               </div>
-            </a>
+              <h2 className="text-2xl font-bold text-white tracking-tight">
+                Human-Led Analysis, Powered by Antigravity
+              </h2>
+              <p className="text-xs text-slate-300 mt-1 max-w-3xl leading-relaxed">
+                The objective of this course is not to passively copy code from an LLM. It is designed to cultivate genuine engineering rigor and critical data instincts through a clear division of roles:
+              </p>
+            </div>
 
-            <a
-              href="https://console.cloud.google.com/bigquery/dataform?project=aiwomen26ham-4452"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-emerald-500/60 hover:bg-slate-850 transition shadow-sm"
-              title="Open empty Dataform workspace for data specialist training"
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400 font-bold text-xs flex-shrink-0">
-                  DF
+            {/* The 3 Core Pillars: Human-Led, Antigravity-Powered, Chatbot Helper */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {/* Pillar 1: Human-Led */}
+              <div className="rounded-xl bg-slate-900/80 border border-sky-500/30 p-5 space-y-3 relative overflow-hidden group hover:border-sky-400/60 transition">
+                <div className="flex items-center gap-2.5">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-sky-500/20 text-sky-400 text-lg">
+                    🧑‍💻
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-white">1. Human-Led Leadership</h3>
+                    <span className="text-[11px] text-sky-300 font-medium">You Own the Decisions</span>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xs font-semibold text-white group-hover:text-emerald-300 transition flex items-center gap-1">
-                    Google Dataform
-                    <span className="text-[10px] text-emerald-400">↗</span>
-                  </h3>
-                  <span className="text-[11px] text-slate-400">Empty Workspace</span>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  You are in the driver&apos;s seat. You inspect the raw tables, uncover schema anomalies, define business KPI logic (MRR, churn, ARR), and choose architectural patterns.
+                </p>
+                <div className="rounded-lg bg-slate-950/60 p-2.5 border border-slate-800 text-[11px] text-slate-400">
+                  <strong className="text-slate-200">Key Takeaway:</strong> An LLM does not know your business context. You are solely responsible for defending every metric before executive stakeholders.
                 </div>
               </div>
-            </a>
 
-            <a
-              href="https://lookerstudio.google.com/reporting/create"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-amber-500/60 hover:bg-slate-850 transition shadow-sm"
-              title="Open empty Looker Studio report to build dashboards"
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500/20 text-amber-400 font-bold text-xs flex-shrink-0">
-                  LS
+              {/* Pillar 2: Powered by Antigravity */}
+              <div className="rounded-xl bg-slate-900/80 border border-blue-500/30 p-5 space-y-3 relative overflow-hidden group hover:border-blue-400/60 transition">
+                <div className="flex items-center gap-2.5">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-500/20 text-blue-400 text-lg">
+                    ⚡
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-white">2. Powered by Antigravity</h3>
+                    <span className="text-[11px] text-blue-300 font-medium">AI Pair Programmer</span>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xs font-semibold text-white group-hover:text-amber-300 transition flex items-center gap-1">
-                    Looker Studio
-                    <span className="text-[10px] text-amber-400">↗</span>
-                  </h3>
-                  <span className="text-[11px] text-slate-400">Blank BI Canvas</span>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Google Antigravity serves as your high-velocity implementation engine. Use Antigravity to scaffold Dataform models, generate boilerplate SQLX syntax, and refactor code rapidly.
+                </p>
+                <div className="rounded-lg bg-slate-950/60 p-2.5 border border-slate-800 text-[11px] text-slate-400">
+                  <strong className="text-slate-200">Key Takeaway:</strong> Antigravity multiplies your productivity, handling repetitive mechanics so you can focus on domain modeling and data integrity.
                 </div>
               </div>
-            </a>
 
-            <a
-              href="https://antigravity.google"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-sky-500/60 hover:bg-slate-850 transition shadow-sm"
-              title="Open Google Antigravity AI-first development platform"
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-sky-500/20 text-sky-400 font-bold text-xs flex-shrink-0">
-                  AG
+              {/* Pillar 3: Chatbot as Helper */}
+              <div className="rounded-xl bg-slate-900/80 border border-cyan-500/30 p-5 space-y-3 relative overflow-hidden group hover:border-cyan-400/60 transition">
+                <div className="flex items-center gap-2.5">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-500/20 text-cyan-400 text-lg">
+                    🤖
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-white">3. Chatbot as Helper</h3>
+                    <span className="text-[11px] text-cyan-300 font-medium">Socratic Coach, Not Spoilers</span>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xs font-semibold text-white group-hover:text-sky-300 transition flex items-center gap-1">
-                    Antigravity
-                    <span className="text-[10px] text-sky-400">↗</span>
-                  </h3>
-                  <span className="text-[11px] text-slate-400">AI-First IDE / Pair Dev</span>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  The embedded Gemini chatbot in the corner serves strictly as an intellectual helper and thinking partner. It does not provide ready-made queries or do your homework.
+                </p>
+                <div className="rounded-lg bg-slate-950/60 p-2.5 border border-slate-800 text-[11px] text-slate-400">
+                  <strong className="text-slate-200">Key Takeaway:</strong> The coach asks targeted questions to challenge your assumptions, guiding you toward self-discovery without giving away answers.
                 </div>
               </div>
-            </a>
+            </div>
           </div>
 
-          {/* Reasonable AI Usage Principles - Learning by Doing */}
+          {/* Section: Mindful AI Usage Principles */}
           <div className="rounded-xl border border-sky-500/20 bg-gradient-to-r from-[#0B1528]/80 via-[#09101E] to-[#0B1528]/80 p-6 space-y-4">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-base font-bold text-white flex items-center gap-2">
                   <span>💡</span>
-                  <span>Mindful AI Usage: Learning by Doing with AI as a Thought-Partner</span>
+                  <span>Code of Practice: How to Engage with AI in This Course</span>
                 </h2>
                 <p className="text-xs text-slate-400 mt-0.5">
-                  The goal of this program is to build deep, transferable analytical intuition. Use AI purposefully, not passively.
+                  Follow these 4 principles to build transferable intuition rather than dependency.
                 </p>
               </div>
               <span className="hidden sm:inline-flex rounded-full bg-sky-950/70 border border-sky-500/40 px-2.5 py-1 text-[11px] font-semibold text-sky-200">
-                Data Specialist Code of Practice
+                Data Specialist Mindset
               </span>
             </div>
 
@@ -260,120 +214,75 @@ export default function Home() {
                   <span>Hypothesize First</span>
                 </span>
                 <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Before consulting AI, run queries in BigQuery and inspect schemas. Form your own hypothesis about what the data represents.
+                  Always inspect the tables and draft your query logic before prompting AI. Form your own opinion on the underlying business reality.
+                </p>
+              </div>
+
+              <div className="rounded-lg bg-slate-950/70 border border-slate-800/80 p-3.5 space-y-1.5">
+                <span className="text-cyan-400 font-bold text-xs flex items-center gap-1.5">
+                  <span>2.</span>
+                  <span>Ask the Helper for Hints</span>
+                </span>
+                <p className="text-[11px] text-slate-400 leading-relaxed">
+                  When stuck, ask the AI Mentor Socratic questions (&ldquo;What edge case might cause row multiplication here?&rdquo;) rather than asking for the final query.
                 </p>
               </div>
 
               <div className="rounded-lg bg-slate-950/70 border border-slate-800/80 p-3.5 space-y-1.5">
                 <span className="text-blue-400 font-bold text-xs flex items-center gap-1.5">
-                  <span>2.</span>
-                  <span>Ask Socratic Questions</span>
-                </span>
-                <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Prompt the right-corner Gemini Mentor for guidance and edge-case checks (&ldquo;Why might this join multiply?&rdquo;) rather than for ready-made SQL.
-                </p>
-              </div>
-
-              <div className="rounded-lg bg-slate-950/70 border border-slate-800/80 p-3.5 space-y-1.5">
-                <span className="text-emerald-400 font-bold text-xs flex items-center gap-1.5">
                   <span>3.</span>
-                  <span>Handcraft in Antigravity / Dataform</span>
+                  <span>Code with Antigravity</span>
                 </span>
                 <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Author your SQLX models directly. True engineering mastery comes from writing code, running assertions, and debugging failures.
+                  Use Antigravity as an active pair programmer to generate boilerplate, format SQLX blocks, and run assertions, while you audit every line.
                 </p>
               </div>
 
               <div className="rounded-lg bg-slate-950/70 border border-slate-800/80 p-3.5 space-y-1.5">
                 <span className="text-amber-400 font-bold text-xs flex items-center gap-1.5">
                   <span>4.</span>
-                  <span>Defend Your Metrics</span>
+                  <span>Validate and Defend</span>
                 </span>
                 <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Never accept a number simply because an LLM produced it. You are responsible for defending every KPI before executive stakeholders.
+                  Never accept a metric blindly. Cross-check your calculations against raw event counts, assert zero nulls, and ensure financial reconciliation.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* How the Specialist Advances Through the Human-Led Program */}
-          <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-6 space-y-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-base font-bold text-white flex items-center gap-2">
-                  <span>🎓</span>
-                  <span>Human-Led Specialist Workflow with AI Assistance</span>
-                </h2>
-                <p className="text-xs text-slate-400 mt-0.5">
-                  A structured feedback loop balancing independent human investigation with continuous AI coaching.
-                </p>
+          {/* Call-to-Action Banner: Proceed to Second Page (Tech Stack) */}
+          <div className="rounded-2xl border border-sky-500/30 bg-gradient-to-r from-blue-950/50 via-slate-900 to-sky-950/50 p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-xl">
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2">
+                <span className="rounded bg-sky-500/20 px-2 py-0.5 text-[10px] font-bold text-sky-300 uppercase tracking-wider">
+                  Next Step
+                </span>
+                <span className="text-xs text-slate-400">Page 2 of Overview</span>
               </div>
-              <span className="hidden sm:inline-flex rounded-full bg-sky-950/70 border border-sky-500/40 px-2.5 py-1 text-[11px] font-medium text-sky-200">
-                Non-Blocking Socratic Chat
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 pt-2">
-              <div className="rounded-lg bg-slate-900 border border-slate-800 p-3 space-y-1">
-                <span className="text-[10px] font-bold text-blue-400 uppercase tracking-wider">Step 1</span>
-                <h4 className="text-xs font-semibold text-slate-200">Audit Raw BigQuery</h4>
-                <p className="text-[11px] text-slate-400">
-                  Run SQL in BigQuery to explore raw SaaS tables and identify suspicious anomalies.
-                </p>
-              </div>
-
-              <div className="rounded-lg bg-slate-900 border border-slate-800 p-3 space-y-1">
-                <span className="text-[10px] font-bold text-sky-400 uppercase tracking-wider">Step 2</span>
-                <h4 className="text-xs font-semibold text-slate-200">Consult Gemini Coach</h4>
-                <p className="text-[11px] text-slate-400">
-                  Open the right-corner chat to test hypotheses without blocking your platform view.
-                </p>
-              </div>
-
-              <div className="rounded-lg bg-slate-900 border border-slate-800 p-3 space-y-1">
-                <span className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider">Step 3</span>
-                <h4 className="text-xs font-semibold text-slate-200">Code in Antigravity / DF</h4>
-                <p className="text-[11px] text-slate-400">
-                  Transform raw data into staging views, date spines, and marts using starter templates.
-                </p>
-              </div>
-
-              <div className="rounded-lg bg-slate-900 border border-slate-800 p-3 space-y-1">
-                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider">Step 4</span>
-                <h4 className="text-xs font-semibold text-slate-200">Trap Assertions</h4>
-                <p className="text-[11px] text-slate-400">
-                  Write automated assertions to test minor units, currency joins, and cash balances.
-                </p>
-              </div>
-
-              <div className="rounded-lg bg-slate-900 border border-slate-800 p-3 space-y-1">
-                <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">Step 5</span>
-                <h4 className="text-xs font-semibold text-slate-200">Deliver BI & Benchmark</h4>
-                <p className="text-[11px] text-slate-400">
-                  Create Looker Studio dashboards and compare your models against verified reference code.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Next Step: Proceed to Dedicated Curriculum Roadmap */}
-          <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="space-y-1">
-              <h3 className="text-base font-bold text-white flex items-center gap-2">
-                <span>🗺️</span>
-                <span>Ready to begin the hands-on phases?</span>
+              <h3 className="text-xl font-bold text-white">
+                Explore the Four-Tier Cloud Tech Stack
               </h3>
-              <p className="text-xs text-slate-400">
-                Explore the complete 6-phase analytical curriculum, estimated timelines, and core deliverables.
+              <p className="text-xs text-slate-300 max-w-xl leading-relaxed">
+                Learn about each core technology used throughout the course: <strong className="text-sky-300">Antigravity</strong>, <strong className="text-blue-300">BigQuery</strong>, <strong className="text-emerald-300">Dataform</strong>, and <strong className="text-amber-300">Looker Studio</strong>, including quick console links and their end-to-end architecture.
               </p>
             </div>
-            <Link
-              href="/curriculum"
-              className="rounded-xl bg-gradient-to-r from-blue-600 via-sky-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 px-5 py-2.5 text-xs font-bold text-white transition flex items-center gap-2 self-start sm:self-center flex-shrink-0 shadow-md shadow-sky-900/40"
-            >
-              <span>Explore Curriculum Roadmap</span>
-              <span>→</span>
-            </Link>
+
+            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+              <Link
+                href="/tech-stack"
+                className="rounded-xl bg-gradient-to-r from-blue-600 via-sky-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 px-6 py-3 text-xs font-bold text-white transition flex items-center justify-center gap-2 shadow-lg shadow-sky-900/40"
+              >
+                <span>View Tech Stack & Tools</span>
+                <span>→</span>
+              </Link>
+              <Link
+                href="/curriculum"
+                className="rounded-xl bg-slate-900/90 border border-slate-700 hover:border-sky-500/60 px-5 py-3 text-xs font-semibold text-slate-200 hover:text-white transition flex items-center justify-center gap-2"
+              >
+                <span>Curriculum Roadmap</span>
+                <span>→</span>
+              </Link>
+            </div>
           </div>
         </main>
       </div>
@@ -382,7 +291,7 @@ export default function Home() {
         isOpen={isChatOpen}
         onClose={() => setIsChatOpen(false)}
         currentTrack={currentTrack}
-        activePhaseTitle="Overview"
+        activePhaseTitle="Course Overview"
       />
     </div>
   );

@@ -1,4 +1,4 @@
-const SYSTEM_INSTRUCTION = `You are the Lead Data Mentor for NovaScale Analytics, a fast-growing B2B SaaS company onboarding and upskilling data specialists.
+const SYSTEM_INSTRUCTION = `You are the Lead Data Mentor for Invented Software Inc., a fast-growing B2B SaaS company onboarding and upskilling data specialists.
 Your trainee is building an end-to-end analytics platform on Google Cloud (BigQuery, Dataform, Antigravity, Looker Studio, Cloud Run) targeting project aiwomen26ham-4452.
 The specialist works with Dataform as the applied engine with Antigravity and can review the dbt comparison track.
 
@@ -25,7 +25,7 @@ CORE BEHAVIOR RULES (FROM AGENTS.md):
    - Latest cash balance (Dec 2025): €57,235
    - Implied runway: ~17.6 months (57,235 / 3,253)
 4. TONE:
-   - Senior staff data engineer / analytics engineering manager.
+   - Lead data specialist mentor.
    - Warm, rigorous, encouraging, intellectually honest.
    - Praise defensive thinking, clean SQLX/SQL formatting, and rigorous data assertions.`;
 
@@ -86,5 +86,5 @@ export async function askGeminiMentor(userMessage: string, phaseContext: string,
     return `In ${currentTrack === "dbt" ? "dbt" : "Dataform"}, your model references use ${currentTrack === "dbt" ? "{{ ref('table') }}" : "${ref('table')}"}. The beauty of Dataform in BigQuery is that it compiles and executes natively without client-side container orchestration, while preserving all the software engineering practices you love from dbt! Check out the Model Comparison tab for a line-by-line view.`;
   }
 
-  return "Welcome to NovaScale Analytics! I am your AI Mentor. Let's make sure our analytical platform produces rock-solid, defensible conclusions. Which phase are you currently tackling, or what query are you investigating?";
+  return "Welcome to Invented Software Inc.! I am your AI Mentor. Let's make sure our analytical platform produces rock-solid, defensible conclusions. Which phase are you currently tackling, or what query are you investigating?";
 }

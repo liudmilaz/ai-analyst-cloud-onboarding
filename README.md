@@ -13,7 +13,7 @@
 
 **LINIA** is an interactive, human-led and AI-powered onboarding and upskilling platform for data specialists. It is built around a modern principle: human specialists lead the exploratory analysis, critical thinking, and architectural decisions, while AI acts as a high-velocity accelerator and Socratic coach.
 
-The learner begins with six raw CSV files and a business specification for **NovaScale Analytics** (a fast-growing B2B SaaS company selling recurring-fee business software to small merchants across 8 international markets). The data specialist builds a complete analytics platform end-to-end on Google Cloud:
+The learner begins with six raw CSV files and a business specification for **Invented Software Inc.** (a fast-growing B2B SaaS company selling recurring-fee business software to small merchants across 8 international markets). The data specialist builds a complete analytics platform end-to-end on Google Cloud:
 
 $$\text{Raw CSVs} \longrightarrow \text{BigQuery Lakehouse} \longrightarrow \text{Dataform Transformations (in Antigravity)} \longrightarrow \text{Looker Studio Dashboard}$$
 

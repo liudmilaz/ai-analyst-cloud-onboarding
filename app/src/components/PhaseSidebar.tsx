@@ -16,7 +16,7 @@ export const PhaseSidebar: React.FC<PhaseSidebarProps> = ({ completedPhases }) =
     <aside className="w-80 flex-shrink-0 border-r border-sky-500/15 bg-[#070B14]/90 p-4 pt-8">
       <div className="mb-4 px-2">
         <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-          6-Phase Onboarding Journey
+          Course Journey
         </h2>
         <div className="mt-2 flex items-center justify-between text-xs text-slate-400">
           <span>Progress</span>

@@ -168,8 +168,8 @@ curl -s -X POST \
   -H "Content-Type: application/json" \
   -d '{
     "author": {
-      "name": "Lead Analytics Engineer",
-      "emailAddress": "engineer@inventedsoftware.com"
+      "name": "Lead Data Specialist",
+      "emailAddress": "specialist@inventedsoftware.com"
     },
     "commitMessage": "Deploy corrected production dataform models (traps resolved, BigQuery lakehouse connected)"
   }' \

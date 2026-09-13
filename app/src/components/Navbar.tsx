@@ -30,6 +30,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
 
           <nav className="hidden md:flex items-center gap-1.5 text-sm font-medium">
             <Link
+              href="/tech-stack"
+              className={`px-3 py-1.5 rounded-lg transition ${
+                pathname === "/tech-stack" || pathname === "/tools"
+                  ? "bg-sky-950/70 border border-sky-500/30 text-sky-200 shadow-sm"
+                  : "text-slate-400 hover:text-sky-300"
+              }`}
+            >
+              Tech Stack
+            </Link>
+            <Link
               href="/curriculum"
               className={`px-3 py-1.5 rounded-lg transition ${
                 pathname === "/curriculum" || pathname.startsWith("/phases")
