@@ -34,11 +34,20 @@ export default function HomePage() {
                   GCP Project: aiwomen26ham-4452
                 </div>
                 <h1 className="text-3xl font-extrabold text-white tracking-tight leading-tight">
-                  Welcome to NovaScale Analytics
+                  Welcome to Cloud Data Analytics Onboarding
                 </h1>
                 <p className="text-sm text-slate-300 max-w-2xl leading-relaxed">
-                  You are the incoming Lead Data Analyst. You start with six raw tables in BigQuery for a fast-growing B2B SaaS company and build a complete enterprise analytics platform: <strong>raw data → BigQuery → Dataform models → Looker Studio dashboard</strong>.
+                  Welcome to this hands-on, interactive training platform designed to take you step-by-step through building an end-to-end cloud analytics stack on Google Cloud.
                 </p>
+                <div className="pt-2 text-xs text-slate-300 space-y-1.5 max-w-2xl leading-relaxed border-t border-indigo-900/40">
+                  <p className="font-semibold text-indigo-300">How this training is prepared:</p>
+                  <ul className="space-y-1 text-slate-300 list-disc list-inside">
+                    <li><strong className="text-white">Prepared Raw Lakehouse:</strong> Six canonical datasets for NovaScale Analytics are pre-loaded in Google BigQuery (<code className="text-indigo-300 bg-slate-900/80 px-1 py-0.5 rounded">invented_software_raw</code>).</li>
+                    <li><strong className="text-white">Hands-On Practice:</strong> You will build your own transformations from blank starter templates in Google Dataform (<code className="text-indigo-300 bg-slate-900/80 px-1 py-0.5 rounded">.sqlx</code>).</li>
+                    <li><strong className="text-white">Deliberate Data Traps:</strong> Uncover and resolve 3 real-world traps: minor units (cents), currency fan-out, and stock-vs-flow expenses.</li>
+                    <li><strong className="text-white">Executive BI Delivery:</strong> Visualize verified SaaS metrics in Looker Studio, guided by an interactive Socratic AI Mentor and reference solutions.</li>
+                  </ul>
+                </div>
               </div>
 
               <div className="flex flex-col gap-2">

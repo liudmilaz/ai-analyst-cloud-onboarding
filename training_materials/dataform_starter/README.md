@@ -3,7 +3,7 @@
 Welcome to your hands-on Dataform transformation workspace!
 
 ## Objective
-As the incoming Lead Data Analyst, your mission is to transform the 6 raw BigQuery lakehouse tables in `aiwomen26ham-4452.invented_software_raw` into production-ready staging views and executive marts.
+This training module is designed to guide you step-by-step through transforming the 6 raw BigQuery lakehouse tables in `aiwomen26ham-4452.invented_software_raw` into production-ready staging views and executive marts using Google Cloud Dataform.
 
 ## Project Structure
 - `workflow_settings.yaml`: Points Dataform Core 3.0+ to BigQuery location `EU`.
