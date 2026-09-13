@@ -12,7 +12,8 @@ import { LearningTrack } from "../../../lib/types";
 
 export default function PhaseDetailPage() {
   const params = useParams();
-  const phaseId = Number(params?.phaseId) || 1;
+  const parsedPhaseId = Number(params?.phaseId);
+  const phaseId = Number.isFinite(parsedPhaseId) ? parsedPhaseId : CURRICULUM_PHASES[0].id;
   const phase = CURRICULUM_PHASES.find((p) => p.id === phaseId) || CURRICULUM_PHASES[0];
 
   const [currentTrack, setCurrentTrack] = useState<LearningTrack>("dataform");
