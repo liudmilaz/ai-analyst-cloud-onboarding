@@ -34,12 +34,6 @@ export default function HomePage() {
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                     🧑‍💻 Human-Led & ⚡ AI-Powered Training
                   </span>
-                  <span className="rounded-full border border-slate-700 bg-slate-800/80 px-2.5 py-1 text-xs text-slate-300">
-                    For Data Specialists & Analytics Engineers
-                  </span>
-                  <span className="rounded-full border border-slate-700 bg-slate-800/80 px-2.5 py-1 text-xs text-slate-400">
-                    GCP: aiwomen26ham-4452
-                  </span>
                 </div>
 
                 <h1 className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
@@ -47,7 +41,7 @@ export default function HomePage() {
                 </h1>
 
                 <p className="text-sm text-slate-300 leading-relaxed">
-                  Welcome to an interactive onboarding program built around a modern principle: <strong>human data specialists lead the analysis, critical thinking, and architectural decisions</strong>, while <strong>AI serves as a high-velocity accelerator and Socratic coach</strong>.
+                  Welcome to LINIA - an interactive onboarding program built around a modern principle: human data specialists lead the analysis, critical thinking, and architectural decisions, while AI serves as a high-velocity accelerator and Socratic coach.
                 </p>
 
                 <p className="text-xs text-slate-400 leading-relaxed">
@@ -55,26 +49,24 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row lg:flex-col gap-2.5 flex-shrink-0">
-                <Link
-                  href="/phases/1"
-                  className="rounded-xl bg-indigo-600 px-5 py-3 text-center text-xs font-bold text-white shadow-lg hover:bg-indigo-500 transition flex items-center justify-center gap-2 ring-2 ring-indigo-500/30"
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-2.5 flex-shrink-0 min-w-[210px]">
+                <a
+                  href="https://antigravity.google"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 px-5 py-3 text-center text-xs font-bold text-white shadow-lg hover:from-purple-500 hover:to-indigo-500 transition flex items-center justify-center gap-2 ring-2 ring-purple-500/30"
+                  title="Open Google Antigravity to implement the project"
                 >
-                  <span>🚀 Start Phase 1: Data Discovery</span>
-                </Link>
+                  <span>⚡ Implement with Antigravity</span>
+                  <span className="text-xs">↗</span>
+                </a>
                 <button
                   onClick={() => setIsChatOpen(true)}
-                  className="rounded-xl bg-indigo-950/80 border border-indigo-600/50 px-5 py-3 text-center text-xs font-semibold text-indigo-200 hover:bg-indigo-900/60 hover:text-white transition flex items-center justify-center gap-2"
+                  className="rounded-xl bg-indigo-950/90 border border-indigo-500/50 px-5 py-3 text-center text-xs font-semibold text-indigo-200 hover:bg-indigo-900 hover:text-white transition flex items-center justify-center gap-2 shadow-sm"
                   title="Open Gemini AI Socratic Coach in right corner"
                 >
                   <span>🤖 Ask Socratic AI Coach</span>
                 </button>
-                <Link
-                  href="/dashboard"
-                  className="rounded-xl bg-slate-800 border border-slate-700 px-5 py-3 text-center text-xs font-semibold text-slate-200 hover:bg-slate-750 transition flex items-center justify-center gap-2"
-                >
-                  <span>📊 View Executive Dashboard</span>
-                </Link>
               </div>
             </div>
 
@@ -329,37 +321,24 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Phase Roadmap Overview */}
-          <div className="space-y-4">
-            <h2 className="text-lg font-bold text-white">Curriculum Roadmap</h2>
-            <div className="grid grid-cols-1 gap-3">
-              {CURRICULUM_PHASES.map((p) => (
-                <Link
-                  key={p.id}
-                  href={`/phases/${p.id}`}
-                  className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-xl border border-slate-800 bg-slate-900/50 p-4 hover:border-indigo-600/60 transition"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-indigo-950 font-bold text-xs text-indigo-400 border border-indigo-800/40">
-                      {p.id}
-                    </div>
-                    <div>
-                      <h3 className="text-sm font-semibold text-slate-200 group-hover:text-indigo-300 transition">
-                        {p.title}
-                      </h3>
-                      <p className="text-xs text-slate-400 mt-0.5">{p.subtitle}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3 text-xs text-slate-400 sm:text-right">
-                    <span>⏱ {p.estimatedHours}</span>
-                    <span className="rounded bg-slate-800 px-2 py-1 text-[11px] text-slate-300 font-medium">
-                      {p.deliverable.split("&")[0]}
-                    </span>
-                  </div>
-                </Link>
-              ))}
+          {/* Next Step: Proceed to Dedicated Curriculum Roadmap */}
+          <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <span>🗺️</span>
+                <span>Ready to begin the hands-on phases?</span>
+              </h3>
+              <p className="text-xs text-slate-400">
+                Explore the complete 6-phase analytical curriculum, estimated timelines, and core deliverables.
+              </p>
             </div>
+            <Link
+              href="/curriculum"
+              className="rounded-xl bg-indigo-600 hover:bg-indigo-500 px-5 py-2.5 text-xs font-bold text-white transition flex items-center gap-2 self-start sm:self-center flex-shrink-0 shadow-md shadow-indigo-600/30"
+            >
+              <span>Explore Curriculum Roadmap</span>
+              <span>→</span>
+            </Link>
           </div>
         </main>
       </div>

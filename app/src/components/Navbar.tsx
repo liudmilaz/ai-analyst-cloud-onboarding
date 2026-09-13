@@ -18,31 +18,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
     <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-slate-950/95 backdrop-blur shadow-md">
       <div className="flex min-h-[68px] py-2.5 items-center justify-between px-6">
         <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-3 py-1">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 font-bold text-white shadow-lg shadow-indigo-500/30 flex-shrink-0">
+          <Link href="/" className="flex items-center gap-2.5 py-1 group" title="Return to LINIA Home">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 font-bold text-white shadow-lg shadow-indigo-500/30 flex-shrink-0 group-hover:bg-indigo-500 transition">
               Δ
             </div>
-            <div className="flex flex-col justify-center">
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-slate-100 text-sm md:text-base tracking-tight leading-snug">
-                  Data Specialist Onboarding
-                </span>
-                <span className="rounded bg-indigo-900/60 px-1.5 py-0.5 text-[10px] font-semibold text-indigo-300 border border-indigo-700/50">
-                  Human-Led & AI-Powered
-                </span>
-              </div>
-              <p className="text-xs text-slate-400 mt-0.5">NovaScale Analytics • GCP: aiwomen26ham-4452</p>
-            </div>
+            <span className="font-bold text-slate-100 text-sm md:text-base tracking-tight group-hover:text-indigo-300 transition">
+              Human-Led & AI-Powered
+            </span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-1 text-sm font-medium">
             <Link
-              href="/"
+              href="/curriculum"
               className={`px-3 py-1.5 rounded-md transition ${
-                pathname === "/" ? "bg-slate-800 text-white" : "text-slate-400 hover:text-slate-200"
+                pathname === "/curriculum" || pathname.startsWith("/phases")
+                  ? "bg-slate-800 text-white"
+                  : "text-slate-400 hover:text-slate-200"
               }`}
             >
-              Curriculum
+              Curriculum Roadmap
             </Link>
             <Link
               href="/dashboard"
