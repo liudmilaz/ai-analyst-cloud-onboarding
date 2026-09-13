@@ -25,17 +25,17 @@ export default function HomePage() {
         <PhaseSidebar completedPhases={completedPhases} />
 
         <main className="flex-1 p-8 pt-10 max-w-5xl mx-auto space-y-8">
-          {/* Hero Banner - AI-Powered Introduction */}
+          {/* Hero Banner - Human-Led & AI-Powered Introduction */}
           <div className="relative overflow-hidden rounded-2xl border border-indigo-900/40 bg-gradient-to-br from-indigo-950/70 via-slate-900 to-slate-950 p-8 shadow-xl space-y-6">
             <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
               <div className="space-y-3.5 max-w-3xl">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/40 bg-indigo-950/90 px-3 py-1 text-xs font-semibold text-indigo-300">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    AI-Powered & AI-Led Training
+                    🧑‍💻 Human-Led & ⚡ AI-Powered Training
                   </span>
                   <span className="rounded-full border border-slate-700 bg-slate-800/80 px-2.5 py-1 text-xs text-slate-300">
-                    Target: Data Specialists & Analytics Engineers
+                    For Data Specialists & Analytics Engineers
                   </span>
                   <span className="rounded-full border border-slate-700 bg-slate-800/80 px-2.5 py-1 text-xs text-slate-400">
                     GCP: aiwomen26ham-4452
@@ -43,15 +43,15 @@ export default function HomePage() {
                 </div>
 
                 <h1 className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
-                  AI-Led Cloud Analytics Onboarding for Data Specialists
+                  Human-Led, AI-Powered Cloud Analytics Onboarding
                 </h1>
 
                 <p className="text-sm text-slate-300 leading-relaxed">
-                  Welcome to an immersive, <strong>AI-powered technical onboarding program</strong> designed to train and upskill data specialists into modern cloud data practitioners. Rather than following static tutorials, your entire learning journey is <strong>guided by an embedded Socratic AI Mentor powered by Google Gemini</strong>.
+                  Welcome to an interactive onboarding program built around a modern principle: <strong>human data specialists lead the analysis, critical thinking, and architectural decisions</strong>, while <strong>AI serves as a high-velocity accelerator and Socratic coach</strong>.
                 </p>
 
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  You are placed in a realistic enterprise setting (NovaScale Analytics) with prepared raw lakehouse tables in Google BigQuery. Your mission is to engineer a production data pipeline from scratch using Google Dataform and deliver executive BI scorecards in Looker Studio—defending your findings and resolving silent data traps along the way.
+                  You learn by doing—running exploratory SQL in BigQuery, authoring transformations from scratch in Google Dataform and Antigravity, diagnosing deliberate data traps, and engineering executive Looker Studio scorecards. The embedded Gemini AI Mentor operates in strict Socratic mode, challenging your hypotheses without giving away answers.
                 </p>
               </div>
 
@@ -65,8 +65,9 @@ export default function HomePage() {
                 <button
                   onClick={() => setIsChatOpen(true)}
                   className="rounded-xl bg-indigo-950/80 border border-indigo-600/50 px-5 py-3 text-center text-xs font-semibold text-indigo-200 hover:bg-indigo-900/60 hover:text-white transition flex items-center justify-center gap-2"
+                  title="Open Gemini AI Socratic Coach in right corner"
                 >
-                  <span>🤖 Consult Socratic AI Mentor</span>
+                  <span>🤖 Ask Socratic AI Coach</span>
                 </button>
                 <Link
                   href="/dashboard"
@@ -77,69 +78,69 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* 4 Pillars of the AI-Led Program */}
+            {/* 4 Pillars of the Human-Led & AI-Powered Model */}
             <div className="pt-4 border-t border-indigo-900/40 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
               <div className="rounded-xl bg-slate-900/80 border border-slate-800 p-3.5 space-y-1">
                 <div className="flex items-center gap-2 text-indigo-400 font-bold text-xs">
-                  <span>🤖</span>
-                  <span>Socratic AI Mentorship</span>
+                  <span>🧑‍💻</span>
+                  <span>Human-Led Discovery</span>
                 </div>
                 <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Google Gemini guides your reasoning with targeted questions—never giving away spoilers, challenging you to defend metrics.
+                  You formulate hypotheses, inspect schemas, and make business judgment calls. You own the analysis.
                 </p>
               </div>
 
               <div className="rounded-xl bg-slate-900/80 border border-slate-800 p-3.5 space-y-1">
                 <div className="flex items-center gap-2 text-blue-400 font-bold text-xs">
-                  <span>☁️</span>
-                  <span>Live Google Cloud Stack</span>
+                  <span>🤖</span>
+                  <span>Socratic Gemini Mentor</span>
                 </div>
                 <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Direct hands-on experience: BigQuery lakehouse, serverless Dataform SQLX pipelines, and native Looker Studio BI.
+                  The right-corner AI coach poses guiding questions and challenges your logic—no spoilers, strictly guidance.
                 </p>
               </div>
 
               <div className="rounded-xl bg-slate-900/80 border border-slate-800 p-3.5 space-y-1">
                 <div className="flex items-center gap-2 text-amber-400 font-bold text-xs">
                   <span>🎯</span>
-                  <span>Deliberate Data Traps</span>
+                  <span>Real Enterprise Traps</span>
                 </div>
                 <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Test defensive acumen by uncovering minor units (cents), currency fan-outs, and stock-vs-flow cost traps before reporting.
+                  Diagnose minor units (cents), currency fan-outs, and stock vs flow expenses before reporting.
                 </p>
               </div>
 
               <div className="rounded-xl bg-slate-900/80 border border-slate-800 p-3.5 space-y-1">
-                <div className="flex items-center gap-2 text-emerald-400 font-bold text-xs">
-                  <span>🛠️</span>
-                  <span>Empty Starters & Solutions</span>
+                <div className="flex items-center gap-2 text-purple-400 font-bold text-xs">
+                  <span>⚡</span>
+                  <span>Antigravity & Dataform</span>
                 </div>
                 <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Build from blank starter templates with guided TODOs, then verify against complete production reference models.
+                  Build production pipelines using Google Antigravity AI pair programming alongside empty Dataform workspaces.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Cloud Stack Architecture Cards (Clickable Empty / Prepared Tools, No Explanations) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Cloud Stack & Antigravity Architecture Cards (Clickable Tools) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <a
               href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452&ws=!1m5!1m4!4m3!1saiwomen26ham-4452!2sinvented_software_raw!2sraw_subscriptions"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-5 hover:border-blue-500/60 hover:bg-slate-850 transition shadow-sm"
+              className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-blue-500/60 hover:bg-slate-850 transition shadow-sm"
               title="Open prepared raw lakehouse dataset in Google BigQuery"
             >
-              <div className="flex items-center gap-3.5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-500/20 text-blue-400 font-bold text-xs flex-shrink-0">
                   BQ
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white group-hover:text-blue-300 transition flex items-center gap-1.5">
-                    Google BigQuery
-                    <span className="text-xs text-blue-400">↗</span>
+                  <h3 className="text-xs font-semibold text-white group-hover:text-blue-300 transition flex items-center gap-1">
+                    BigQuery
+                    <span className="text-[10px] text-blue-400">↗</span>
                   </h3>
-                  <span className="text-xs text-slate-400">Prepared Raw Data Layer</span>
+                  <span className="text-[11px] text-slate-400">Prepared Raw Data</span>
                 </div>
               </div>
             </a>
@@ -148,19 +149,19 @@ export default function HomePage() {
               href="https://console.cloud.google.com/bigquery/dataform?project=aiwomen26ham-4452"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-5 hover:border-emerald-500/60 hover:bg-slate-850 transition shadow-sm"
+              className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-emerald-500/60 hover:bg-slate-850 transition shadow-sm"
               title="Open empty Dataform workspace for analyst training"
             >
-              <div className="flex items-center gap-3.5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400 font-bold text-sm flex-shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400 font-bold text-xs flex-shrink-0">
                   DF
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white group-hover:text-emerald-300 transition flex items-center gap-1.5">
+                  <h3 className="text-xs font-semibold text-white group-hover:text-emerald-300 transition flex items-center gap-1">
                     Google Dataform
-                    <span className="text-xs text-emerald-400">↗</span>
+                    <span className="text-[10px] text-emerald-400">↗</span>
                   </h3>
-                  <span className="text-xs text-slate-400">Empty Transformation Workspace</span>
+                  <span className="text-[11px] text-slate-400">Empty Workspace</span>
                 </div>
               </div>
             </a>
@@ -169,45 +170,126 @@ export default function HomePage() {
               href="https://lookerstudio.google.com/reporting/create"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-5 hover:border-amber-500/60 hover:bg-slate-850 transition shadow-sm"
+              className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-amber-500/60 hover:bg-slate-850 transition shadow-sm"
               title="Open empty Looker Studio report to build dashboards"
             >
-              <div className="flex items-center gap-3.5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500/20 text-amber-400 font-bold text-xs flex-shrink-0">
                   LS
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white group-hover:text-amber-300 transition flex items-center gap-1.5">
+                  <h3 className="text-xs font-semibold text-white group-hover:text-amber-300 transition flex items-center gap-1">
                     Looker Studio
-                    <span className="text-xs text-amber-400">↗</span>
+                    <span className="text-[10px] text-amber-400">↗</span>
                   </h3>
-                  <span className="text-xs text-slate-400">Empty Executive BI Platform</span>
+                  <span className="text-[11px] text-slate-400">Blank BI Canvas</span>
+                </div>
+              </div>
+            </a>
+
+            <a
+              href="https://antigravity.google"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-purple-500/60 hover:bg-slate-850 transition shadow-sm"
+              title="Open Google Antigravity AI-first development platform"
+            >
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-purple-500/20 text-purple-400 font-bold text-xs flex-shrink-0">
+                  AG
+                </div>
+                <div>
+                  <h3 className="text-xs font-semibold text-white group-hover:text-purple-300 transition flex items-center gap-1">
+                    Antigravity
+                    <span className="text-[10px] text-purple-400">↗</span>
+                  </h3>
+                  <span className="text-[11px] text-slate-400">AI-First IDE / Pair Dev</span>
                 </div>
               </div>
             </a>
           </div>
 
-          {/* How the Specialist Advances Through the AI-Led Program */}
+          {/* Reasonable AI Usage Principles - Learning by Doing */}
+          <div className="rounded-xl border border-indigo-900/40 bg-gradient-to-r from-slate-900 via-indigo-950/30 to-slate-900 p-6 space-y-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-base font-bold text-white flex items-center gap-2">
+                  <span>💡</span>
+                  <span>Mindful AI Usage: Learning by Doing with AI as a Thought-Partner</span>
+                </h2>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  The goal of this program is to build deep, transferable analytical intuition. Use AI purposefully, not passively.
+                </p>
+              </div>
+              <span className="hidden sm:inline-flex rounded-full bg-indigo-950 border border-indigo-600/50 px-2.5 py-1 text-[11px] font-semibold text-indigo-300">
+                Data Specialist Code of Practice
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5 pt-1">
+              <div className="rounded-lg bg-slate-950/70 border border-slate-800/80 p-3.5 space-y-1.5">
+                <span className="text-indigo-400 font-bold text-xs flex items-center gap-1.5">
+                  <span>1.</span>
+                  <span>Hypothesize First</span>
+                </span>
+                <p className="text-[11px] text-slate-400 leading-relaxed">
+                  Before consulting AI, run queries in BigQuery and inspect schemas. Form your own hypothesis about what the data represents.
+                </p>
+              </div>
+
+              <div className="rounded-lg bg-slate-950/70 border border-slate-800/80 p-3.5 space-y-1.5">
+                <span className="text-blue-400 font-bold text-xs flex items-center gap-1.5">
+                  <span>2.</span>
+                  <span>Ask Socratic Questions</span>
+                </span>
+                <p className="text-[11px] text-slate-400 leading-relaxed">
+                  Prompt the right-corner Gemini Mentor for guidance and edge-case checks (&ldquo;Why might this join multiply?&rdquo;) rather than for ready-made SQL.
+                </p>
+              </div>
+
+              <div className="rounded-lg bg-slate-950/70 border border-slate-800/80 p-3.5 space-y-1.5">
+                <span className="text-emerald-400 font-bold text-xs flex items-center gap-1.5">
+                  <span>3.</span>
+                  <span>Handcraft in Antigravity / Dataform</span>
+                </span>
+                <p className="text-[11px] text-slate-400 leading-relaxed">
+                  Author your SQLX models directly. True engineering mastery comes from writing code, running assertions, and debugging failures.
+                </p>
+              </div>
+
+              <div className="rounded-lg bg-slate-950/70 border border-slate-800/80 p-3.5 space-y-1.5">
+                <span className="text-amber-400 font-bold text-xs flex items-center gap-1.5">
+                  <span>4.</span>
+                  <span>Defend Your Metrics</span>
+                </span>
+                <p className="text-[11px] text-slate-400 leading-relaxed">
+                  Never accept a number simply because an LLM produced it. You are responsible for defending every KPI before executive stakeholders.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* How the Specialist Advances Through the Human-Led Program */}
           <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-6 space-y-4">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-base font-bold text-white flex items-center gap-2">
                   <span>🎓</span>
-                  <span>How the Specialist Advances Through the AI-Led Program</span>
+                  <span>Human-Led Specialist Workflow with AI Assistance</span>
                 </h2>
                 <p className="text-xs text-slate-400 mt-0.5">
-                  The training follows a continuous feedback loop between hands-on cloud implementation and AI-guided review.
+                  A structured feedback loop balancing independent human investigation with continuous AI coaching.
                 </p>
               </div>
               <span className="hidden sm:inline-flex rounded-full bg-indigo-950/80 border border-indigo-700/50 px-2.5 py-1 text-[11px] font-medium text-indigo-300">
-                Socratic Methodology
+                Non-Blocking Socratic Chat
               </span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 pt-2">
               <div className="rounded-lg bg-slate-900 border border-slate-800 p-3 space-y-1">
                 <span className="text-[10px] font-bold text-blue-400 uppercase tracking-wider">Step 1</span>
-                <h4 className="text-xs font-semibold text-slate-200">Audit Raw Lakehouse</h4>
+                <h4 className="text-xs font-semibold text-slate-200">Audit Raw BigQuery</h4>
                 <p className="text-[11px] text-slate-400">
                   Run SQL in BigQuery to explore raw SaaS tables and identify suspicious anomalies.
                 </p>
@@ -215,15 +297,15 @@ export default function HomePage() {
 
               <div className="rounded-lg bg-slate-900 border border-slate-800 p-3 space-y-1">
                 <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-wider">Step 2</span>
-                <h4 className="text-xs font-semibold text-slate-200">Consult AI Mentor</h4>
+                <h4 className="text-xs font-semibold text-slate-200">Consult Gemini Coach</h4>
                 <p className="text-[11px] text-slate-400">
-                  Discuss hypotheses with Gemini AI. Receive Socratic hints without answers spoiled.
+                  Open the right-corner chat to test hypotheses without blocking your platform view.
                 </p>
               </div>
 
               <div className="rounded-lg bg-slate-900 border border-slate-800 p-3 space-y-1">
-                <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">Step 3</span>
-                <h4 className="text-xs font-semibold text-slate-200">Build in Dataform</h4>
+                <span className="text-[10px] font-bold text-purple-400 uppercase tracking-wider">Step 3</span>
+                <h4 className="text-xs font-semibold text-slate-200">Code in Antigravity / DF</h4>
                 <p className="text-[11px] text-slate-400">
                   Transform raw data into staging views, date spines, and marts using starter templates.
                 </p>
@@ -231,14 +313,14 @@ export default function HomePage() {
 
               <div className="rounded-lg bg-slate-900 border border-slate-800 p-3 space-y-1">
                 <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider">Step 4</span>
-                <h4 className="text-xs font-semibold text-slate-200">Resolve Data Traps</h4>
+                <h4 className="text-xs font-semibold text-slate-200">Trap Assertions</h4>
                 <p className="text-[11px] text-slate-400">
                   Write automated assertions to test minor units, currency joins, and cash balances.
                 </p>
               </div>
 
               <div className="rounded-lg bg-slate-900 border border-slate-800 p-3 space-y-1">
-                <span className="text-[10px] font-bold text-purple-400 uppercase tracking-wider">Step 5</span>
+                <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">Step 5</span>
                 <h4 className="text-xs font-semibold text-slate-200">Deliver BI & Benchmark</h4>
                 <p className="text-[11px] text-slate-400">
                   Create Looker Studio dashboards and compare your models against verified reference code.
