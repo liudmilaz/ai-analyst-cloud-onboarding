@@ -42,7 +42,7 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row lg:flex-col gap-2.5 flex-shrink-0 min-w-[210px]">
+              <div className="flex flex-col gap-2.5 flex-shrink-0 min-w-[210px] sm:w-64 lg:w-72">
                 <a
                   href="https://antigravity.google"
                   target="_blank"
@@ -60,6 +60,40 @@ export default function HomePage() {
                 >
                   <span>🤖 Ask Socratic AI Coach</span>
                 </button>
+
+                {/* Core Google Data Tools */}
+                <div className="flex flex-col gap-2 pt-1 border-t border-indigo-900/40">
+                  <a
+                    href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452&ws=!1m5!1m4!4m3!1saiwomen26ham-4452!2sinvented_software_raw!2sraw_subscriptions"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between rounded-xl bg-slate-900/90 border border-slate-800 hover:border-blue-500/70 px-4 py-2.5 text-xs font-medium text-blue-300 hover:text-white hover:bg-slate-850 transition shadow-sm"
+                    title="Open prepared raw lakehouse dataset in BigQuery"
+                  >
+                    <span>BigQuery</span>
+                    <span className="text-blue-400 text-xs">↗</span>
+                  </a>
+                  <a
+                    href="https://console.cloud.google.com/bigquery/dataform?project=aiwomen26ham-4452"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between rounded-xl bg-slate-900/90 border border-slate-800 hover:border-emerald-600/70 px-4 py-2.5 text-xs font-medium text-emerald-400 hover:text-white hover:bg-slate-850 transition shadow-sm"
+                    title="Open Dataform workspace for transformations"
+                  >
+                    <span>Dataform</span>
+                    <span className="text-emerald-500 text-xs">↗</span>
+                  </a>
+                  <a
+                    href="https://lookerstudio.google.com/reporting/create"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between rounded-xl bg-slate-900/90 border border-slate-800 hover:border-amber-600/70 px-4 py-2.5 text-xs font-medium text-amber-300 hover:text-white hover:bg-slate-850 transition shadow-sm"
+                    title="Open Looker Studio"
+                  >
+                    <span>Looker Studio</span>
+                    <span className="text-amber-500 text-xs">↗</span>
+                  </a>
+                </div>
               </div>
             </div>
 

@@ -66,50 +66,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
         </div>
 
         <div className="flex items-center gap-2.5">
-          {/* Direct Google Cloud & Antigravity Links to Empty / Prepared Tools */}
-          <div className="hidden lg:flex items-center gap-1.5 border-r border-slate-800 pr-3">
-            <a
-              href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452&ws=!1m5!1m4!4m3!1saiwomen26ham-4452!2sinvented_software_raw!2sraw_subscriptions"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded bg-slate-900 border border-slate-800 hover:border-blue-500/60 px-2 py-1 text-[11px] font-medium text-blue-300 hover:text-white transition"
-              title="Open prepared raw lakehouse dataset in BigQuery"
-            >
-              <span>BigQuery (Raw)</span>
-              <span className="text-[10px] text-blue-400">↗</span>
-            </a>
-            <a
-              href="https://console.cloud.google.com/bigquery/dataform?project=aiwomen26ham-4452"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded bg-slate-900 border border-slate-800 hover:border-emerald-600/60 px-2 py-1 text-[11px] font-medium text-emerald-400 hover:text-emerald-300 transition"
-              title="Open empty Dataform workspace for training"
-            >
-              <span>Dataform (Empty)</span>
-              <span className="text-[10px] text-emerald-500">↗</span>
-            </a>
-            <a
-              href="https://lookerstudio.google.com/reporting/create"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded bg-slate-900 border border-slate-800 hover:border-amber-600/60 px-2 py-1 text-[11px] font-medium text-amber-300 hover:text-amber-200 transition"
-              title="Open empty Looker Studio report"
-            >
-              <span>Looker Studio (Blank)</span>
-              <span className="text-[10px] text-amber-500">↗</span>
-            </a>
-            <a
-              href="https://antigravity.google"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded bg-slate-900 border border-slate-800 hover:border-purple-500/60 px-2 py-1 text-[11px] font-medium text-purple-300 hover:text-purple-200 transition"
-              title="Open Google Antigravity AI-first development platform"
-            >
-              <span>Antigravity</span>
-              <span className="text-[10px] text-purple-400">↗</span>
-            </a>
-          </div>
-
           <button
             onClick={onOpenChat}
             className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-md hover:from-indigo-500 hover:to-violet-500 transition"
