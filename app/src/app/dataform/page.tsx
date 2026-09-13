@@ -364,7 +364,7 @@ export default function DataformPage() {
                 <span>↗</span>
               </a>
               <a
-                href="https://github.com/liudmilaz/ai-analyst-cloud-onboarding/tree/main/dataform"
+                href="https://github.com/liudmilaz/ai-data-onboarding/tree/main/dataform"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 rounded-xl bg-slate-900 border border-slate-800 px-3 py-2.5 text-xs font-semibold text-slate-300 hover:text-white transition"

@@ -90,7 +90,7 @@ The core philosophy of this curriculum is that **the pipeline is the means, not 
 ## 6. Project Structure
 
 ```
-ai-analyst-cloud-onboarding/
+ai-data-onboarding/
 ├── training_materials/             # 🟢 EMPTY STARTER MATERIALS FOR TRAINEES
 │   ├── dataform_starter/           # Blank workspace, workflow_settings.yaml, and .sqlx.starter templates
 │   ├── sql_exercises/              # Phase 1-6 investigative SQL challenges
