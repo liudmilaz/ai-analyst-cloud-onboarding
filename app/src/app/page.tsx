@@ -7,11 +7,12 @@ import { PhaseSidebar } from "../components/PhaseSidebar";
 import { MentorChatModal } from "../components/MentorChatModal";
 import { LiniaLogo } from "../components/LiniaLogo";
 import { LearningTrack } from "../lib/types";
+import { useProgress } from "../lib/useProgress";
 
 export default function Home() {
   const [currentTrack, setCurrentTrack] = useState<LearningTrack>("dataform");
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [completedPhases] = useState<number[]>([1, 2]);
+  const { completedPhases } = useProgress();
 
   return (
     <div className="min-h-screen bg-[#070B14] text-slate-100 flex flex-col font-sans">

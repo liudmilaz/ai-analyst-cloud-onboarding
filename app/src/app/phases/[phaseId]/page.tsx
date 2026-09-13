@@ -9,6 +9,7 @@ import { MentorChatModal } from "../../../components/MentorChatModal";
 import { CheckpointCard } from "../../../components/CheckpointCard";
 import { CURRICULUM_PHASES } from "../../../data/curriculum";
 import { LearningTrack } from "../../../lib/types";
+import { useProgress } from "../../../lib/useProgress";
 
 export default function PhaseDetailPage() {
   const params = useParams();
@@ -18,15 +19,11 @@ export default function PhaseDetailPage() {
 
   const [currentTrack, setCurrentTrack] = useState<LearningTrack>("dataform");
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [completedPhases, setCompletedPhases] = useState<number[]>([]);
+  const { completedPhases, markPhaseComplete } = useProgress();
 
   const isCompleted = completedPhases.includes(phase.id);
 
-  const handleCheckpointSuccess = () => {
-    if (!completedPhases.includes(phase.id)) {
-      setCompletedPhases((prev) => [...prev, phase.id]);
-    }
-  };
+  const handleCheckpointSuccess = () => markPhaseComplete(phase.id);
 
   return (
     <div className="flex min-h-screen flex-col bg-slate-950">
