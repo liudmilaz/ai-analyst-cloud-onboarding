@@ -13,20 +13,20 @@ export const PhaseSidebar: React.FC<PhaseSidebarProps> = ({ completedPhases }) =
   const pathname = usePathname();
 
   return (
-    <aside className="w-80 flex-shrink-0 border-r border-slate-800 bg-slate-950 p-4 pt-8">
+    <aside className="w-80 flex-shrink-0 border-r border-sky-500/15 bg-[#070B14]/90 p-4 pt-8">
       <div className="mb-4 px-2">
         <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
           6-Phase Onboarding Journey
         </h2>
         <div className="mt-2 flex items-center justify-between text-xs text-slate-400">
           <span>Progress</span>
-          <span className="font-semibold text-indigo-400">
+          <span className="font-semibold text-sky-400">
             {completedPhases.length} of 6 Completed
           </span>
         </div>
         <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
           <div
-            className="h-full bg-gradient-to-r from-indigo-500 to-emerald-400 transition-all duration-500"
+            className="h-full bg-gradient-to-r from-blue-600 via-sky-500 to-emerald-400 transition-all duration-500"
             style={{ width: `${(completedPhases.length / 6) * 100}%` }}
           />
         </div>
@@ -43,8 +43,8 @@ export const PhaseSidebar: React.FC<PhaseSidebarProps> = ({ completedPhases }) =
               href={`/phases/${phase.id}`}
               className={`group flex items-start gap-3 rounded-lg p-3 text-left transition ${
                 isActive
-                  ? "bg-indigo-950/70 border border-indigo-700/50 text-white"
-                  : "hover:bg-slate-900/80 text-slate-300"
+                  ? "bg-sky-950/70 border border-sky-500/40 text-white shadow-sm"
+                  : "hover:bg-[#0B1528] text-slate-300"
               }`}
             >
               <div
@@ -52,7 +52,7 @@ export const PhaseSidebar: React.FC<PhaseSidebarProps> = ({ completedPhases }) =
                   isCompleted
                     ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/40"
                     : isActive
-                    ? "bg-indigo-600 text-white"
+                    ? "bg-gradient-to-r from-blue-600 to-sky-500 text-white"
                     : "bg-slate-800 text-slate-400"
                 }`}
               >
@@ -61,7 +61,7 @@ export const PhaseSidebar: React.FC<PhaseSidebarProps> = ({ completedPhases }) =
 
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between">
-                  <span className={`text-xs font-medium truncate ${isActive ? "text-indigo-200" : "text-slate-200"}`}>
+                  <span className={`text-xs font-medium truncate ${isActive ? "text-sky-200" : "text-slate-200"}`}>
                     {phase.title.split(":")[1] || phase.title}
                   </span>
                 </div>
@@ -71,7 +71,7 @@ export const PhaseSidebar: React.FC<PhaseSidebarProps> = ({ completedPhases }) =
                 <div className="mt-1.5 flex items-center gap-2 text-[10px] text-slate-400">
                   <span>⏱ {phase.estimatedHours}</span>
                   {phase.investigativeQuestions.length > 0 && (
-                    <span className="text-indigo-400 font-medium">
+                    <span className="text-sky-400 font-medium">
                       🔍 {phase.investigativeQuestions.length} Questions
                     </span>
                   )}

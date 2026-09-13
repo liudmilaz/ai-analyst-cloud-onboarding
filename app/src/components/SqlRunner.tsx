@@ -157,11 +157,11 @@ export const SqlRunner: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Top Banner with Direct BigQuery Deep Link */}
-      <div className="rounded-xl border border-indigo-900/60 bg-gradient-to-r from-slate-900 via-indigo-950/30 to-slate-900 p-5 shadow-lg">
+      <div className="rounded-xl border border-sky-500/20 bg-gradient-to-r from-[#0B1528] via-[#09101E] to-[#0B1528] p-5 shadow-lg">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="rounded bg-indigo-900/60 px-2 py-0.5 text-xs font-semibold text-indigo-300 border border-indigo-700/50">
+              <span className="rounded bg-sky-950/70 px-2 py-0.5 text-xs font-semibold text-sky-300 border border-sky-700/50">
                 Google BigQuery Interactive Lab
               </span>
               <span className="text-xs text-slate-400 font-mono">aiwomen26ham-4452.invented_software_raw</span>
@@ -179,7 +179,7 @@ export const SqlRunner: React.FC = () => {
               href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 rounded-lg bg-indigo-600 px-4 py-2 text-xs font-bold text-white shadow-md hover:bg-indigo-500 transition"
+              className="flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-blue-600 via-sky-600 to-cyan-500 px-4 py-2 text-xs font-bold text-white shadow-md hover:from-blue-500 hover:to-cyan-400 transition"
             >
               <span>Open in BigQuery Studio</span>
               <span className="text-xs">↗</span>
@@ -196,7 +196,7 @@ export const SqlRunner: React.FC = () => {
             onClick={() => handleSelectExp(idx)}
             className={`p-3 rounded-lg text-left text-xs transition border flex flex-col justify-between ${
               activeExpIdx === idx
-                ? "bg-indigo-950 border-indigo-600/80 text-white font-medium shadow"
+                ? "bg-sky-950/70 border-sky-500/50 text-white font-medium shadow"
                 : "bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-200 hover:bg-slate-800/60"
             }`}
           >
@@ -222,7 +222,7 @@ export const SqlRunner: React.FC = () => {
                 {activeExp.tablesInvolved.map((t) => (
                   <span
                     key={t}
-                    className="rounded bg-slate-800 px-2 py-0.5 text-[10px] font-mono text-indigo-300 border border-slate-700"
+                    className="rounded bg-slate-800 px-2 py-0.5 text-[10px] font-mono text-sky-300 border border-slate-700"
                   >
                     {t}
                   </span>
@@ -231,12 +231,12 @@ export const SqlRunner: React.FC = () => {
             </div>
 
             {/* SQL Text Area */}
-            <div className="relative rounded-lg border border-slate-800 bg-slate-950">
+            <div className="relative rounded-lg border border-slate-800 bg-[#070B14]">
               <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900/70 px-3 py-1.5 text-[11px] text-slate-400 font-mono">
                 <span>BigQuery Standard SQL</span>
                 <button
                   onClick={handleCopySql}
-                  className="text-xs text-indigo-400 hover:text-indigo-300 transition"
+                  className="text-xs text-sky-400 hover:text-sky-300 transition"
                 >
                   {copied ? "✓ Copied!" : "Copy SQL"}
                 </button>
@@ -245,7 +245,7 @@ export const SqlRunner: React.FC = () => {
                 value={userSql}
                 onChange={(e) => setUserSql(e.target.value)}
                 rows={9}
-                className="w-full bg-transparent p-3 font-mono text-xs text-indigo-200 focus:outline-none resize-none leading-relaxed"
+                className="w-full bg-transparent p-3 font-mono text-xs text-sky-200 focus:outline-none resize-none leading-relaxed"
                 spellCheck={false}
               />
             </div>
@@ -264,7 +264,7 @@ export const SqlRunner: React.FC = () => {
                 </button>
                 <button
                   onClick={() => setHasEvaluated(true)}
-                  className="rounded-lg bg-indigo-600 px-4 py-1.5 text-xs font-semibold text-white hover:bg-indigo-500 transition shadow"
+                  className="rounded-lg bg-gradient-to-r from-blue-600 to-sky-600 px-4 py-1.5 text-xs font-semibold text-white hover:from-blue-500 hover:to-sky-500 transition shadow"
                 >
                   Evaluate Query Logic
                 </button>
@@ -276,9 +276,9 @@ export const SqlRunner: React.FC = () => {
         {/* Socratic Feedback & Guidance Panel (Right 5 cols) */}
         <div className="lg:col-span-5 space-y-3">
           {hasEvaluated ? (
-            <div className="rounded-xl border border-indigo-800/50 bg-slate-900 p-4 space-y-4 animate-fadeIn">
+            <div className="rounded-xl border border-sky-500/30 bg-[#0B1528]/80 p-4 space-y-4 animate-fadeIn">
               <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-                <span className="text-xs font-bold text-indigo-300">
+                <span className="text-xs font-bold text-sky-300">
                   Analytical Logic Evaluation
                 </span>
                 <span className="text-[10px] bg-emerald-950 text-emerald-400 px-2 py-0.5 rounded border border-emerald-800/40">
@@ -297,8 +297,8 @@ export const SqlRunner: React.FC = () => {
               </div>
 
               {/* Socratic Feedback */}
-              <div className="rounded-lg bg-indigo-950/40 border border-indigo-800/40 p-3 text-xs space-y-1.5">
-                <span className="font-semibold text-indigo-300 flex items-center gap-1.5">
+              <div className="rounded-lg bg-sky-950/40 border border-sky-800/40 p-3 text-xs space-y-1.5">
+                <span className="font-semibold text-sky-300 flex items-center gap-1.5">
                   <span>💡 Socratic Mentor Observation:</span>
                 </span>
                 <p className="text-[11px] text-slate-300 leading-relaxed">
@@ -314,7 +314,7 @@ export const SqlRunner: React.FC = () => {
                 <ul className="space-y-1.5 text-xs text-slate-300">
                   {activeExp.evaluation.guidingQuestions.map((q, idx) => (
                     <li key={idx} className="flex items-start gap-2 bg-slate-950/60 p-2 rounded border border-slate-800/80">
-                      <span className="text-indigo-400 font-bold">•</span>
+                      <span className="text-sky-400 font-bold">•</span>
                       <span className="text-[11px] leading-relaxed">{q}</span>
                     </li>
                   ))}
@@ -326,7 +326,7 @@ export const SqlRunner: React.FC = () => {
                   href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-indigo-400 hover:text-indigo-300 font-medium"
+                  className="text-sky-400 hover:text-sky-300 font-medium"
                 >
                   Verify in BigQuery Studio ↗
                 </a>

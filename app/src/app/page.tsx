@@ -5,16 +5,16 @@ import Link from "next/link";
 import { Navbar } from "../components/Navbar";
 import { PhaseSidebar } from "../components/PhaseSidebar";
 import { MentorChatModal } from "../components/MentorChatModal";
+import { LiniaLogo } from "../components/LiniaLogo";
 import { LearningTrack } from "../lib/types";
-import { CURRICULUM_PHASES } from "../data/curriculum";
 
-export default function HomePage() {
+export default function Home() {
   const [currentTrack, setCurrentTrack] = useState<LearningTrack>("dataform");
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [completedPhases, setCompletedPhases] = useState<number[]>([]);
+  const [completedPhases] = useState<number[]>([1, 2]);
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-950">
+    <div className="min-h-screen bg-[#070B14] text-slate-100 flex flex-col font-sans">
       <Navbar
         currentTrack={currentTrack}
         onTrackChange={setCurrentTrack}
@@ -26,9 +26,17 @@ export default function HomePage() {
 
         <main className="flex-1 p-8 pt-10 max-w-5xl mx-auto space-y-8">
           {/* Hero Banner - Human-Led & AI-Powered Introduction */}
-          <div className="relative overflow-hidden rounded-2xl border border-indigo-900/40 bg-gradient-to-br from-indigo-950/70 via-slate-900 to-slate-950 p-8 shadow-xl space-y-6">
+          <div className="relative overflow-hidden rounded-2xl border border-sky-500/20 bg-gradient-to-br from-[#0B1528] via-[#09101E] to-[#070B14] p-8 shadow-2xl shadow-sky-950/40 space-y-6">
             <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
               <div className="space-y-3.5 max-w-3xl">
+                {/* LINIA Brand Identifier */}
+                <div className="flex items-center gap-2.5">
+                  <LiniaLogo variant="mark" size="xs" />
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-400">
+                    LINIA Platform • Human-Led & AI-Powered
+                  </span>
+                </div>
+
                 <h1 className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
                   Human-Led, AI-Powered Cloud Analytics Onboarding
                 </h1>
@@ -47,7 +55,7 @@ export default function HomePage() {
                   href="https://antigravity.google"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 px-5 py-3 text-center text-xs font-bold text-white shadow-lg hover:from-purple-500 hover:to-indigo-500 transition flex items-center justify-center gap-2 ring-2 ring-purple-500/30"
+                  className="rounded-xl bg-gradient-to-r from-blue-600 via-sky-600 to-cyan-500 px-5 py-3 text-center text-xs font-bold text-white shadow-lg shadow-sky-900/40 hover:from-blue-500 hover:to-cyan-400 transition flex items-center justify-center gap-2 ring-2 ring-sky-400/30"
                   title="Open Google Antigravity to implement the project"
                 >
                   <span>⚡ Implement with Antigravity</span>
@@ -55,29 +63,29 @@ export default function HomePage() {
                 </a>
                 <button
                   onClick={() => setIsChatOpen(true)}
-                  className="rounded-xl bg-indigo-950/90 border border-indigo-500/50 px-5 py-3 text-center text-xs font-semibold text-indigo-200 hover:bg-indigo-900 hover:text-white transition flex items-center justify-center gap-2 shadow-sm"
+                  className="rounded-xl bg-sky-950/70 border border-sky-500/40 px-5 py-3 text-center text-xs font-semibold text-sky-200 hover:bg-sky-900/80 hover:text-white transition flex items-center justify-center gap-2 shadow-sm"
                   title="Open Gemini AI Socratic Coach in right corner"
                 >
                   <span>🤖 Ask Socratic AI Coach</span>
                 </button>
 
                 {/* Core Google Data Tools */}
-                <div className="flex flex-col gap-2 pt-1 border-t border-indigo-900/40">
+                <div className="flex flex-col gap-2 pt-1 border-t border-sky-900/40">
                   <a
                     href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452&ws=!1m5!1m4!4m3!1saiwomen26ham-4452!2sinvented_software_raw!2sraw_subscriptions"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between rounded-xl bg-slate-900/90 border border-slate-800 hover:border-blue-500/70 px-4 py-2.5 text-xs font-medium text-blue-300 hover:text-white hover:bg-slate-850 transition shadow-sm"
+                    className="flex items-center justify-between rounded-xl bg-slate-900/90 border border-slate-800 hover:border-sky-500/70 px-4 py-2.5 text-xs font-medium text-sky-300 hover:text-white hover:bg-slate-850 transition shadow-sm"
                     title="Open prepared raw lakehouse dataset in BigQuery"
                   >
                     <span>BigQuery</span>
-                    <span className="text-blue-400 text-xs">↗</span>
+                    <span className="text-sky-400 text-xs">↗</span>
                   </a>
                   <a
                     href="https://console.cloud.google.com/bigquery/dataform?project=aiwomen26ham-4452"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between rounded-xl bg-slate-900/90 border border-slate-800 hover:border-emerald-600/70 px-4 py-2.5 text-xs font-medium text-emerald-400 hover:text-white hover:bg-slate-850 transition shadow-sm"
+                    className="flex items-center justify-between rounded-xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/70 px-4 py-2.5 text-xs font-medium text-emerald-400 hover:text-white hover:bg-slate-850 transition shadow-sm"
                     title="Open Dataform workspace for transformations"
                   >
                     <span>Dataform</span>
@@ -87,7 +95,7 @@ export default function HomePage() {
                     href="https://lookerstudio.google.com/reporting/create"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between rounded-xl bg-slate-900/90 border border-slate-800 hover:border-amber-600/70 px-4 py-2.5 text-xs font-medium text-amber-300 hover:text-white hover:bg-slate-850 transition shadow-sm"
+                    className="flex items-center justify-between rounded-xl bg-slate-900/90 border border-slate-800 hover:border-amber-500/70 px-4 py-2.5 text-xs font-medium text-amber-300 hover:text-white hover:bg-slate-850 transition shadow-sm"
                     title="Open Looker Studio"
                   >
                     <span>Looker Studio</span>
@@ -98,9 +106,9 @@ export default function HomePage() {
             </div>
 
             {/* 4 Pillars of the Human-Led & AI-Powered Model */}
-            <div className="pt-4 border-t border-indigo-900/40 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
+            <div className="pt-4 border-t border-sky-900/40 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
               <div className="rounded-xl bg-slate-900/80 border border-slate-800 p-3.5 space-y-1">
-                <div className="flex items-center gap-2 text-indigo-400 font-bold text-xs">
+                <div className="flex items-center gap-2 text-sky-400 font-bold text-xs">
                   <span>🧑‍💻</span>
                   <span>Human-Led Discovery</span>
                 </div>
@@ -130,7 +138,7 @@ export default function HomePage() {
               </div>
 
               <div className="rounded-xl bg-slate-900/80 border border-slate-800 p-3.5 space-y-1">
-                <div className="flex items-center gap-2 text-purple-400 font-bold text-xs">
+                <div className="flex items-center gap-2 text-sky-400 font-bold text-xs">
                   <span>⚡</span>
                   <span>Antigravity & Dataform</span>
                 </div>
@@ -210,17 +218,17 @@ export default function HomePage() {
               href="https://antigravity.google"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-purple-500/60 hover:bg-slate-850 transition shadow-sm"
+              className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-sky-500/60 hover:bg-slate-850 transition shadow-sm"
               title="Open Google Antigravity AI-first development platform"
             >
               <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-purple-500/20 text-purple-400 font-bold text-xs flex-shrink-0">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-sky-500/20 text-sky-400 font-bold text-xs flex-shrink-0">
                   AG
                 </div>
                 <div>
-                  <h3 className="text-xs font-semibold text-white group-hover:text-purple-300 transition flex items-center gap-1">
+                  <h3 className="text-xs font-semibold text-white group-hover:text-sky-300 transition flex items-center gap-1">
                     Antigravity
-                    <span className="text-[10px] text-purple-400">↗</span>
+                    <span className="text-[10px] text-sky-400">↗</span>
                   </h3>
                   <span className="text-[11px] text-slate-400">AI-First IDE / Pair Dev</span>
                 </div>
@@ -229,7 +237,7 @@ export default function HomePage() {
           </div>
 
           {/* Reasonable AI Usage Principles - Learning by Doing */}
-          <div className="rounded-xl border border-indigo-900/40 bg-gradient-to-r from-slate-900 via-indigo-950/30 to-slate-900 p-6 space-y-4">
+          <div className="rounded-xl border border-sky-500/20 bg-gradient-to-r from-[#0B1528]/80 via-[#09101E] to-[#0B1528]/80 p-6 space-y-4">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-base font-bold text-white flex items-center gap-2">
@@ -240,14 +248,14 @@ export default function HomePage() {
                   The goal of this program is to build deep, transferable analytical intuition. Use AI purposefully, not passively.
                 </p>
               </div>
-              <span className="hidden sm:inline-flex rounded-full bg-indigo-950 border border-indigo-600/50 px-2.5 py-1 text-[11px] font-semibold text-indigo-300">
+              <span className="hidden sm:inline-flex rounded-full bg-sky-950/70 border border-sky-500/40 px-2.5 py-1 text-[11px] font-semibold text-sky-200">
                 Data Specialist Code of Practice
               </span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5 pt-1">
               <div className="rounded-lg bg-slate-950/70 border border-slate-800/80 p-3.5 space-y-1.5">
-                <span className="text-indigo-400 font-bold text-xs flex items-center gap-1.5">
+                <span className="text-sky-400 font-bold text-xs flex items-center gap-1.5">
                   <span>1.</span>
                   <span>Hypothesize First</span>
                 </span>
@@ -300,7 +308,7 @@ export default function HomePage() {
                   A structured feedback loop balancing independent human investigation with continuous AI coaching.
                 </p>
               </div>
-              <span className="hidden sm:inline-flex rounded-full bg-indigo-950/80 border border-indigo-700/50 px-2.5 py-1 text-[11px] font-medium text-indigo-300">
+              <span className="hidden sm:inline-flex rounded-full bg-sky-950/70 border border-sky-500/40 px-2.5 py-1 text-[11px] font-medium text-sky-200">
                 Non-Blocking Socratic Chat
               </span>
             </div>
@@ -315,7 +323,7 @@ export default function HomePage() {
               </div>
 
               <div className="rounded-lg bg-slate-900 border border-slate-800 p-3 space-y-1">
-                <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-wider">Step 2</span>
+                <span className="text-[10px] font-bold text-sky-400 uppercase tracking-wider">Step 2</span>
                 <h4 className="text-xs font-semibold text-slate-200">Consult Gemini Coach</h4>
                 <p className="text-[11px] text-slate-400">
                   Open the right-corner chat to test hypotheses without blocking your platform view.
@@ -323,7 +331,7 @@ export default function HomePage() {
               </div>
 
               <div className="rounded-lg bg-slate-900 border border-slate-800 p-3 space-y-1">
-                <span className="text-[10px] font-bold text-purple-400 uppercase tracking-wider">Step 3</span>
+                <span className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider">Step 3</span>
                 <h4 className="text-xs font-semibold text-slate-200">Code in Antigravity / DF</h4>
                 <p className="text-[11px] text-slate-400">
                   Transform raw data into staging views, date spines, and marts using starter templates.
@@ -361,7 +369,7 @@ export default function HomePage() {
             </div>
             <Link
               href="/curriculum"
-              className="rounded-xl bg-indigo-600 hover:bg-indigo-500 px-5 py-2.5 text-xs font-bold text-white transition flex items-center gap-2 self-start sm:self-center flex-shrink-0 shadow-md shadow-indigo-600/30"
+              className="rounded-xl bg-gradient-to-r from-blue-600 via-sky-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 px-5 py-2.5 text-xs font-bold text-white transition flex items-center gap-2 self-start sm:self-center flex-shrink-0 shadow-md shadow-sky-900/40"
             >
               <span>Explore Curriculum Roadmap</span>
               <span>→</span>

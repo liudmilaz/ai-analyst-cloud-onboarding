@@ -17,7 +17,7 @@ export const ExecutiveDashboard: React.FC = () => {
             </span>
           </div>
           <p className="text-xs text-slate-400 mt-1">
-            NovaScale Analytics • BigQuery Mart: <code className="text-indigo-300">aiwomen26ham-4452.invented_software_mart</code>
+            NovaScale Analytics • BigQuery Mart: <code className="text-sky-300">aiwomen26ham-4452.invented_software_mart</code>
           </p>
         </div>
 
@@ -80,7 +80,7 @@ export const ExecutiveDashboard: React.FC = () => {
               <h2 className="text-sm font-semibold text-white">MRR Progression (EUR)</h2>
               <p className="text-xs text-slate-400">Monthly recurring revenue calculated via Dataform date-spine</p>
             </div>
-            <span className="text-xs font-semibold text-indigo-400">2024 - 2025</span>
+            <span className="text-xs font-semibold text-sky-400">2024 - 2025</span>
           </div>
 
           <div className="space-y-3">
@@ -89,7 +89,7 @@ export const ExecutiveDashboard: React.FC = () => {
                 <span className="w-20 text-xs font-medium text-slate-400">{item.month}</span>
                 <div className="flex-1 h-6 bg-slate-800/80 rounded-md overflow-hidden flex items-center px-2">
                   <div
-                    className="h-full bg-gradient-to-r from-indigo-600 to-indigo-400 rounded-sm"
+                    className="h-full bg-gradient-to-r from-blue-600 to-sky-400 rounded-sm"
                     style={{ width: `${(item.mrr / 1700) * 100}%` }}
                   />
                 </div>

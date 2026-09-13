@@ -15,7 +15,7 @@ export const TrackSelector: React.FC<TrackSelectorProps> = ({ currentTrack, onTr
         onClick={() => onTrackChange("dataform")}
         className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md font-medium transition ${
           currentTrack === "dataform"
-            ? "bg-indigo-600 text-white shadow-sm"
+            ? "bg-gradient-to-r from-blue-600 to-sky-600 text-white shadow-sm"
             : "text-slate-400 hover:text-slate-200"
         }`}
       >

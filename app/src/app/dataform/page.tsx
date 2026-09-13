@@ -314,7 +314,7 @@ export default function DataformPage() {
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <span className="rounded bg-indigo-900/60 px-2 py-0.5 text-xs font-semibold text-indigo-300 border border-indigo-700/50">
+                <span className="rounded bg-sky-950/70 px-2 py-0.5 text-xs font-semibold text-sky-300 border border-sky-700/50">
                   Reference Solutions
                 </span>
                 <span className="text-xs text-slate-400">GCP: aiwomen26ham-4452</span>
@@ -357,7 +357,7 @@ export default function DataformPage() {
                 href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452&ws=!1m4!1m3!3saiwomen26ham-4452!2sinvented_software_mart"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-semibold text-white hover:bg-indigo-500 transition shadow"
+                className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-sky-600 px-4 py-2.5 text-xs font-semibold text-white hover:from-blue-500 hover:to-sky-500 transition shadow"
                 title="Open deployed BigQuery mart tables in Google Cloud Console"
               >
                 <span>BigQuery tables deployed</span>
@@ -378,9 +378,9 @@ export default function DataformPage() {
         </div>
 
         {/* Live Workspace Info Banner */}
-        <div className="rounded-xl border border-indigo-900/50 bg-indigo-950/20 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div className="rounded-xl border border-sky-500/20 bg-sky-950/20 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
           <div className="space-y-0.5">
-            <span className="text-indigo-400 font-bold flex items-center gap-1.5">
+            <span className="text-sky-400 font-bold flex items-center gap-1.5">
               <span>⚡ Live GCP Target:</span>
               <span className="font-mono text-slate-200">invented-software-transformations</span>
             </span>
@@ -390,7 +390,7 @@ export default function DataformPage() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[11px] text-slate-400 hidden md:inline">Sync code from Cloud Shell:</span>
-            <code className="rounded bg-slate-900 px-2 py-1 text-[11px] font-mono text-indigo-300 border border-slate-800">
+            <code className="rounded bg-slate-900 px-2 py-1 text-[11px] font-mono text-sky-300 border border-slate-800">
               ./deploy_dataform_to_gcp.sh
             </code>
           </div>
@@ -416,7 +416,7 @@ export default function DataformPage() {
                   onClick={() => setSelectedFileIdx(idx)}
                   className={`w-full flex items-center justify-between rounded-lg px-3 py-2 text-left text-xs transition ${
                     selectedFileIdx === idx
-                      ? "bg-indigo-950 border border-indigo-700/60 text-white font-medium"
+                      ? "bg-sky-950/70 border border-sky-500/50 text-white font-medium shadow-sm"
                       : "text-slate-300 hover:bg-slate-800/80"
                   }`}
                 >
@@ -430,7 +430,7 @@ export default function DataformPage() {
                     file.layer === "staging"
                       ? "bg-blue-950 text-blue-300"
                       : file.layer === "mart"
-                      ? "bg-purple-950 text-purple-300"
+                      ? "bg-cyan-950 text-cyan-300"
                       : file.layer === "assertions"
                       ? "bg-emerald-950 text-emerald-300"
                       : "bg-slate-800 text-slate-400"
@@ -469,19 +469,19 @@ export default function DataformPage() {
               </div>
 
               {/* Code block */}
-              <div className="rounded-lg border border-slate-800 bg-slate-950 overflow-hidden">
+              <div className="rounded-lg border border-slate-800 bg-[#070B14] overflow-hidden">
                 <div className="flex items-center justify-between bg-slate-900 px-3 py-1.5 border-b border-slate-800 text-[11px] text-slate-400 font-mono">
                   <span>SQLX / JavaScript Block</span>
                   <a
                     href="https://console.cloud.google.com/bigquery/dataform/locations/europe-west1/repositories/invented-software-transformations/workspaces/production?project=aiwomen26ham-4452"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-indigo-400 hover:text-indigo-300 font-semibold"
+                    className="text-sky-400 hover:text-sky-300 font-semibold"
                   >
                     Open Workspace in Cloud Console ↗
                   </a>
                 </div>
-                <pre className="p-4 font-mono text-xs text-indigo-200 overflow-x-auto leading-relaxed">
+                <pre className="p-4 font-mono text-xs text-sky-200 overflow-x-auto leading-relaxed">
                   {activeFile.code}
                 </pre>
               </div>

@@ -44,12 +44,12 @@ export const CheckpointCard: React.FC<CheckpointCardProps> = ({
   };
 
   return (
-    <div className="rounded-2xl border border-indigo-900/40 bg-slate-900/90 p-6 shadow-xl space-y-6">
+    <div className="rounded-2xl border border-sky-500/20 bg-[#0B1528]/80 p-6 shadow-xl space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-sky-900/30 pb-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="rounded bg-indigo-900/60 px-2 py-0.5 text-[11px] font-bold text-indigo-300 border border-indigo-700/50">
+            <span className="rounded bg-sky-950/70 px-2 py-0.5 text-[11px] font-bold text-sky-300 border border-sky-700/50">
               Interactive Analytical Validation
             </span>
             <span className="text-xs text-slate-400">Google BigQuery Lakehouse</span>
@@ -80,11 +80,11 @@ export const CheckpointCard: React.FC<CheckpointCardProps> = ({
           return (
             <div
               key={q.id}
-              className="rounded-xl border border-slate-800/90 bg-slate-950/70 p-5 space-y-4"
+              className="rounded-xl border border-slate-800/90 bg-[#070B14]/80 p-5 space-y-4"
             >
               {/* Step 1: The Question */}
               <div className="space-y-1">
-                <div className="flex items-center gap-2 text-xs font-semibold text-indigo-400 uppercase tracking-wider">
+                <div className="flex items-center gap-2 text-xs font-semibold text-sky-400 uppercase tracking-wider">
                   <span>Question {qIdx + 1} of {questions.length}</span>
                   {hasSelected && (
                     <span
@@ -105,9 +105,9 @@ export const CheckpointCard: React.FC<CheckpointCardProps> = ({
 
               {/* Step 2: Run in BigQuery Link & Query Snippet */}
               {q.suggestedQuery && (
-                <div className="rounded-lg border border-slate-800 bg-slate-900/90 overflow-hidden">
-                  <div className="flex items-center justify-between bg-slate-950/80 px-3 py-1.5 border-b border-slate-800 text-[11px] text-slate-400 font-mono">
-                    <span className="flex items-center gap-1.5 text-indigo-300 font-medium">
+                <div className="rounded-lg border border-slate-800 bg-[#0B1528] overflow-hidden">
+                  <div className="flex items-center justify-between bg-[#070B14]/90 px-3 py-1.5 border-b border-sky-900/30 text-[11px] text-slate-400 font-mono">
+                    <span className="flex items-center gap-1.5 text-sky-300 font-medium">
                       <span>⚡ BigQuery Validation Query</span>
                     </span>
                     <div className="flex items-center gap-2">
@@ -121,14 +121,14 @@ export const CheckpointCard: React.FC<CheckpointCardProps> = ({
                         href="https://console.cloud.google.com/bigquery?project=aiwomen26ham-4452"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="rounded bg-indigo-600/80 hover:bg-indigo-500 px-2 py-0.5 text-[11px] font-sans font-semibold text-white transition flex items-center gap-1"
+                        className="rounded bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-500 hover:to-sky-500 px-2 py-0.5 text-[11px] font-sans font-semibold text-white transition flex items-center gap-1 shadow-sm"
                       >
                         <span>Run in BigQuery Studio</span>
                         <span>↗</span>
                       </a>
                     </div>
                   </div>
-                  <pre className="p-3 text-[11px] font-mono text-indigo-200 overflow-x-auto leading-relaxed">
+                  <pre className="p-3 text-[11px] font-mono text-sky-200 overflow-x-auto leading-relaxed">
                     {q.suggestedQuery}
                   </pre>
                 </div>

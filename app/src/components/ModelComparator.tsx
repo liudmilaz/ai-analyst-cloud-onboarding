@@ -23,7 +23,7 @@ export const ModelComparator: React.FC = () => {
             onClick={() => setSelectedIdx(idx)}
             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition ${
               selectedIdx === idx
-                ? "bg-indigo-600 text-white"
+                ? "bg-gradient-to-r from-blue-600 to-sky-600 text-white shadow-sm"
                 : "bg-slate-800 text-slate-300 hover:bg-slate-700"
             }`}
           >
@@ -43,11 +43,11 @@ export const ModelComparator: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div>
-            <div className="flex items-center justify-between rounded-t-lg bg-indigo-950/80 px-3 py-1.5 border border-indigo-800/50 text-xs font-semibold text-indigo-300">
+            <div className="flex items-center justify-between rounded-t-lg bg-sky-950/80 px-3 py-1.5 border border-sky-800/50 text-xs font-semibold text-sky-300">
               <span>Google Cloud Dataform (.sqlx)</span>
               <span className="text-[10px] text-emerald-400 bg-emerald-950 px-1.5 py-0.2 rounded">Applied</span>
             </div>
-            <pre className="rounded-b-lg border-x border-b border-indigo-900/40 bg-slate-950 p-3 font-mono text-[11px] text-indigo-200 overflow-x-auto h-72">
+            <pre className="rounded-b-lg border-x border-b border-sky-900/40 bg-[#070B14] p-3 font-mono text-[11px] text-sky-200 overflow-x-auto h-72">
               {current.dataformCode}
             </pre>
           </div>

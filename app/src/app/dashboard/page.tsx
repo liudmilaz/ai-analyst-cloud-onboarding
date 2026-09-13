@@ -11,7 +11,7 @@ export default function DashboardPage() {
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-950">
+    <div className="flex min-h-screen flex-col bg-[#070B14]">
       <Navbar
         currentTrack={currentTrack}
         onTrackChange={setCurrentTrack}
